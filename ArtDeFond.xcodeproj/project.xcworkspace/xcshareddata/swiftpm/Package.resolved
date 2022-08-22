@@ -10,15 +10,6 @@
       }
     },
     {
-      "identity" : "alamofire",
-      "kind" : "remoteSourceControl",
-      "location" : "https://github.com/Alamofire/Alamofire",
-      "state" : {
-        "branch" : "master",
-        "revision" : "8dd85aee02e39dd280c75eef88ffdb86eed4b07b"
-      }
-    },
-    {
       "identity" : "boringssl-swiftpm",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/firebase/boringssl-SwiftPM.git",
@@ -86,8 +77,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/onevcat/Kingfisher",
       "state" : {
-        "revision" : "be1a1acb283a702b99b630f586877ba02234b4cb",
-        "version" : "7.3.2"
+        "branch" : "master",
+        "revision" : "13f842e18fbbde0093390b58591e99aa2c7800d3"
       }
     },
     {
