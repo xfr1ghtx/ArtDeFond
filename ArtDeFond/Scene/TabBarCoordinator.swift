@@ -19,7 +19,10 @@ final class TabBarCoordinator: Coordinator{
     init(rootViewController: UINavigationController){
         self.rootViewController = rootViewController
         childCoordinators = []
-        rootTabBarController = UITabBarController.createDefault(auth: false)
+        
+        let isAuthed = AuthManager.shared.isAuthed()
+        
+        rootTabBarController = UITabBarController.createDefault(auth: isAuthed)
     }
     
     func start() {

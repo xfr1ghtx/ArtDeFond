@@ -33,7 +33,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         if test {
             self.window = UIWindow(windowScene: windowScene)
-            let tabBarController = AboutMeViewController()
+            let tabBarController = AuthViewController()
             self.window?.rootViewController = tabBarController
             self.window?.makeKeyAndVisible()
         }

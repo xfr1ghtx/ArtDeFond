@@ -18,7 +18,7 @@ extension UITabBarController{
         seacrhVC.tabBarItem.image = Constants.Icons.search
         seacrhVC.tabBarItem.title = "Поиск"
         
-        let feedVC = FeedViewController()
+        let feedVC = FeedViewController(viewModel: FeedViewModel())
         feedVC.tabBarItem.image = Constants.Icons.house
         feedVC.tabBarItem.title = "Лента"
         
@@ -35,14 +35,18 @@ extension UITabBarController{
         notificationVC.tabBarItem.image = Constants.Icons.bell
         notificationVC.tabBarItem.title = "Уведомления"
         
-        let provileVC = auth ? ProfileViewController() : AuthViewController()
+        let provileVC = auth ? ProfileViewController(viewModel: ProfileViewModel()) : AuthViewController()
         provileVC.tabBarItem.image = Constants.Icons.profile
         provileVC.tabBarItem.title = "Профиль"
         
-        tabBarController.viewControllers = [feedVC, seacrhVC, uploadPhotoVC, notificationVC, provileVC]
+        let controllers = [feedVC, seacrhVC, uploadPhotoVC, notificationVC, provileVC]
+        
+        tabBarController.viewControllers = controllers.map { UINavigationController(rootViewController: $0)}
         tabBarController.tabBar.tintColor = Constants.Colors.darkRed
         tabBarController.tabBar.unselectedItemTintColor = Constants.Colors.middleRed
         
+        
+        tabBarController.tabBar.backgroundColor = .white
         return tabBarController
     }
 }

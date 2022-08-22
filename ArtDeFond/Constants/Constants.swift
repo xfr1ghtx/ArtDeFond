@@ -11,10 +11,20 @@ import UIKit
 class Constants{
     
     class Fonts{
+        
+        static let regular13 = UIFont.systemFont(ofSize: 13 , weight: .regular)
         static let regular15 = UIFont.systemFont(ofSize: 15 , weight: .regular)
         static let regular17 = UIFont.systemFont(ofSize: 17, weight: .regular)
+        
+        static let semibold11 = UIFont.systemFont(ofSize: 11, weight: .semibold) //authorFont
+        static let semibold17 = UIFont.systemFont(ofSize: 17, weight: .semibold) //authorFont
+        static let semibold20 = UIFont.systemFont(ofSize: 20, weight: .semibold) //  pictureTitleFont
+        
+        static let bold24 = UIFont.systemFont(ofSize: 24, weight: .bold)
+        static let bold30 = UIFont.systemFont(ofSize: 30, weight: .bold)
+        
         static let medium17 = UIFont.systemFont(ofSize: 17, weight: .medium)
-        static let semiBold17 = UIFont.systemFont(ofSize: 17, weight: .semibold)
+        static let medium15 = UIFont.systemFont(ofSize: 15, weight: .medium)
     }
     
     class Colors{
@@ -38,11 +48,14 @@ class Constants{
         static let search = UIImage(named: "Search")!
         static let house = UIImage(named: "House")!
         static let backArrow = UIImage(named: "Back arrow")!
-        static let avatarPlaceholder = UIImage(named: "avatarPlaceholder")!
     }
     
     class Images{
         static let logo = UIImage(named: "logo")!
+    }
+    
+    class Unspecified{
+        static let titleAttributes = [NSAttributedString.Key.foregroundColor: Constants.Colors.darkRed]
     }
     
 }
