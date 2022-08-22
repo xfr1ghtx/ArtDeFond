@@ -31,6 +31,7 @@ class AboutMeViewController: UIViewController {
         navigationController?.navigationBar.backItem?.setHidesBackButton(true, animated: false)
         self.tabBarController?.navigationItem.hidesBackButton = true
         self.navigationItem.leftBarButtonItems = []
+        navigationItem.backButtonTitle = ""
         setup()
     }
     

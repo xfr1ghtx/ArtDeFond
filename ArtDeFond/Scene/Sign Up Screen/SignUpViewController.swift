@@ -38,6 +38,7 @@ class SignUpViewController: UIViewController {
         navigationController?.navigationBar.backItem?.setHidesBackButton(true, animated: false)
         self.tabBarController?.navigationItem.hidesBackButton = true
         self.navigationItem.leftBarButtonItems = []
+        navigationItem.backButtonTitle = ""
     }
     
     required init?(coder: NSCoder) {
