@@ -58,6 +58,15 @@ class FeedViewController: UIViewController, UICollectionViewDelegateFlowLayout {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        AuthManager.shared.signIn(withEmail: "three@mail.com", withPassword: "password") { result in
+            switch result {
+            case .failure(let error):
+                print(error)
+            case .success(let something):
+                print(something)
+            }
+        }
+        
         view.backgroundColor = .white
 
         setup()
@@ -94,6 +103,7 @@ class FeedViewController: UIViewController, UICollectionViewDelegateFlowLayout {
     
     private func setup(){
         title = "Лента"
+        navigationController?.navigationBar.titleTextAttributes = Constants.Unspecified.titleAttributes
         
         collectionView.delegate = self
         collectionView.dataSource = self
@@ -113,7 +123,6 @@ extension FeedViewController: UICollectionViewDelegate {
             let cell = cell,
             let auctionId = cell.auctionModel?.id
         else { return }
-        print(cell.auctionModel?.id) // change
         present(PictureDetailViewController(viewModel: PictureDetailViewModel(with: auctionId)), animated: true)
         
         
@@ -145,8 +154,9 @@ extension FeedViewController: UITableViewDelegate {
             return
         }
         
-        print(cell.pictureModel?.id) // change
-        present(PictureDetailViewController(viewModel: PictureDetailViewModel(with: pictureId)), animated: true)
+        let vc = PictureDetailViewController(viewModel: PictureDetailViewModel(with: pictureId))
+        self.present(vc, animated: true)
+        
     }
 }
 

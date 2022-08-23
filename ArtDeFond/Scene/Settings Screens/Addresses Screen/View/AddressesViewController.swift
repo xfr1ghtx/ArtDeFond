@@ -107,8 +107,6 @@ extension AddressesViewController: UITableViewDataSource {
         let cellModel: AddressesModel?
         
         cellModel = viewModel.addresses[indexPath.row]
-//        cellModel = AddressCellModel(id: "something", user_id: "something", street: "Уличная", house_number: 123, apartment_number: 12, post_index: 123456, district: "Октябрьский", city: "Москва")
-        
         if let cellModel = cellModel {
             cell.configure(model: cellModel)
         }

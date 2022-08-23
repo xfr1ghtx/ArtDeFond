@@ -31,7 +31,7 @@ extension UITabBarController{
                                                           bottom: -7,
                                                           right: 0)
         
-        let notificationVC = auth ? NotificationsViewController() : AuthViewController()
+        let notificationVC = auth ? NotificationsViewController(viewModel: NotificationsViewModel()) : AuthViewController()
         notificationVC.tabBarItem.image = Constants.Icons.bell
         notificationVC.tabBarItem.title = "Уведомления"
         

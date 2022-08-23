@@ -5,7 +5,7 @@
 //  Created by Someone on 20.08.2022.
 //
 
-import Foundation
+import UIKit
 
 struct FeedPictureModel {
     let id: String

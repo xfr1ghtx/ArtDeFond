@@ -152,6 +152,7 @@ class ProfileViewController: UIViewController, UICollectionViewDelegateFlowLayou
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        
         title = "Профиль"
         navigationController?.navigationBar.titleTextAttributes = Constants.Unspecified.titleAttributes
 
@@ -334,8 +335,6 @@ extension ProfileViewController: UICollectionViewDelegate {
             let cell = cell,
             let auctionId = cell.auctionModel?.id
         else { return }
-        print(cell.auctionModel?.id) // change
-        
         present(PictureDetailViewController(viewModel: PictureDetailViewModel(with: auctionId)), animated: true)
     }
 }
@@ -361,8 +360,6 @@ extension ProfileViewController: UITableViewDelegate {
             let cell = cell,
             let pictureId = cell.pictureModel?.id
         else { return }
-        
-        print(cell.pictureModel?.id) // change
         present(PictureDetailViewController(viewModel: PictureDetailViewModel(with: pictureId)), animated: true)
     }
 }

@@ -223,7 +223,7 @@ struct Picture: Codable {
     var materials: String
     var width: Int
     var height: Int
-    var author_id: String // author
+    var author_id: String
     var price: Int
     var isAuction: Bool
     var auction: Auction?

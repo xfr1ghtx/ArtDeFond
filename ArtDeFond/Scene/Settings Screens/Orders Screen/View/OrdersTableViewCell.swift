@@ -1,38 +1,33 @@
 //
-//  AddressTableViewCell.swift
+//  OrdersTableViewCell.swift
 //  ArtDeFond
 //
-//  Created by Someone on 21.08.2022.
+//  Created by Someone on 23.08.2022.
 //
 
-import Foundation
 import UIKit
 
-
-class AddressTableViewCell: UITableViewCell{
+class OrdersTableViewCell: UITableViewCell{
     
-    static let reusableId = "AddressTableViewCell"
+    static let reusableId = "OrdersTableViewCell"
     
-    var addressModel: AddressesModel?
+    var orderModel: OrderModel?
     
     lazy var image: UIImageView = {
         let imageView = UIImageView()
         
         imageView.backgroundColor = Constants.Colors.pink
-        imageView.layer.cornerRadius = 51/2
+        imageView.layer.cornerRadius = 16
         imageView.clipsToBounds = true
-        
-        let houseIcon = UIImage(systemName: "house.fill")?.withTintColor(.white, renderingMode: .alwaysOriginal)
-        imageView.contentMode = .center
-        imageView.preferredSymbolConfiguration = .init(pointSize: 23)
-        imageView.image = houseIcon
+
+        imageView.image = UIImage(named: "pic")
 
         imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
     }()
     
     
-    lazy var titleAddressLabel: UILabel = {
+    lazy var titleLabel: UILabel = {
         let label = UILabel()
         
         label.text = "Street label"
@@ -45,7 +40,7 @@ class AddressTableViewCell: UITableViewCell{
     }()
     
     
-    lazy var detailAddressLabel: UILabel = {
+    lazy var statusLabel: UILabel = {
         let label = UILabel()
         
         label.text = "City label"
@@ -57,7 +52,7 @@ class AddressTableViewCell: UITableViewCell{
         return label
     }()
     
-    lazy var postalCodeAddressLabel: UILabel = {
+    lazy var timeLabel: UILabel = {
         let label = UILabel()
         
         label.text = "Postal label"
@@ -84,17 +79,15 @@ class AddressTableViewCell: UITableViewCell{
     
     
     
-    func configure(model: AddressesModel) {
+    func configure(model: OrderModel
+ ) {
         
-        self.addressModel = model
+        self.orderModel = model
         
-        let streetString = "ул. \(model.street), д. \(model.houseNumber)"
-        let detailString = "г. \(model.city), \n\(model.district) р-н."
-        let postalString = "\(model.postalCode)"
-        
-        self.titleAddressLabel.text = streetString
-        self.detailAddressLabel.text = detailString
-        self.postalCodeAddressLabel.text = postalString
+        self.titleLabel.text = model.picture_name
+        self.statusLabel.text = "\(model.status)"
+        self.timeLabel.text = "\(model.time)"
+        // order image
     
         layout()
     }
@@ -108,7 +101,7 @@ class AddressTableViewCell: UITableViewCell{
         
         contentView.frame = contentView.frame.inset(by: UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10))
         
-        // TODO: image to center
+        
         contentView.addSubview(image)
         image.snp.makeConstraints { make in
             make.height.equalTo(51)
@@ -118,23 +111,23 @@ class AddressTableViewCell: UITableViewCell{
         }
 
 
-        contentView.addSubview(titleAddressLabel)
-        titleAddressLabel.snp.makeConstraints { make in
+        contentView.addSubview(titleLabel)
+        titleLabel.snp.makeConstraints { make in
             make.top.equalToSuperview()
             make.leading.equalTo(image.snp.trailing).offset(9)
             make.trailing.equalToSuperview()
         }
         
-        contentView.addSubview(detailAddressLabel)
-        detailAddressLabel.snp.makeConstraints { make in
-            make.top.equalTo(titleAddressLabel.snp.bottom).offset(2)
+        contentView.addSubview(statusLabel)
+        statusLabel.snp.makeConstraints { make in
+            make.top.equalTo(titleLabel.snp.bottom).offset(2)
             make.leading.equalTo(image.snp.trailing).offset(9)
             make.trailing.equalToSuperview()
         }
         
-        contentView.addSubview(postalCodeAddressLabel)
-        postalCodeAddressLabel.snp.makeConstraints { make in
-            make.top.equalTo(detailAddressLabel.snp.bottom).offset(2)
+        contentView.addSubview(timeLabel)
+        timeLabel.snp.makeConstraints { make in
+            make.top.equalTo(statusLabel.snp.bottom).offset(2)
             make.leading.equalTo(image.snp.trailing).offset(9)
             make.trailing.equalToSuperview()
             make.bottom.equalToSuperview().inset(12)
@@ -152,3 +145,4 @@ class AddressTableViewCell: UITableViewCell{
         
     }
 }
+

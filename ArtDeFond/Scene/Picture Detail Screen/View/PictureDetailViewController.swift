@@ -19,21 +19,23 @@ class PictureDetailViewController: UIViewController {
     
     lazy var pictureImageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.translatesAutoresizingMaskIntoConstraints = false
+        
         imageView.contentMode = .scaleAspectFill
-        if let image = UIImage(named: "pic") {
-            imageView.image = image
-        }
+        imageView.backgroundColor = Constants.Colors.dirtyWhite
         imageView.clipsToBounds = true
+        
+        imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
     }()
     
     // VIEWS
     lazy var scrollView: UIScrollView = {
         let scrollView = UIScrollView()
+        
         scrollView.delegate = self
         scrollView.alwaysBounceVertical = true
         scrollView.backgroundColor = UIColor(named: "greyMain")
+        
         scrollView.translatesAutoresizingMaskIntoConstraints = false
         return scrollView
     }()
@@ -268,12 +270,8 @@ class PictureDetailViewController: UIViewController {
     lazy var backBtn: UIButton = {
         let button = UIButton()
         button.tintColor = Constants.Colors.darkRed
-//        let config = UIImage.SymbolConfiguration(
-//            pointSize: 24, weight: .bold, scale: .medium)
-        
-//        let image = UIImage(systemName: "play.fill", withConfiguration: config)
-        
-        let image = UIImage(named: "Back arrow")
+
+        let image = UIImage(named: "cross")
         button.setImage(image, for: .normal)
         button.backgroundColor = .white.withAlphaComponent(0.5)
         button.layer.cornerRadius = 16
@@ -340,24 +338,55 @@ class PictureDetailViewController: UIViewController {
     }
     
  
-    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(false)
+        viewModel.fetchPicture {
+            self.configurePictureInfo()
+        }
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         layout()
-        viewModel.fetchPicture {
-            self.configurePictureInfo()
-        }
+        
+        
+        let image = UIImageView()
+        image.image = UIImage(named: "logo")
+        
+//        if let imageToUpload = image.image {
+////            ImageManager.shared.upload(image: imageToUpload) { result in
+////                switch result {
+////                case .failure(let error):
+////                    print(error)
+////                case .success(let something):
+////                    print(something)
+////                }
+////            }
+//        } else {
+//            print("some shit")
+//        }
+        
+        
     }
     
-    private func configurePictureInfo(){
+    func configurePictureInfo(){
         // image
         // ar???
-        // scale
+        
+        
         
         guard let picture = viewModel.picture else {
             return
+        }
+        
+        ImageManager.shared.image(with: picture.image) { [weak self] result in
+            switch result {
+            case .success(let image):
+                self?.pictureImageView.image = image
+            case .failure:
+                self?.pictureImageView.image = nil
+            }
         }
         
         var categoriesString = ""
@@ -378,10 +407,6 @@ class PictureDetailViewController: UIViewController {
         // author configuration
         
         // bet configuration
-        
-        
-        
-        
     }
     
     
@@ -446,15 +471,7 @@ class PictureDetailViewController: UIViewController {
             make.height.equalTo(42)
         }
         
-        
-        scrollView.addSubview(scaleImageBtn)
-        scaleImageBtn.snp.makeConstraints { make in
-            make.top.equalTo(pictureImageView.snp.top).offset(16)
-            make.trailing.equalTo(arBtn.snp.leading).inset(-11)
-            make.width.equalTo(42)
-            make.height.equalTo(42)
-        }
-        
+
         scrollView.addSubview(backBtn)
         backBtn.snp.makeConstraints { make in
             make.top.equalTo(pictureImageView.snp.top).offset(16)

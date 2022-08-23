@@ -21,7 +21,6 @@ class PictureFeedCell: UITableViewCell{
         imageView.backgroundColor = Constants.Colors.dirtyWhite
         imageView.layer.cornerRadius = 16
         imageView.clipsToBounds = true
-        imageView.image = UIImage(named: "pic")
         
         imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
@@ -83,13 +82,15 @@ class PictureFeedCell: UITableViewCell{
         self.titleLabel.text = model.title
         self.authorLabel.text = model.authorName.uppercased()
         
-        if let url =  URL(string: model.image) {
-            // set image for coverImageView
+        ImageManager.shared.image(with: model.image) { [weak self] result in
+            switch result {
+            case .success(let image):
+                self?.coverImageView.image = image
+            case .failure:
+                self?.coverImageView.image = nil
+            }
         }
         
-        if let url =  URL(string: model.authorImage) {
-            // set image for aurhorImageView
-        }
         layout()
     }
     

@@ -185,6 +185,3 @@ struct User: Codable {
     var avatar_image: String
     var account_balance: Int
 }
-
-
-

@@ -22,8 +22,6 @@ class MyPicturesCell: UITableViewCell{
         imageView.layer.cornerRadius = 16
         imageView.clipsToBounds = true
         
-        imageView.image = UIImage(named: "pic")
-        
         imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
     }()
@@ -102,6 +100,15 @@ class MyPicturesCell: UITableViewCell{
         self.priceLabel.text = "\(model.price)$"
         self.detailsLabel.text = detailsString
         
+        ImageManager.shared.image(with: model.image) { [weak self] result in
+            switch result {
+            case .success(let image):
+                self?.image.image = image
+            case .failure:
+                self?.image.image = nil
+            }
+        }
+        
         // image
         
         layout()
@@ -156,9 +163,9 @@ class MyPicturesCell: UITableViewCell{
     
     
     override func prepareForReuse() {
-        //        super.prepareForReuse()
-        //        self.titleLabel.text = nil
-        //        self.coverImageView.image = nil
+                super.prepareForReuse()
+                self.titleLabel.text = nil
+                self.image.image = nil
     }
     
     
