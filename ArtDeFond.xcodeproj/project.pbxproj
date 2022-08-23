@@ -72,6 +72,8 @@
 		8BF53C8D28A42579001B5AC3 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BF53C8C28A42579001B5AC3 /* SceneDelegate.swift */; };
 		8BF53C9428A4257E001B5AC3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8BF53C9328A4257E001B5AC3 /* Assets.xcassets */; };
 		8BF53C9728A4257E001B5AC3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8BF53C9528A4257E001B5AC3 /* LaunchScreen.storyboard */; };
+		CEE9CCA028B4C74A00F1B4C9 /* TagsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEE9CC9F28B4C74A00F1B4C9 /* TagsModel.swift */; };
+		CEE9CCA228B4C79D00F1B4C9 /* CollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEE9CCA128B4C79D00F1B4C9 /* CollectionCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -132,6 +134,8 @@
 		8BF53C9328A4257E001B5AC3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8BF53C9628A4257E001B5AC3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8BF53C9828A4257E001B5AC3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CEE9CC9F28B4C74A00F1B4C9 /* TagsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagsModel.swift; sourceTree = "<group>"; };
+		CEE9CCA128B4C79D00F1B4C9 /* CollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -337,6 +341,7 @@
 			isa = PBXGroup;
 			children = (
 				2C97B00128B2B830006CDD55 /* SettingsModel.swift */,
+				CEE9CC9F28B4C74A00F1B4C9 /* TagsModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -517,6 +522,7 @@
 				8BE7977A28B042CE00DC72D9 /* SignUpViewController.swift */,
 				2C8D7C9E28B219F80036E784 /* AboutMeViewController.swift */,
 				8B9DC9F128B4AC87002418AC /* InterestViewController.swift */,
+				CEE9CCA128B4C79D00F1B4C9 /* CollectionCell.swift */,
 			);
 			path = "Sign Up Screen";
 			sourceTree = "<group>";
@@ -672,10 +678,12 @@
 				8BA9ECCB28ACF57D00DFF138 /* TabBarCoordinator.swift in Sources */,
 				2C97AFF028B2A920006CDD55 /* AddressTableViewCell.swift in Sources */,
 				2C97B00428B2B85D006CDD55 /* SettingsTableViewCell.swift in Sources */,
+				CEE9CCA228B4C79D00F1B4C9 /* CollectionCell.swift in Sources */,
 				2C0FD8B128B0667C0004337C /* PictureItemModel.swift in Sources */,
 				8BA9ECD928AD24CF00DFF138 /* NotificationsViewController.swift in Sources */,
 				8BF53C8B28A42579001B5AC3 /* AppDelegate.swift in Sources */,
 				2C8D7C9F28B219F80036E784 /* AboutMeViewController.swift in Sources */,
+				CEE9CCA028B4C74A00F1B4C9 /* TagsModel.swift in Sources */,
 				8BA9ECD728AD24A700DFF138 /* SearchViewController.swift in Sources */,
 				2C97AFF928B2ADC8006CDD55 /* OrderViewController.swift in Sources */,
 				2C97B00228B2B830006CDD55 /* SettingsModel.swift in Sources */,
