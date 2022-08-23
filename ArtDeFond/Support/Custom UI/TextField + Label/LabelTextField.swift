@@ -57,6 +57,10 @@ final class LabelTextField: UIView {
         }
     }
     
+    public func returnText() -> String{
+        return textField.returnText()
+    }
+    
    
     
     

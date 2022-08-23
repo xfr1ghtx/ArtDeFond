@@ -43,6 +43,7 @@
 		8B5DE2F928AABAF700852B34 /* CustomTextFieldType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B5DE2F828AABAF700852B34 /* CustomTextFieldType.swift */; };
 		8B5DE2FD28AAF76600852B34 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B5DE2FC28AAF76600852B34 /* Constants.swift */; };
 		8B6B86EE28A985170094E201 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8B6B86ED28A985170094E201 /* GoogleService-Info.plist */; };
+		8B9DC9F228B4AC87002418AC /* InterestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B9DC9F128B4AC87002418AC /* InterestViewController.swift */; };
 		8BA9ECCB28ACF57D00DFF138 /* TabBarCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BA9ECCA28ACF57D00DFF138 /* TabBarCoordinator.swift */; };
 		8BA9ECD528AD242800DFF138 /* FeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BA9ECD428AD242800DFF138 /* FeedViewController.swift */; };
 		8BA9ECD728AD24A700DFF138 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BA9ECD628AD24A700DFF138 /* SearchViewController.swift */; };
@@ -109,6 +110,7 @@
 		8B5DE2F828AABAF700852B34 /* CustomTextFieldType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextFieldType.swift; sourceTree = "<group>"; };
 		8B5DE2FC28AAF76600852B34 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		8B6B86ED28A985170094E201 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		8B9DC9F128B4AC87002418AC /* InterestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterestViewController.swift; sourceTree = "<group>"; };
 		8BA9ECCA28ACF57D00DFF138 /* TabBarCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarCoordinator.swift; sourceTree = "<group>"; };
 		8BA9ECD428AD242800DFF138 /* FeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewController.swift; sourceTree = "<group>"; };
 		8BA9ECD628AD24A700DFF138 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
@@ -514,6 +516,7 @@
 			children = (
 				8BE7977A28B042CE00DC72D9 /* SignUpViewController.swift */,
 				2C8D7C9E28B219F80036E784 /* AboutMeViewController.swift */,
+				8B9DC9F128B4AC87002418AC /* InterestViewController.swift */,
 			);
 			path = "Sign Up Screen";
 			sourceTree = "<group>";
@@ -688,6 +691,7 @@
 				2C24973F28B1815900551795 /* FeedPictureModel.swift in Sources */,
 				2C97AFFD28B2AFD6006CDD55 /* OrderManager.swift in Sources */,
 				2C97B00828B2B953006CDD55 /* ProfileUserModel.swift in Sources */,
+				8B9DC9F228B4AC87002418AC /* InterestViewController.swift in Sources */,
 				2C97AFE928B2A035006CDD55 /* AddressesViewController.swift in Sources */,
 				8BAE09FC28A4EFFB004CD53C /* Coordinator.swift in Sources */,
 				2C24974328B182AC00551795 /* ProfileViewModel.swift in Sources */,

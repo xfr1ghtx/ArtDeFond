@@ -22,7 +22,9 @@ class AboutMeViewController: UIViewController {
     private let aboutMeLabel = UILabel()
     private let aboutMeTextView = UITextView()
     private let nextButton = CustomButton(viewModel: .init(type: .dark,
-                                                           labelText: "Завершить"))
+                                                           labelText: "Далее"))
+    
+    private let previusVC: SignUpViewController
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,6 +35,15 @@ class AboutMeViewController: UIViewController {
         self.navigationItem.leftBarButtonItems = []
         navigationItem.backButtonTitle = ""
         setup()
+    }
+    
+    init(previusVC: SignUpViewController) {
+        self.previusVC = previusVC
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
     
     private func setup(){
@@ -72,7 +83,7 @@ class AboutMeViewController: UIViewController {
         
         avatarImageView.layer.cornerRadius = 50
         avatarImageView.backgroundColor = Constants.Colors.lightRed
-//        avatarImageView.image = Constants.Icons.avatarPlaceholder
+        avatarImageView.image = Constants.Icons.avatarPlaceholder
         
         avatarImageView.snp.makeConstraints{make in
             make.top.equalTo(view.safeAreaLayoutGuide).offset(20)
@@ -133,9 +144,15 @@ class AboutMeViewController: UIViewController {
     
     @objc
     private func tapNextButton(){
+        let vc = InterestViewController()
         
+        vc.firstScreenDelegate = previusVC
+        vc.secondScreenDelegate = self
+        
+        navigationController?.pushViewController(vc, animated: true)
     }
     
+
     
     
 
@@ -149,4 +166,20 @@ class AboutMeViewController: UIViewController {
     }
     */
 
+}
+
+extension AboutMeViewController: InterestViewControllerDelegateToSecondScreen{
+    func DidRequestAvatar() -> UIImage {
+        return avatarImageView.image ?? UIImage()
+    }
+    
+    func DidRequestNickname() -> String {
+        return nickNameLabelTextField.returnText()
+    }
+    
+    func DidRequestAboutMe() -> String {
+        return aboutMeTextView.text
+    }
+    
+    
 }

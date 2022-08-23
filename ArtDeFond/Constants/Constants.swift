@@ -48,6 +48,7 @@ class Constants{
         static let search = UIImage(named: "Search")!
         static let house = UIImage(named: "House")!
         static let backArrow = UIImage(named: "Back arrow")!
+        static let avatarPlaceholder = UIImage(named: "avatarPlaceholder")!
     }
     
     class Images{
