@@ -16,16 +16,20 @@ class FeedViewModel {
     var refreshing = false
     
     
-    func fetchPictures(completion: @escaping () -> Void) {
+    func fetchData(completion: @escaping () -> Void) {
         refreshing = true
-
+        
+        let group = DispatchGroup()
+        
+        group.enter()
         PicturesManager.shared.loadPictureInformation(type: .pictures) { [weak self] result in
             switch result {
             case .failure(let error):
                 print(error)
                 self?.error = error
                 self?.refreshing = false
-                completion() // а надо ли?
+                group.leave()
+                
             case .success(let pictures):
                 var outputPictures = [FeedPictureModel]()
                 pictures.forEach { picture in
@@ -34,8 +38,33 @@ class FeedViewModel {
                 }
                 self?.pictures = outputPictures
                 self?.refreshing = false
-                completion()
+                group.leave()
             }
+        }
+        
+        group.enter()
+        PicturesManager.shared.loadPictureInformation(type: .auctions) { [weak self] result in
+            switch result {
+            case .failure(let error):
+                print(error)
+                self?.error = error
+                self?.refreshing = false
+                group.leave()
+                
+            case .success(let auctions):
+                var outputAuctions = [CircleFeedAuctionModel]()
+                auctions.forEach { auction in
+                    let newAuction = CircleFeedAuctionModel(id: auction.id, image: auction.image)
+                    outputAuctions.append(newAuction)
+                }
+                self?.auctions = outputAuctions
+                self?.refreshing = false
+                group.leave()
+            }
+        }
+        
+        group.notify(queue: .main) {
+            completion()
         }
     }
     

@@ -54,30 +54,24 @@ class FeedViewController: UIViewController, UICollectionViewDelegateFlowLayout {
         fatalError("init(coder:) has not been implemented")
     }
     
+    //        AuthManager.shared.signIn(withEmail: "three@mail.com", withPassword: "password") { result in
+    //            switch result {
+    //            case .failure(let error):
+    //                print(error)
+    //            case .success(let something):
+    //                print(something)
+    //            }
+    //        }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        AuthManager.shared.signIn(withEmail: "three@mail.com", withPassword: "password") { result in
-            switch result {
-            case .failure(let error):
-                print(error)
-            case .success(let something):
-                print(something)
-            }
-        }
-        
-        view.backgroundColor = .white
-
         setup()
         
-        viewModel.fetchPictures {
+        viewModel.fetchData {
             self.feedTableView.reloadData()
-        }
-        
-        viewModel.fetchAuctions {
             self.collectionView.reloadData()
         }
+
     }
     
     override func viewDidLayoutSubviews() {
@@ -104,6 +98,7 @@ class FeedViewController: UIViewController, UICollectionViewDelegateFlowLayout {
     private func setup(){
         title = "Лента"
         navigationController?.navigationBar.titleTextAttributes = Constants.Unspecified.titleAttributes
+        view.backgroundColor = .white
         
         collectionView.delegate = self
         collectionView.dataSource = self

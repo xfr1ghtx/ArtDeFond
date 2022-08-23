@@ -12,16 +12,6 @@ import FirebaseFirestoreSwift
 protocol PicturesManagerDescription {
     
     func loadPictureInformation(type: ProductCollectionType, completion: @escaping (Result<[Picture], Error>) -> Void)
-    // types
-    //      pictures by seller_id
-    //      auctions by seller_id
-    //      auctions
-    //      common pictures
-    //      search(string)
-    
-    // sorted by date
-    // add date field
-    
     
     func newPicture(
         id: String,

@@ -23,13 +23,6 @@ class PictureDetailViewModel {
     func fetchPicture(completion: @escaping () -> Void) {
         refreshing = true
         
-//        guard
-//            let pictureId = pictureId
-//        else {
-//            self.error = NetworkError.shitHappens
-//            return
-//        }
-        
         
         PicturesManager.shared.getPictureWithId(with: pictureId) { [weak self] result in
             switch result {

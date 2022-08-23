@@ -337,17 +337,13 @@ class PictureDetailViewController: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
- 
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(false)
-        viewModel.fetchPicture {
-            self.configurePictureInfo()
-        }
-    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        viewModel.fetchPicture {
+            self.configurePictureInfo()
+        }
         layout()
         
         
