@@ -92,6 +92,8 @@ final class CostViewModel{
                         print(something)
                     }
                 }
+            
+            NotificationCenter.default.post(name: NSNotification.Name("CostViewModel.uploadPicture.success.ArtDeFond"), object: nil)
         }
         
     }
