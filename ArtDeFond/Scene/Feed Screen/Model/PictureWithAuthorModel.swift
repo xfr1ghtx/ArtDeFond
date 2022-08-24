@@ -7,7 +7,7 @@
 
 import UIKit
 
-struct FeedPictureModel {
+struct PictureWithAuthorModel {
     var user: User?
     let picture: Picture
 }

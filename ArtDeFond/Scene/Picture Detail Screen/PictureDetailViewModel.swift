@@ -12,7 +12,7 @@ class PictureDetailViewModel {
     
     var pictureId: String
 
-    private(set) var picture: FeedPictureModel? {
+    private(set) var picture: PictureWithAuthorModel? {
         didSet {
             self.bindFeedViewModelToController()
         }
@@ -27,7 +27,7 @@ class PictureDetailViewModel {
         fetchData()
     }
     
-    func loadPicture(completion: @escaping (FeedPictureModel?) -> Void) {
+    func loadPicture(completion: @escaping (PictureWithAuthorModel?) -> Void) {
         
         
         PicturesManager.shared.getPictureWithId(with: pictureId) { [weak self] result in
@@ -42,41 +42,11 @@ class PictureDetailViewModel {
             case .success(let picture):
                 
                 self.loadUser(for: picture) { user in
-                    let resultModel = FeedPictureModel(user: user, picture: picture)
+                    let resultModel = PictureWithAuthorModel(user: user, picture: picture)
                     completion(resultModel)
                 }
             }
         }
-        
-        
-        
-        //    PicturesManager.shared.loadPictureInformation(type: .pictures) { [weak self] result in
-        //        guard let self = self else {
-        //            completion(nil)
-        //            return
-        //        }
-        //
-        //        switch result {
-        //        case .failure:
-        //            completion([])
-        //        case .success(let pictures):
-        //            let group = DispatchGroup()
-        //            var models: [String: FeedPictureModel] = [:]
-        //
-        //            for picture in pictures {
-        //                group.enter()
-        //                self.loadUser(for: picture) { user in
-        //                    group.leave()
-        //                    models[picture.id] = FeedPictureModel(user: user, picture: picture)
-        //                }
-        //            }
-        //
-        //            group.notify(queue: .main) {
-        //                let resultModels = pictures.map { models[$0.id] }
-        //                completion(resultModels.compactMap { $0 })
-        //            }
-        //        }
-        //    }
     }
     
     func loadUser(for picture: Picture, completion: @escaping (User?) -> Void) {

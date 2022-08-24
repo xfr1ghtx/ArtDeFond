@@ -9,11 +9,11 @@ import UIKit
 import SnapKit
 
 
-class PictureFeedCell: UITableViewCell{
+class PictureFeedTableCell: UITableViewCell{
     
-    static let reusableId = "PictureFeedCell"
+    static let reusableId = "PictureFeedTableCell"
     
-    var pictureModel: FeedPictureModel?
+    var pictureModel: PictureWithAuthorModel?
     
     lazy var coverImageView: UIImageView = {
         let imageView = UIImageView()
@@ -76,7 +76,7 @@ class PictureFeedCell: UITableViewCell{
     }
     
 
-    func configure(model: FeedPictureModel) {
+    func configure(model: PictureWithAuthorModel) {
         layout()
         self.pictureModel = model
         self.authorLabel.text = model.user?.nickname.uppercased()

@@ -37,7 +37,7 @@ class ExFeedViewModel: NSObject {
             }
         }
     
-    private(set) var pictures : [FeedPictureModel] = [] {
+    private(set) var pictures : [PictureWithAuthorModel] = [] {
             didSet {
                 self.bindFeedViewModelToController()
             }
@@ -168,7 +168,7 @@ class ExFeedViewModel: NSObject {
         
         let group = DispatchGroup()
         var pictures = [Picture]()
-        var outputPictures = [FeedPictureModel]()
+        var outputPictures = [PictureWithAuthorModel]()
         group.enter()
         PicturesManager.shared.loadPictureInformation(type: .pictures) { [weak self] result in
             switch result {

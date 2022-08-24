@@ -18,7 +18,7 @@ class FeedViewController: UIViewController, UICollectionViewDelegateFlowLayout {
     lazy var feedTableView: UITableView = {
         let tableView = UITableView()
         
-        tableView.register(PictureFeedCell.self, forCellReuseIdentifier: PictureFeedCell.reusableId)
+        tableView.register(PictureFeedTableCell.self, forCellReuseIdentifier: PictureFeedTableCell.reusableId)
         tableView.separatorStyle = .none
         tableView.showsVerticalScrollIndicator = false
         
@@ -157,7 +157,7 @@ extension FeedViewController: UICollectionViewDataSource {
 //MARK: - UITableViewDelegate
 extension FeedViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let cell = tableView.cellForRow(at: indexPath) as? PictureFeedCell
+        let cell = tableView.cellForRow(at: indexPath) as? PictureFeedTableCell
         guard
             let cell = cell,
             let pictureId = cell.pictureModel?.picture.id
@@ -179,11 +179,11 @@ extension FeedViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: PictureFeedCell.reusableId) as? PictureFeedCell
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: PictureFeedTableCell.reusableId) as? PictureFeedTableCell
         else {
             fatalError("unexpected cell")
         }
-        let cellModel: FeedPictureModel?
+        let cellModel: PictureWithAuthorModel?
         
         cellModel = viewModel.pictures[indexPath.row]
         

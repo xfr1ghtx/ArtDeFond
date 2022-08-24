@@ -16,7 +16,7 @@ class FeedViewModel: NSObject {
             }
         }
     
-    private(set) var pictures : [FeedPictureModel] = [] {
+    private(set) var pictures : [PictureWithAuthorModel] = [] {
             didSet {
                 self.bindFeedViewModelToController()
             }
@@ -31,7 +31,7 @@ class FeedViewModel: NSObject {
             fetchData()
         }
     
-    func loadPictures(completion: @escaping ([FeedPictureModel]) -> Void) {
+    func loadPictures(completion: @escaping ([PictureWithAuthorModel]) -> Void) {
         PicturesManager.shared.loadPictureInformation(type: .pictures) { [weak self] result in
             guard let self = self else {
                 completion([])
@@ -43,13 +43,13 @@ class FeedViewModel: NSObject {
                 completion([])
             case .success(let pictures):
                 let group = DispatchGroup()
-                var models: [String: FeedPictureModel] = [:]
+                var models: [String: PictureWithAuthorModel] = [:]
                 
                 for picture in pictures {
                     group.enter()
                     self.loadUser(for: picture) { user in
                         group.leave()
-                        models[picture.id] = FeedPictureModel(user: user, picture: picture)
+                        models[picture.id] = PictureWithAuthorModel(user: user, picture: picture)
                     }
                 }
             
@@ -76,7 +76,7 @@ class FeedViewModel: NSObject {
         refreshing = true
         
         let group = DispatchGroup()
-        var outputPictures = [FeedPictureModel]()
+        var outputPictures = [PictureWithAuthorModel]()
         
         group.enter()
         loadPictures { pictures in

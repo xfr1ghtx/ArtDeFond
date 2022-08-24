@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		2C0FD8AD28B065FE0004337C /* PictureFeedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C0FD8AC28B065FE0004337C /* PictureFeedCell.swift */; };
+		2C0FD8AD28B065FE0004337C /* PictureFeedTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C0FD8AC28B065FE0004337C /* PictureFeedTableCell.swift */; };
 		2C0FD8AF28B066380004337C /* AuctionCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C0FD8AE28B066380004337C /* AuctionCollectionViewCell.swift */; };
 		2C0FD8B128B0667C0004337C /* PictureItemModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C0FD8B028B0667C0004337C /* PictureItemModel.swift */; };
 		2C0FD8B428B06AC10004337C /* PictureDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C0FD8B328B06AC10004337C /* PictureDetailViewController.swift */; };
@@ -15,9 +15,14 @@
 		2C24973528B16B1500551795 /* AuthManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C24973428B16B1500551795 /* AuthManager.swift */; };
 		2C24973728B17B2100551795 /* ImageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C24973628B17B2100551795 /* ImageManager.swift */; };
 		2C24973A28B17C0400551795 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 2C24973928B17C0400551795 /* Kingfisher */; };
-		2C24973F28B1815900551795 /* FeedPictureModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C24973E28B1815900551795 /* FeedPictureModel.swift */; };
+		2C24973F28B1815900551795 /* PictureWithAuthorModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C24973E28B1815900551795 /* PictureWithAuthorModel.swift */; };
 		2C24974128B1818000551795 /* CircleFeedAuctionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C24974028B1818000551795 /* CircleFeedAuctionModel.swift */; };
 		2C24974328B182AC00551795 /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C24974228B182AC00551795 /* ProfileViewModel.swift */; };
+		2C28A2AA28B61D1400233601 /* UIImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C28A2A928B61D1400233601 /* UIImageView.swift */; };
+		2C28A2AF28B6336400233601 /* NotificationType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C28A2AE28B6336400233601 /* NotificationType.swift */; };
+		2C28A2B128B6337400233601 /* NotificationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C28A2B028B6337400233601 /* NotificationModel.swift */; };
+		2C28A2B328B633FC00233601 /* NotificationAndPictureModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C28A2B228B633FC00233601 /* NotificationAndPictureModel.swift */; };
+		2C28A2B528B6342200233601 /* NotificationCommonTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C28A2B428B6342200233601 /* NotificationCommonTableCell.swift */; };
 		2C54919F28B4BB9C0012032B /* OrderInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C54919E28B4BB9C0012032B /* OrderInfoViewController.swift */; };
 		2C5491A428B4BE720012032B /* PictureView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C5491A328B4BE720012032B /* PictureView.swift */; };
 		2C5491A628B4BF3D0012032B /* PaymentModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C5491A528B4BF3D0012032B /* PaymentModel.swift */; };
@@ -88,16 +93,21 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		2C0FD8AC28B065FE0004337C /* PictureFeedCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PictureFeedCell.swift; sourceTree = "<group>"; };
+		2C0FD8AC28B065FE0004337C /* PictureFeedTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PictureFeedTableCell.swift; sourceTree = "<group>"; };
 		2C0FD8AE28B066380004337C /* AuctionCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuctionCollectionViewCell.swift; sourceTree = "<group>"; };
 		2C0FD8B028B0667C0004337C /* PictureItemModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PictureItemModel.swift; sourceTree = "<group>"; };
 		2C0FD8B328B06AC10004337C /* PictureDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PictureDetailViewController.swift; sourceTree = "<group>"; };
 		2C24973228B1694C00551795 /* PictureManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PictureManager.swift; sourceTree = "<group>"; };
 		2C24973428B16B1500551795 /* AuthManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthManager.swift; sourceTree = "<group>"; };
 		2C24973628B17B2100551795 /* ImageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageManager.swift; sourceTree = "<group>"; };
-		2C24973E28B1815900551795 /* FeedPictureModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedPictureModel.swift; sourceTree = "<group>"; };
+		2C24973E28B1815900551795 /* PictureWithAuthorModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PictureWithAuthorModel.swift; sourceTree = "<group>"; };
 		2C24974028B1818000551795 /* CircleFeedAuctionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleFeedAuctionModel.swift; sourceTree = "<group>"; };
 		2C24974228B182AC00551795 /* ProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
+		2C28A2A928B61D1400233601 /* UIImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageView.swift; sourceTree = "<group>"; };
+		2C28A2AE28B6336400233601 /* NotificationType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationType.swift; sourceTree = "<group>"; };
+		2C28A2B028B6337400233601 /* NotificationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationModel.swift; sourceTree = "<group>"; };
+		2C28A2B228B633FC00233601 /* NotificationAndPictureModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationAndPictureModel.swift; sourceTree = "<group>"; };
+		2C28A2B428B6342200233601 /* NotificationCommonTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationCommonTableCell.swift; sourceTree = "<group>"; };
 		2C54919E28B4BB9C0012032B /* OrderInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderInfoViewController.swift; sourceTree = "<group>"; };
 		2C5491A328B4BE720012032B /* PictureView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PictureView.swift; sourceTree = "<group>"; };
 		2C5491A528B4BF3D0012032B /* PaymentModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentModel.swift; sourceTree = "<group>"; };
@@ -186,7 +196,7 @@
 			children = (
 				2C0FD8B028B0667C0004337C /* PictureItemModel.swift */,
 				2C24974028B1818000551795 /* CircleFeedAuctionModel.swift */,
-				2C24973E28B1815900551795 /* FeedPictureModel.swift */,
+				2C24973E28B1815900551795 /* PictureWithAuthorModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -194,7 +204,7 @@
 		2C0FD8AA28B065B20004337C /* View */ = {
 			isa = PBXGroup;
 			children = (
-				2C0FD8AC28B065FE0004337C /* PictureFeedCell.swift */,
+				2C0FD8AC28B065FE0004337C /* PictureFeedTableCell.swift */,
 				8BA9ECD428AD242800DFF138 /* FeedViewController.swift */,
 				2C0FD8AE28B066380004337C /* AuctionCollectionViewCell.swift */,
 			);
@@ -256,6 +266,33 @@
 				2C8D7CA028B22E930036E784 /* MyPicturesCell.swift */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		2C28A2AB28B632F900233601 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				8BA9ECD828AD24CF00DFF138 /* NotificationsViewController.swift */,
+				2C28A2B428B6342200233601 /* NotificationCommonTableCell.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		2C28A2AC28B632FF00233601 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				2CEC273D28B3D7B20044DBD4 /* NotificationsViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		2C28A2AD28B6330700233601 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				2C28A2AE28B6336400233601 /* NotificationType.swift */,
+				2C28A2B028B6337400233601 /* NotificationModel.swift */,
+				2C28A2B228B633FC00233601 /* NotificationAndPictureModel.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		2C54919D28B4BB570012032B /* Order Info Screen */ = {
@@ -440,6 +477,7 @@
 				2CEC274128B4AA7A0044DBD4 /* Date.swift */,
 				2CEC274328B4AAC30044DBD4 /* String.swift */,
 				2C5491AD28B4C7EE0012032B /* UIAlertController.swift */,
+				2C28A2A928B61D1400233601 /* UIImageView.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -525,8 +563,9 @@
 		8BA9ECD028AD0A4500DFF138 /* Notifications Screen */ = {
 			isa = PBXGroup;
 			children = (
-				8BA9ECD828AD24CF00DFF138 /* NotificationsViewController.swift */,
-				2CEC273D28B3D7B20044DBD4 /* NotificationsViewModel.swift */,
+				2C28A2AD28B6330700233601 /* Model */,
+				2C28A2AB28B632F900233601 /* View */,
+				2C28A2AC28B632FF00233601 /* ViewModel */,
 			);
 			path = "Notifications Screen";
 			sourceTree = "<group>";
@@ -730,7 +769,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2C0FD8AD28B065FE0004337C /* PictureFeedCell.swift in Sources */,
+				2C0FD8AD28B065FE0004337C /* PictureFeedTableCell.swift in Sources */,
 				8B5DE2F728AABAE500852B34 /* CustomTextFieldViewModel.swift in Sources */,
 				2C0FD8B428B06AC10004337C /* PictureDetailViewController.swift in Sources */,
 				8B5DE2F528AABAC400852B34 /* CustomTextFieldView.swift in Sources */,
@@ -747,6 +786,7 @@
 				8BA9ECDB28AD250000DFF138 /* ProfileViewController.swift in Sources */,
 				2CEC273E28B3D7B20044DBD4 /* NotificationsViewModel.swift in Sources */,
 				2C54919F28B4BB9C0012032B /* OrderInfoViewController.swift in Sources */,
+				2C28A2B128B6337400233601 /* NotificationModel.swift in Sources */,
 				2C97B00A28B37080006CDD55 /* PictureDetailViewModel.swift in Sources */,
 				2C24974128B1818000551795 /* CircleFeedAuctionModel.swift in Sources */,
 				2C24973728B17B2100551795 /* ImageManager.swift in Sources */,
@@ -758,6 +798,7 @@
 				2C5491AA28B4C0150012032B /* DeliveryModel.swift in Sources */,
 				2C97AFF228B2A951006CDD55 /* AddressesViewModel.swift in Sources */,
 				8BA9ECD528AD242800DFF138 /* FeedViewController.swift in Sources */,
+				2C28A2AA28B61D1400233601 /* UIImageView.swift in Sources */,
 				8BE7976628AF629300DC72D9 /* AuthViewController.swift in Sources */,
 				8BE7977028B015D900DC72D9 /* CustomButtonView.swift in Sources */,
 				2CEC274228B4AA7A0044DBD4 /* Date.swift in Sources */,
@@ -775,10 +816,12 @@
 				8BA9ECD728AD24A700DFF138 /* SearchViewController.swift in Sources */,
 				2C97AFF928B2ADC8006CDD55 /* OrderViewController.swift in Sources */,
 				2C97B00228B2B830006CDD55 /* SettingsModel.swift in Sources */,
+				2C28A2AF28B6336400233601 /* NotificationType.swift in Sources */,
 				2C97AFE328B299AD006CDD55 /* UserSettingsViewController.swift in Sources */,
 				8BF53C8D28A42579001B5AC3 /* SceneDelegate.swift in Sources */,
 				2C97AFFB28B2AEC7006CDD55 /* OrdersViewModel.swift in Sources */,
 				8B51DE4A28A97DCB002E10AC /* AppDependencies.swift in Sources */,
+				2C28A2B328B633FC00233601 /* NotificationAndPictureModel.swift in Sources */,
 				2C5491A428B4BE720012032B /* PictureView.swift in Sources */,
 				2C5491A628B4BF3D0012032B /* PaymentModel.swift in Sources */,
 				2C5491B028B4DD460012032B /* OrderDetailsViewController.swift in Sources */,
@@ -789,8 +832,9 @@
 				2C5491A828B4BF7D0012032B /* PaymentView.swift in Sources */,
 				2C0FD8AF28B066380004337C /* AuctionCollectionViewCell.swift in Sources */,
 				8B1B075E28AA322C00854E00 /* TestViewController.swift in Sources */,
-				2C24973F28B1815900551795 /* FeedPictureModel.swift in Sources */,
+				2C24973F28B1815900551795 /* PictureWithAuthorModel.swift in Sources */,
 				2C97AFFD28B2AFD6006CDD55 /* OrderManager.swift in Sources */,
+				2C28A2B528B6342200233601 /* NotificationCommonTableCell.swift in Sources */,
 				2C97B00828B2B953006CDD55 /* ProfileUserModel.swift in Sources */,
 				2C97AFE928B2A035006CDD55 /* AddressesViewController.swift in Sources */,
 				8BAE09FC28A4EFFB004CD53C /* Coordinator.swift in Sources */,
