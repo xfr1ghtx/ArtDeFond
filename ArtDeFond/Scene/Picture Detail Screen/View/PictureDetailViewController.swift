@@ -321,14 +321,14 @@ class PictureDetailViewController: UIViewController {
         layout()
         callToViewModelForUIUpdate()
         
-        func callToViewModelForUIUpdate(){
-            self.viewModel.bindFeedViewModelToController = {
-                self.configurePictureInfo()
-            }
-        }
-        
-        
     }
+    
+    func callToViewModelForUIUpdate(){
+        self.viewModel.bindFeedViewModelToController = {
+            self.configurePictureInfo()
+        }
+    }
+    
     
     func configurePictureInfo(){
         

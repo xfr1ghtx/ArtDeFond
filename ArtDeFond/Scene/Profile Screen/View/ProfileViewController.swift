@@ -90,7 +90,7 @@ class ProfileViewController: UIViewController, UICollectionViewDelegateFlowLayou
     lazy var balanceAmountLabel: UILabel = {
         let label = UILabel()
         
-        label.text = "$100,00"
+        label.text = "₽1.01"
         label.numberOfLines = 1
         label.textColor = .white
         label.font = Constants.Fonts.bold30
@@ -198,10 +198,10 @@ class ProfileViewController: UIViewController, UICollectionViewDelegateFlowLayou
             return
         }
         
-        let stringDouble = String(format: "%.2f", Double(balance)/100)
-        // change to coma?
-        let balanceString = "$\(stringDouble)"
-        balanceAmountLabel.text = balanceString
+//        let stringDouble = String(format: "%.2f", Double(balance)/100)
+//        // change to coma?
+//        let balanceString = "$\(stringDouble)"
+        balanceAmountLabel.text = balance.toRubles()
 //        image
 
         

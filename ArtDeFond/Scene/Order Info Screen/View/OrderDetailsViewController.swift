@@ -13,8 +13,8 @@ import SnapKit
 class OrderDetailsViewController: UIViewController {
     
     private var viewModel: OrderDetailViewModel
-
-
+    
+    
     private func makeLine() -> UIView {
         let view = UIView()
         view.backgroundColor = Constants.Colors.pink
@@ -22,7 +22,7 @@ class OrderDetailsViewController: UIViewController {
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }
-
+    
     
     private func makeStackView(title: String, view: UIView) -> UIStackView{
         let titleLabel = UILabel()
@@ -42,7 +42,7 @@ class OrderDetailsViewController: UIViewController {
     lazy var pictureTitleLabel: UILabel = {
         let label = UILabel()
         
-        label.text = "Красивое название картины"
+        label.text = " "
         label.font = Constants.Fonts.semibold17
         label.textColor = Constants.Colors.darkRed
         label.numberOfLines = 0
@@ -54,7 +54,6 @@ class OrderDetailsViewController: UIViewController {
     lazy var pictureImageView: UIImageView = {
         let imageView = UIImageView()
         
-        imageView.image = UIImage(named: "pic")
         imageView.layer.cornerRadius = 16
         imageView.layer.masksToBounds = true
         
@@ -88,7 +87,7 @@ class OrderDetailsViewController: UIViewController {
     lazy var buyerUsernameLabel: UILabel = {
         let label = UILabel()
         
-        label.text = "SOMEONE"
+        label.text = " "
         label.textColor = Constants.Colors.gray
         label.font = Constants.Fonts.semibold11
         
@@ -100,7 +99,7 @@ class OrderDetailsViewController: UIViewController {
     lazy var sellerUsernameLabel: UILabel = {
         let label = UILabel()
         
-        label.text = "SOMEONE"
+        label.text = " "
         label.textColor = Constants.Colors.gray
         label.font = Constants.Fonts.semibold11
         
@@ -155,7 +154,7 @@ class OrderDetailsViewController: UIViewController {
     lazy var addressInfoLabel: UILabel = {
         let label = UILabel()
         
-        label.text = "г. Москва, ул. Морозная, д. 105, кв. 45"
+        label.text = " "
         label.textAlignment = .right
         label.numberOfLines = 0
         label.textColor = Constants.Colors.pink
@@ -168,7 +167,7 @@ class OrderDetailsViewController: UIViewController {
     lazy var indexInfoLabel: UILabel = {
         let label = UILabel()
         
-        label.text = "123456"
+        label.text = " "
         label.textAlignment = .right
         label.numberOfLines = 0
         label.textColor = Constants.Colors.pink
@@ -181,7 +180,7 @@ class OrderDetailsViewController: UIViewController {
     lazy var dateInfoLabel: UILabel = {
         let label = UILabel()
         
-        label.text = "сегодня"
+        label.text = " "
         label.textAlignment = .right
         label.numberOfLines = 0
         label.textColor = Constants.Colors.pink
@@ -194,7 +193,7 @@ class OrderDetailsViewController: UIViewController {
     lazy var statusInfoLabel: UILabel = {
         let label = UILabel()
         
-        label.text = "доставлено"
+        label.text = " "
         label.textAlignment = .right
         label.numberOfLines = 0
         label.textColor = Constants.Colors.pink
@@ -207,7 +206,7 @@ class OrderDetailsViewController: UIViewController {
     lazy var pictureCheckLabel: UILabel = {
         let label = UILabel()
         
-        label.text = "$000,00"
+        label.text = "₽0.00"
         label.textAlignment = .right
         label.numberOfLines = 1
         label.textColor = Constants.Colors.gray
@@ -220,7 +219,7 @@ class OrderDetailsViewController: UIViewController {
     lazy var saleCheckLabel: UILabel = {
         let label = UILabel()
         
-        label.text = "$000,00"
+        label.text = "₽0.00"
         label.textAlignment = .right
         label.numberOfLines = 1
         label.textColor = Constants.Colors.gray
@@ -233,7 +232,7 @@ class OrderDetailsViewController: UIViewController {
     lazy var delivetyCheckLabel: UILabel = {
         let label = UILabel()
         
-        label.text = "$000,00"
+        label.text = "₽0.00"
         label.textAlignment = .right
         label.numberOfLines = 1
         label.textColor = Constants.Colors.gray
@@ -246,7 +245,7 @@ class OrderDetailsViewController: UIViewController {
     lazy var taxCheckLabel: UILabel = {
         let label = UILabel()
         
-        label.text = "$000,00"
+        label.text = "₽0.00"
         label.textAlignment = .right
         label.numberOfLines = 1
         label.textColor = Constants.Colors.gray
@@ -270,7 +269,7 @@ class OrderDetailsViewController: UIViewController {
     lazy var totalLabel: UILabel = {
         let label = UILabel()
         
-        label.text = "$000,00"
+        label.text = "₽0.00"
         label.numberOfLines = 1
         label.textColor = Constants.Colors.darkRed
         label.font = Constants.Fonts.semibold17
@@ -290,33 +289,87 @@ class OrderDetailsViewController: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
- 
     
-
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        layout()
-
-        // viewModel fetch order info
+        
+        callToViewModelForUIUpdate()
+        self.layout()
+    }
+    
+    func callToViewModelForUIUpdate(){
+        self.viewModel.bindOrderDetailViewModelToController = {
+            self.configureView()
+            
+        }
     }
     
     private func configureView() {
-        guard let order = viewModel.order else {
+        guard let model = viewModel.order else {
             return
         }
         
-        // image configure
-//        pictureTitleLabel.text = order.picture_name
-        // seller configure
-        //address configure
-        // index
-        // status
-        // buyer
-        // time
+        self.pictureTitleLabel.text = model.picture?.title
+        if let image = model.picture?.image {
+            ImageManager.shared.image(with: image) { result in
+                switch result {
+                case .failure( _):
+                    self.pictureImageView.image = nil
+                case .success(let image):
+                    self.pictureImageView.image = image
+                }
+            }
+        }
         
-        // pictureCheckLabel
-        // TotalLabel
+        self.sellerUsernameLabel.text = model.sellerUser?.nickname.uppercased()
+        if let image = model.sellerUser?.avatar_image {
+            ImageManager.shared.image(with: image) { result in
+                switch result {
+                case .failure( _):
+                    self.sellerImageView.image = nil
+                case .success(let image):
+                    self.sellerImageView.image = image
+                }
+            }
+        }
+        
+        if let address = model.address {
+            self.addressInfoLabel.text = "г.\(address.city) ул.\(address.street) д.\(address.house_number) кв.\(address.apartment_number)"
+            self.indexInfoLabel.text = "\(address.post_index)"
+        }
+        self.dateInfoLabel.text = model.order.time.timeToShow()
+        
+        let statusString: String
+        switch model.order.status {
+            
+        case .booked:
+            statusString = "Ожидает оплаты"
+        case .purchased:
+            statusString = "Ожидает отправки"
+        case .sent:
+            statusString = "Отправлено"
+        case .delivered:
+            statusString = "Доставлено"
+        }
+        
+        self.statusInfoLabel.text = statusString
+        
+        self.buyerUsernameLabel.text = model.buyerUser?.nickname.uppercased()
+        if let image = model.buyerUser?.avatar_image {
+            ImageManager.shared.image(with: image) { result in
+                switch result {
+                case .failure( _):
+                    self.buyerImageView.image = nil
+                case .success(let image):
+                    self.buyerImageView.image = image
+                }
+            }
+        }
+        
+        self.pictureCheckLabel.text = model.picture?.price.toRubles()
+        self.totalLabel.text = model.picture?.price.toRubles()
         
         
     }
@@ -347,7 +400,7 @@ class OrderDetailsViewController: UIViewController {
             make.bottom.equalToSuperview()
             make.width.equalToSuperview()
         }
-    
+        
         containerView.addSubview(pictureImageView)
         pictureImageView.snp.makeConstraints { make in
             make.top.equalToSuperview().offset(25)
@@ -470,8 +523,8 @@ class OrderDetailsViewController: UIViewController {
         let deliveryCheckTitle = checkLabel(with: "Доставка")
         let taxCheckTitle = checkLabel(with: "Налог")
         let saleCheckTitle = checkLabel(with: "Скидка")
-
-
+        
+        
         containerView.addSubview(pictureCheckTitle)
         pictureCheckTitle.snp.makeConstraints { make in
             make.top.equalTo(paymentInfoTitleLabel.snp.bottom).offset(9)
@@ -553,25 +606,5 @@ class OrderDetailsViewController: UIViewController {
 
 
 
-class OrderDetailViewModel {
-    
-    var orderId: String
-    let order: Order? = nil
-    
-    var error: Error?
-    var refreshing = false
-    
-    required init(with orderId: String){
-        self.orderId = orderId
-    }
-
-    func fetchOrder(completion: @escaping () -> Void) {
-        refreshing = true
-
-        // fetch order info
-        
-        
-    }
-}
 
 

@@ -13,6 +13,8 @@ import FirebaseFirestoreSwift
 // FIXIT: address to Codable
 
 protocol AddressManagerDescription {
+    func getAddressWithId(with id: String, completion: @escaping (Result<Address, Error>) -> Void)
+    
     func loadUsersAddressInformation(
         for user_id: String,
         completion: @escaping (Result<[Address], Error>) -> Void)
@@ -44,6 +46,24 @@ final class AddressManager: AddressManagerDescription {
     static let shared: AddressManagerDescription = AddressManager()
     
     private init() {}
+    
+    
+    func getAddressWithId(with id: String, completion: @escaping (Result<Address, Error>) -> Void) {
+        database.collection("addresses").document(id).getDocument { (document, err) in
+            if let err = err {
+                completion(.failure(err))
+            } else {
+                guard let document = document,
+                      document.exists,
+                      let data = document.data(),
+                      let address = self.address(from: data)
+                else {
+                    return
+                }
+                completion(.success(address))
+            }
+        }
+    }
     
     
     func loadUsersAddressInformation(for user_id: String, completion: @escaping (Result<[Address], Error>) -> Void) {

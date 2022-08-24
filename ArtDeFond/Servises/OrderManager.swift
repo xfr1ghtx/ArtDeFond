@@ -11,6 +11,8 @@ import FirebaseFirestoreSwift
 
 protocol OrderManagerDescription {
     
+    func getOrderWithId(with id: String, completion: @escaping (Result<Order, Error>) -> Void)
+    
     func loadOrders(type: OrderType, completion: @escaping (Result<[Order], Error>) -> Void)
     
     func newOrder(
@@ -38,6 +40,24 @@ final class OrderManager: OrderManagerDescription {
     private let database = Firestore.firestore()
     static let shared: OrderManagerDescription = OrderManager()
     private init() {}
+    
+    
+    func getOrderWithId(with id: String, completion: @escaping (Result<Order, Error>) -> Void) {
+        database.collection("orders").document(id).getDocument { (document, err) in
+            if let err = err {
+                completion(.failure(err))
+            } else {
+                guard let document = document,
+                      document.exists,
+                      let data = document.data(),
+                      let order = self.order(from: data)
+                else {
+                    return
+                }
+                completion(.success(order))
+            }
+        }
+    }
     
     
     func loadOrders(type: OrderType, completion: @escaping (Result<[Order], Error>) -> Void) {

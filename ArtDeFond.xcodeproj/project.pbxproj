@@ -23,6 +23,8 @@
 		2C28A2B128B6337400233601 /* NotificationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C28A2B028B6337400233601 /* NotificationModel.swift */; };
 		2C28A2B328B633FC00233601 /* NotificationAndPictureModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C28A2B228B633FC00233601 /* NotificationAndPictureModel.swift */; };
 		2C28A2B528B6342200233601 /* NotificationCommonTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C28A2B428B6342200233601 /* NotificationCommonTableCell.swift */; };
+		2C28A2B728B64E4000233601 /* OrderDetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C28A2B628B64E4000233601 /* OrderDetailsViewModel.swift */; };
+		2C28A2B928B65FF600233601 /* Int.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C28A2B828B65FF600233601 /* Int.swift */; };
 		2C5491AE28B4C7EE0012032B /* UIAlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C5491AD28B4C7EE0012032B /* UIAlertController.swift */; };
 		2C5491B028B4DD460012032B /* OrderDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C5491AF28B4DD460012032B /* OrderDetailsViewController.swift */; };
 		2C8C13DC28B52A4900AC3921 /* OrderAndPictureModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C8C13DB28B52A4900AC3921 /* OrderAndPictureModel.swift */; };
@@ -103,6 +105,8 @@
 		2C28A2B028B6337400233601 /* NotificationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationModel.swift; sourceTree = "<group>"; };
 		2C28A2B228B633FC00233601 /* NotificationAndPictureModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationAndPictureModel.swift; sourceTree = "<group>"; };
 		2C28A2B428B6342200233601 /* NotificationCommonTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationCommonTableCell.swift; sourceTree = "<group>"; };
+		2C28A2B628B64E4000233601 /* OrderDetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderDetailsViewModel.swift; sourceTree = "<group>"; };
+		2C28A2B828B65FF600233601 /* Int.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Int.swift; sourceTree = "<group>"; };
 		2C5491AD28B4C7EE0012032B /* UIAlertController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIAlertController.swift; sourceTree = "<group>"; };
 		2C5491AF28B4DD460012032B /* OrderDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderDetailsViewController.swift; sourceTree = "<group>"; };
 		2C8C13DB28B52A4900AC3921 /* OrderAndPictureModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = OrderAndPictureModel.swift; path = "ArtDeFond/Scene/Order Info Screen/View/OrderAndPictureModel.swift"; sourceTree = SOURCE_ROOT; };
@@ -298,6 +302,7 @@
 		2C5491A028B4BDC70012032B /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				2C28A2B628B64E4000233601 /* OrderDetailsViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -463,6 +468,7 @@
 				2CEC274328B4AAC30044DBD4 /* String.swift */,
 				2C5491AD28B4C7EE0012032B /* UIAlertController.swift */,
 				2C28A2A928B61D1400233601 /* UIImageView.swift */,
+				2C28A2B828B65FF600233601 /* Int.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -777,6 +783,7 @@
 				2C24973528B16B1500551795 /* AuthManager.swift in Sources */,
 				8BE7977528B016FE00DC72D9 /* CustomButtonViewModel.swift in Sources */,
 				8B5DE2FD28AAF76600852B34 /* Constants.swift in Sources */,
+				2C28A2B928B65FF600233601 /* Int.swift in Sources */,
 				2C8C13E228B5669E00AC3921 /* FeedModelViewModel.swift in Sources */,
 				8BE7977328B0160D00DC72D9 /* CustomButtomType.swift in Sources */,
 				2C97AFF228B2A951006CDD55 /* AddressesViewModel.swift in Sources */,
@@ -792,6 +799,7 @@
 				2C97B00428B2B85D006CDD55 /* SettingsTableViewCell.swift in Sources */,
 				2CEC274028B3EC4C0044DBD4 /* NotificationManager.swift in Sources */,
 				2C0FD8B128B0667C0004337C /* PictureItemModel.swift in Sources */,
+				2C28A2B728B64E4000233601 /* OrderDetailsViewModel.swift in Sources */,
 				8BA9ECD928AD24CF00DFF138 /* NotificationsViewController.swift in Sources */,
 				2C8C13DE28B52A7400AC3921 /* OrdersTableViewCell.swift in Sources */,
 				8BF53C8B28A42579001B5AC3 /* AppDelegate.swift in Sources */,

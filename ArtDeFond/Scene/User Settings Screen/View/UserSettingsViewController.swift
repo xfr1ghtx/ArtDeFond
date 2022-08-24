@@ -32,12 +32,12 @@ class UserSettingsViewController: UIViewController {
         SettingsModel(
             title: "Удалить профиль",
             image: UIImage(systemName: "trash.fill"),
-            alertController: AlertType.signOut ),
+            alertController: AlertType.deleteAccount),
         
         SettingsModel(
             title: "Выйти из профиля",
             image: UIImage(systemName: "ipad.and.arrow.forward"),
-            alertController: AlertType.deleteAccount ),
+            alertController: AlertType.signOut),
     ]
     
     lazy var settingsTableView: UITableView = {
