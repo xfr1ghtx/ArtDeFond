@@ -8,8 +8,10 @@
 import Foundation
 import UIKit
 
+
 struct SettingsModel {
     var title: String
     var image: UIImage?
     var viewController: UIViewController?
+    var alertController: AlertType?
 }

@@ -7,18 +7,16 @@
 
 import UIKit
 import SnapKit
-
-// add pull to refresh
 // https://stackoverflow.com/questions/43212583/how-to-add-a-view-on-top-of-uitableview-that-scrolls-together-but-stick-to-top
 
 class FeedViewController: UIViewController, UICollectionViewDelegateFlowLayout {
     
-    private var viewModel: FeedViewModel
-
+    private var viewModel: FeedViewModel!
+    
     lazy var feedTableView: UITableView = {
         let tableView = UITableView()
         
-        tableView.register(PictureFeedCell.self, forCellReuseIdentifier: PictureFeedCell.reusableId)
+        tableView.register(PictureFeedTableCell.self, forCellReuseIdentifier: PictureFeedTableCell.reusableId)
         tableView.separatorStyle = .none
         tableView.showsVerticalScrollIndicator = false
         
@@ -54,21 +52,42 @@ class FeedViewController: UIViewController, UICollectionViewDelegateFlowLayout {
         fatalError("init(coder:) has not been implemented")
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        feedTableView.reloadData()
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        view.backgroundColor = .white
-
-        setup()
-        
-        viewModel.fetchPictures {
-            self.feedTableView.reloadData()
+        AuthManager.shared.signIn(withEmail: "three@mail.com", withPassword: "password") { result in
+            switch result {
+            case .failure(let error):
+                print(error)
+            case .success(let something):
+                print(something)
+            }
         }
         
-        viewModel.fetchAuctions {
+        
+        setup()
+        callToViewModelForUIUpdate()
+    }
+    
+    func callToViewModelForUIUpdate(){
+        
+        self.viewModel =  FeedViewModel()
+        self.viewModel.bindFeedViewModelToController = {
+            self.updateDataSource()
+        }
+    }
+    
+    func updateDataSource(){
+        DispatchQueue.main.async {
+            self.feedTableView.reloadData()
             self.collectionView.reloadData()
         }
+        
     }
     
     override func viewDidLayoutSubviews() {
@@ -94,6 +113,8 @@ class FeedViewController: UIViewController, UICollectionViewDelegateFlowLayout {
     
     private func setup(){
         title = "Лента"
+        navigationController?.navigationBar.titleTextAttributes = Constants.Unspecified.titleAttributes
+        view.backgroundColor = .white
         
         collectionView.delegate = self
         collectionView.dataSource = self
@@ -101,6 +122,7 @@ class FeedViewController: UIViewController, UICollectionViewDelegateFlowLayout {
         feedTableView.delegate = self
         feedTableView.dataSource = self
     }
+    
     
 }
 
@@ -113,7 +135,6 @@ extension FeedViewController: UICollectionViewDelegate {
             let cell = cell,
             let auctionId = cell.auctionModel?.id
         else { return }
-        print(cell.auctionModel?.id) // change
         present(PictureDetailViewController(viewModel: PictureDetailViewModel(with: auctionId)), animated: true)
         
         
@@ -137,32 +158,45 @@ extension FeedViewController: UICollectionViewDataSource {
 //MARK: - UITableViewDelegate
 extension FeedViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let cell = tableView.cellForRow(at: indexPath) as? PictureFeedCell
+        let cell = tableView.cellForRow(at: indexPath) as? PictureFeedTableCell
         guard
             let cell = cell,
-            let pictureId = cell.pictureModel?.id
+            let pictureId = cell.pictureModel?.picture.id
         else {
             return
         }
         
-        print(cell.pictureModel?.id) // change
-        present(PictureDetailViewController(viewModel: PictureDetailViewModel(with: pictureId)), animated: true)
+        let vc = PictureDetailViewController(viewModel: PictureDetailViewModel(with: pictureId))
+        self.present(vc, animated: true)
+        
     }
 }
 
 
 //MARK: - UITableViewDataSource
 extension FeedViewController: UITableViewDataSource {
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return viewModel.pictures.count
     }
     
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        cell.alpha = 0
+
+        UIView.animate(
+            withDuration: 0.5,
+            delay: 0.05 * Double(indexPath.row),
+            animations: {
+                cell.alpha = 1
+        })
+    }
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: PictureFeedCell.reusableId) as? PictureFeedCell
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: PictureFeedTableCell.reusableId) as? PictureFeedTableCell
         else {
             fatalError("unexpected cell")
         }
-        let cellModel: FeedPictureModel?
+        let cellModel: PictureWithAuthorModel?
         
         cellModel = viewModel.pictures[indexPath.row]
         

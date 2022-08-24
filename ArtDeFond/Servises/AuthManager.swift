@@ -66,9 +66,6 @@ final class AuthManager: AuthManagerDescription {
                 guard let user_id = Auth.auth().currentUser?.uid else {
                     return
                 }
-            
-                print(user_id)
-                
                 self?.database.collection("users").document(user_id).getDocument { (document, err) in
                     if let err = err {
                         completion(.failure(err))
@@ -111,6 +108,11 @@ final class AuthManager: AuthManagerDescription {
             }
         }
     }
+    // TODO: чтобы быстрее прогружалось лучше загружать массив 
+//    func getUserInformation(for user_ids: [String], completion: @escaping (Result<User, Error>) -> Void) {
+//        database.collection("users").whereField(<#T##field: String##String#>, in: <#T##[Any]#>)
+//    }
+
     
     
     func getUserInformation(for user_id: String, completion: @escaping (Result<User, Error>) -> Void) {
@@ -185,6 +187,3 @@ struct User: Codable {
     var avatar_image: String
     var account_balance: Int
 }
-
-
-

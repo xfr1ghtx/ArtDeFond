@@ -29,7 +29,6 @@ class AddressesViewModel {
                 print(error)
                 completion()
             case .success(let addressesInfo):
-                print(addressesInfo)
                 var addresses = [AddressesModel]()
                 addressesInfo.forEach { address in
                     let newAddress = AddressesModel(id: address.id, street: address.street, city: address.city, district: address.district, houseNumber: address.house_number, postalCode: address.post_index)

@@ -13,7 +13,7 @@ class MyPicturesCell: UITableViewCell{
     
     static let reusableId = "MyPicturesCell"
     
-    var pictureModel: ProfilePictureModel?
+    var pictureModel: Picture?
     
     lazy var image: UIImageView = {
         let imageView = UIImageView()
@@ -21,8 +21,6 @@ class MyPicturesCell: UITableViewCell{
         imageView.backgroundColor = Constants.Colors.dirtyWhite
         imageView.layer.cornerRadius = 16
         imageView.clipsToBounds = true
-        
-        imageView.image = UIImage(named: "pic")
         
         imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
@@ -92,15 +90,24 @@ class MyPicturesCell: UITableViewCell{
     }
     
     
-    func configure(model: ProfilePictureModel
+    func configure(model: Picture
     ) {
         self.pictureModel = model
-        let detailsString = "\(model.height)см x \(model.widht)см • \(model.year)"
+        let detailsString = "\(model.height)см x \(model.width)см • \(model.year)"
         
         self.titleLabel.text = model.title
         self.descriptionLabel.text = model.description
         self.priceLabel.text = "\(model.price)$"
         self.detailsLabel.text = detailsString
+        
+        ImageManager.shared.image(with: model.image) { [weak self] result in
+            switch result {
+            case .success(let image):
+                self?.image.setImage(image)
+            case .failure:
+                self?.image.image = nil
+            }
+        }
         
         // image
         
@@ -156,9 +163,9 @@ class MyPicturesCell: UITableViewCell{
     
     
     override func prepareForReuse() {
-        //        super.prepareForReuse()
-        //        self.titleLabel.text = nil
-        //        self.coverImageView.image = nil
+                super.prepareForReuse()
+                self.titleLabel.text = nil
+                self.image.image = nil
     }
     
     

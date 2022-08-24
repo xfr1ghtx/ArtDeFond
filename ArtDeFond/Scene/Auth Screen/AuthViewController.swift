@@ -136,7 +136,7 @@ class AuthViewController: UIViewController {
         
         signUpButton.setTitle("Регистрация", for: .normal)
         signUpButton.setTitleColor(Constants.Colors.darkRed, for: .normal)
-        signUpButton.titleLabel?.font = Constants.Fonts.semiBold17
+        signUpButton.titleLabel?.font = Constants.Fonts.semibold17
         
         signUpButton.addTarget(self, action: #selector(nextScreen), for: .touchUpInside)
         
@@ -152,7 +152,7 @@ class AuthViewController: UIViewController {
     @objc
     private func nextScreen(){
         let navCont = UINavigationController.createForAuth()
-        navCont.pushViewController(SignInViewController(), animated: false)
+        navCont.pushViewController(SignUpViewController(), animated: false)
         present(navCont, animated: true)
     }
     

@@ -64,7 +64,7 @@ final class ImageManager: ImageManagerDescription {
             }
 
             guard let data = data, let image = UIImage(data: data) else {
-                completion(.failure(NetworkError.shitHappens))
+                completion(.failure(NetworkError.imageError))
                 return
             }
 
@@ -76,4 +76,8 @@ final class ImageManager: ImageManagerDescription {
 
 enum NetworkError: Error {
     case shitHappens
+    case imageError
+    case two
+    case three
+    case four
 }

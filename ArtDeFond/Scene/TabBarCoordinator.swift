@@ -22,7 +22,7 @@ final class TabBarCoordinator: Coordinator{
         
         let isAuthed = AuthManager.shared.isAuthed()
         
-        rootTabBarController = UITabBarController.createDefault(auth: isAuthed)
+        rootTabBarController = UITabBarController.createDefault(auth: true)
     }
     
     func start() {

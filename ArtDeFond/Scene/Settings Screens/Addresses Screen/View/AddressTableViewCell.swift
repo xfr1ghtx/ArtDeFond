@@ -101,10 +101,10 @@ class AddressTableViewCell: UITableViewCell{
     
     
     private func layout(){
-        var imageView : UIImageView
-        imageView  = UIImageView(frame: CGRect(x: 0, y: 0, width: 25, height: 25))
-        imageView.image = UIImage(named:"Disclosure Indicator")
-        self.accessoryView = imageView
+//        var imageView : UIImageView
+//        imageView  = UIImageView(frame: CGRect(x: 0, y: 0, width: 25, height: 25))
+//        imageView.image = UIImage(named:"Disclosure Indicator")
+//        self.accessoryView = imageView
         
         contentView.frame = contentView.frame.inset(by: UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10))
         
@@ -118,7 +118,6 @@ class AddressTableViewCell: UITableViewCell{
         }
 
 
-//
         contentView.addSubview(titleAddressLabel)
         titleAddressLabel.snp.makeConstraints { make in
             make.top.equalToSuperview()
@@ -144,9 +143,8 @@ class AddressTableViewCell: UITableViewCell{
     
     
     override func prepareForReuse() {
-//        super.prepareForReuse()
-//        self.titleLabel.text = nil
-//        self.coverImageView.image = nil
+        super.prepareForReuse()
+        self.image.image = nil
     }
     
     

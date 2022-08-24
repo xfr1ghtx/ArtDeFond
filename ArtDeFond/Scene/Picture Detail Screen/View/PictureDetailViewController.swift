@@ -9,7 +9,7 @@ import UIKit
 
 class PictureDetailViewController: UIViewController {
     
-    private var viewModel: PictureDetailViewModel
+    private var viewModel: PictureDetailViewModel!
 
     let headerHeight: CGFloat = 250 // 210
 
@@ -19,21 +19,23 @@ class PictureDetailViewController: UIViewController {
     
     lazy var pictureImageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.translatesAutoresizingMaskIntoConstraints = false
+        
         imageView.contentMode = .scaleAspectFill
-        if let image = UIImage(named: "pic") {
-            imageView.image = image
-        }
+        imageView.backgroundColor = .white
         imageView.clipsToBounds = true
+        
+        imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
     }()
     
     // VIEWS
     lazy var scrollView: UIScrollView = {
         let scrollView = UIScrollView()
+        
         scrollView.delegate = self
         scrollView.alwaysBounceVertical = true
         scrollView.backgroundColor = UIColor(named: "greyMain")
+        
         scrollView.translatesAutoresizingMaskIntoConstraints = false
         return scrollView
     }()
@@ -51,8 +53,9 @@ class PictureDetailViewController: UIViewController {
         let label = UILabel()
         
         label.text = "ЖИВОПИСЬ АБСТРАКЦИЯ"
+//        label.numberOfLines = 1
         label.textColor = Constants.Colors.gray
-        label.font = Constants.Fonts.semibold11
+        label.font = Constants.Fonts.regular11
         
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
@@ -61,8 +64,8 @@ class PictureDetailViewController: UIViewController {
     lazy var titleLabel: UILabel = {
         let label = UILabel()
         
-        label.text = "Красивое название картины"
-        label.numberOfLines = 0
+        label.text = " "
+        label.numberOfLines = 2
         label.textColor = Constants.Colors.darkRed
         label.font = Constants.Fonts.semibold20
         
@@ -74,6 +77,7 @@ class PictureDetailViewController: UIViewController {
         let label = UILabel()
         
         label.text = "Прекрасное описание нашей картины с красивым назнанием. Сюжет данного шедевра останется неразгаданной загадкой. Это все, что об этом можно сказать."
+        label.numberOfLines = 4
         label.textColor = Constants.Colors.black
         label.font = Constants.Fonts.regular15
         label.numberOfLines = 0
@@ -86,6 +90,7 @@ class PictureDetailViewController: UIViewController {
         let label = UILabel()
         
         label.text = "Материалы"
+        label.numberOfLines = 1
         label.textColor = Constants.Colors.black
         label.font = Constants.Fonts.regular15
         
@@ -96,7 +101,8 @@ class PictureDetailViewController: UIViewController {
     lazy var materialLabel: UILabel = {
         let label = UILabel()
         
-        label.text = "Холст, масло"
+        label.text = "Холст и масло"
+        label.numberOfLines = 1
         label.textColor = Constants.Colors.pink
         label.font = Constants.Fonts.regular15
         
@@ -109,6 +115,7 @@ class PictureDetailViewController: UIViewController {
         let label = UILabel()
         
         label.text = "Размеры"
+        label.numberOfLines = 2
         label.textColor = Constants.Colors.black
         label.font = Constants.Fonts.regular15
         
@@ -119,7 +126,8 @@ class PictureDetailViewController: UIViewController {
     lazy var sizeLabel: UILabel = {
         let label = UILabel()
         
-        label.text = "1cm x 2cm"
+        label.text = "120см х 70см"
+        label.numberOfLines = 2
         label.textColor = Constants.Colors.pink
         label.font = Constants.Fonts.regular15
         
@@ -131,6 +139,7 @@ class PictureDetailViewController: UIViewController {
         let label = UILabel()
         
         label.text = "Год"
+        label.numberOfLines = 2
         label.textColor = Constants.Colors.black
         label.font = Constants.Fonts.regular15
         
@@ -142,6 +151,7 @@ class PictureDetailViewController: UIViewController {
         let label = UILabel()
         
         label.text = "2001"
+        label.numberOfLines = 2
         label.textColor = Constants.Colors.pink
         label.font = Constants.Fonts.regular15
         
@@ -156,7 +166,6 @@ class PictureDetailViewController: UIViewController {
         imageView.backgroundColor = Constants.Colors.pink
         imageView.layer.cornerRadius = 6
         imageView.clipsToBounds = true
-        imageView.image = UIImage(named: "pic")
         imageView.sizeToFit()
         
         imageView.translatesAutoresizingMaskIntoConstraints = false
@@ -167,7 +176,7 @@ class PictureDetailViewController: UIViewController {
     lazy var authorLabel: UILabel = {
         let label = UILabel()
         
-        label.text = "SOMEONE"
+        label.text = " "
         label.numberOfLines = 1
         label.font = Constants.Fonts.semibold11
         label.textColor = Constants.Colors.gray
@@ -179,7 +188,7 @@ class PictureDetailViewController: UIViewController {
     lazy var startBetLabel: UILabel = {
         let label = UILabel()
         
-        label.text = "$ 000,00"
+        label.text = "$ 100,00"
         label.numberOfLines = 1
         label.font = Constants.Fonts.medium15
         label.textColor = Constants.Colors.gray
@@ -202,7 +211,7 @@ class PictureDetailViewController: UIViewController {
     lazy var currentAmountTitleLabel: UILabel = {
         let label = UILabel()
         
-        label.text = "Текущая ставка"
+        label.text = "Цена"
         label.numberOfLines = 1
         label.font = Constants.Fonts.medium17
         label.textColor = Constants.Colors.darkRed
@@ -214,7 +223,7 @@ class PictureDetailViewController: UIViewController {
     lazy var currentAmountLabel: UILabel = {
         let label = UILabel()
         
-        label.text = "$ 000,00"
+        label.text = "₽ 100,00"
         label.numberOfLines = 1
         label.font = Constants.Fonts.medium17
         label.textColor = Constants.Colors.darkRed
@@ -268,12 +277,8 @@ class PictureDetailViewController: UIViewController {
     lazy var backBtn: UIButton = {
         let button = UIButton()
         button.tintColor = Constants.Colors.darkRed
-//        let config = UIImage.SymbolConfiguration(
-//            pointSize: 24, weight: .bold, scale: .medium)
-        
-//        let image = UIImage(systemName: "play.fill", withConfiguration: config)
-        
-        let image = UIImage(named: "Back arrow")
+
+        let image = UIImage(named: "cross")
         button.setImage(image, for: .normal)
         button.backgroundColor = .white.withAlphaComponent(0.5)
         button.layer.cornerRadius = 16
@@ -284,31 +289,8 @@ class PictureDetailViewController: UIViewController {
     }()
     
     @objc func backBtnPressed(){
-        print("backBtnPressed")
+        self.dismiss(animated: true)
     }
-
-    lazy var editImageBtn: UIButton = {
-        let button = UIButton()
-        button.tintColor = Constants.Colors.darkRed
-        let config = UIImage.SymbolConfiguration(
-            pointSize: 24, weight: .bold, scale: .medium)
-        let image = UIImage(systemName: "play.fill", withConfiguration: config)
-        button.setImage(image, for: .normal)
-        button.backgroundColor = .white.withAlphaComponent(0.5)
-        button.layer.cornerRadius = 16
-        
-        button.addTarget(self, action: #selector(editBtnPressed), for: .touchUpInside)
-        button.translatesAutoresizingMaskIntoConstraints = false
-        return button
-    }()
-    
-    @objc func editBtnPressed(){
-        print("editBtnPressed")
-    }
-    
-    
-    
-
 
     private func makeLine() -> UIView {
         let view = UIView()
@@ -339,49 +321,72 @@ class PictureDetailViewController: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
- 
-    
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         layout()
-        viewModel.fetchPicture {
+        callToViewModelForUIUpdate()
+        
+    }
+    
+    func callToViewModelForUIUpdate(){
+        self.viewModel.bindFeedViewModelToController = {
             self.configurePictureInfo()
         }
     }
     
-    private func configurePictureInfo(){
-        // image
-        // ar???
-        // scale
+    
+    func configurePictureInfo(){
         
-        guard let picture = viewModel.picture else {
+        guard let model = viewModel.picture else {
             return
+        }
+        ImageManager.shared.image(with: model.picture.image) { [weak self] result in
+            switch result {
+            case .success(let image):
+                self?.pictureImageView.setImage(image)
+            case .failure:
+                self?.pictureImageView.image = nil
+            }
         }
         
         var categoriesString = ""
-        picture.tags.forEach({ tag in
+        model.picture.tags.forEach({ tag in
             categoriesString = categoriesString + tag + " "
         })
-        categoriesLabel.text = categoriesString.uppercased()
+//        categoriesLabel.text = categoriesString.uppercased()
+        titleLabel.fadeTransition(0.4)
+        titleLabel.text = model.picture.title
+        descriptionLabel.fadeTransition(0.4)
+        descriptionLabel.text = model.picture.description
+        materialLabel.fadeTransition(0.4)
+        materialLabel.text = model.picture.materials
         
-        titleLabel.text = picture.title
-        descriptionLabel.text = picture.description
-        materialLabel.text = picture.materials
+        let sizeString = "\(model.picture.width)см x \(model.picture.height)см"
         
-        let sizeString = "\(picture.width)см x \(picture.height)см"
+        sizeLabel.fadeTransition(0.4)
         sizeLabel.text = sizeString
         
-        yearLabel.text = "\(picture.year)"
+        yearLabel.fadeTransition(0.4)
+        yearLabel.text = "\(model.picture.year)"
         
-        // author configuration
+        authorLabel.fadeTransition(0.4)
+        authorLabel.text = model.user?.nickname.uppercased()
+        
+        if let user = model.user {
+            ImageManager.shared.image(with: user.avatar_image) { [weak self] result in
+                switch result {
+                case .success(let image):
+//                    self?.authorImageView.image = image
+                    self?.authorImageView.setImage(image)
+                case .failure:
+                    self?.authorImageView.image = nil
+                }
+            }
+        }
         
         // bet configuration
-        
-        
-        
-        
     }
     
     
@@ -430,14 +435,6 @@ class PictureDetailViewController: UIViewController {
             make.bottom.equalTo(mainContainerView.snp.bottom)
         }
         
-//        scrollView.addSubview(editImageBtn)
-//        editImageBtn.snp.makeConstraints { make in
-//            make.top.equalTo(pictureImageView.snp.top).offset(18)
-//            make.trailing.equalToSuperview().inset(16)
-//            make.width.equalTo(42)
-//            make.height.equalTo(42)
-//        }
-        
         scrollView.addSubview(arBtn)
         arBtn.snp.makeConstraints { make in
             make.top.equalTo(pictureImageView.snp.top).offset(16)
@@ -446,15 +443,7 @@ class PictureDetailViewController: UIViewController {
             make.height.equalTo(42)
         }
         
-        
-        scrollView.addSubview(scaleImageBtn)
-        scaleImageBtn.snp.makeConstraints { make in
-            make.top.equalTo(pictureImageView.snp.top).offset(16)
-            make.trailing.equalTo(arBtn.snp.leading).inset(-11)
-            make.width.equalTo(42)
-            make.height.equalTo(42)
-        }
-        
+
         scrollView.addSubview(backBtn)
         backBtn.snp.makeConstraints { make in
             make.top.equalTo(pictureImageView.snp.top).offset(16)
@@ -569,14 +558,14 @@ class PictureDetailViewController: UIViewController {
             make.trailing.equalToSuperview().inset(27)
         }
         
-        let startBetStackView = makeStackView(l1: startBetTitleLabel, l2: startBetLabel)
-        whiteView.addSubview(startBetStackView)
-        startBetStackView.snp.makeConstraints { make in
-            make.top.equalTo(currentBetStackView.snp.bottom).offset(13)
-            make.leading.equalToSuperview().offset(27)
-            make.trailing.equalToSuperview().inset(27)
-            make.bottom.equalToSuperview() // !!!!
-        }
+//        let startBetStackView = makeStackView(l1: startBetTitleLabel, l2: startBetLabel)
+//        whiteView.addSubview(startBetStackView)
+//        startBetStackView.snp.makeConstraints { make in
+//            make.top.equalTo(currentBetStackView.snp.bottom).offset(13)
+//            make.leading.equalToSuperview().offset(27)
+//            make.trailing.equalToSuperview().inset(27)
+//            make.bottom.equalToSuperview() // !!!!
+//        }
     }
 }
 
@@ -589,7 +578,7 @@ extension PictureDetailViewController: UIScrollViewDelegate {
                     headerHeight - scrollView.contentOffset.y
                 
                 if (scrollView.contentOffset.y < -210){
-                    print("playTrailerBtnPressed()")
+                   // 
                 }
             } else {
                 // Scrolling up: Parallax

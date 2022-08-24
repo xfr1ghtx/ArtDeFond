@@ -9,19 +9,11 @@ import Foundation
 import FirebaseFirestore
 import FirebaseFirestoreSwift
 
+// сделано не правильно, однако времени исправлять нет (синглтон)
+// хорошо было бы сделать отдельную структуру для этого слоя
 protocol PicturesManagerDescription {
     
     func loadPictureInformation(type: ProductCollectionType, completion: @escaping (Result<[Picture], Error>) -> Void)
-    // types
-    //      pictures by seller_id
-    //      auctions by seller_id
-    //      auctions
-    //      common pictures
-    //      search(string)
-    
-    // sorted by date
-    // add date field
-    
     
     func newPicture(
         id: String,
@@ -49,11 +41,7 @@ protocol PicturesManagerDescription {
 
 
 final class PicturesManager: PicturesManagerDescription {
-    //    func newAuction(id: String, title: String, image: String, description: String, year: Int, materials: String, width: Int, height: Int, price: Int, isAuction: Bool,
-    //                    auction: Auction, tags: [String], time: Date, completion: @escaping (Result<Picture, Error>) -> Void) {
-    //        //
-    //    }
-    
+
     
     private let database = Firestore.firestore()
     
@@ -104,7 +92,8 @@ final class PicturesManager: PicturesManagerDescription {
     }
     
     
-    func newPicture(
+    func newPicture( // отправлять тупо Picture
+        // picture: Picture
         id: String = UUID().uuidString,
         title: String,
         image: String,
@@ -213,8 +202,8 @@ private extension PicturesManager {
     
 }
 
-
-struct Picture: Codable {
+//    сделать конвертер
+struct PictureJSONData: Codable { // для другого слоя
     var id: String
     var title: String
     var image: String
@@ -223,13 +212,12 @@ struct Picture: Codable {
     var materials: String
     var width: Int
     var height: Int
-    var author_id: String // author
+    var author_id: String
     var price: Int
     var isAuction: Bool
     var auction: Auction?
     var tags: [String]
     var time: Date
-    
 }
 
 

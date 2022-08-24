@@ -13,6 +13,8 @@ import FirebaseFirestoreSwift
 // FIXIT: address to Codable
 
 protocol AddressManagerDescription {
+    func getAddressWithId(with id: String, completion: @escaping (Result<Address, Error>) -> Void)
+    
     func loadUsersAddressInformation(
         for user_id: String,
         completion: @escaping (Result<[Address], Error>) -> Void)
@@ -44,6 +46,24 @@ final class AddressManager: AddressManagerDescription {
     static let shared: AddressManagerDescription = AddressManager()
     
     private init() {}
+    
+    
+    func getAddressWithId(with id: String, completion: @escaping (Result<Address, Error>) -> Void) {
+        database.collection("addresses").document(id).getDocument { (document, err) in
+            if let err = err {
+                completion(.failure(err))
+            } else {
+                guard let document = document,
+                      document.exists,
+                      let data = document.data(),
+                      let address = self.address(from: data)
+                else {
+                    return
+                }
+                completion(.success(address))
+            }
+        }
+    }
     
     
     func loadUsersAddressInformation(for user_id: String, completion: @escaping (Result<[Address], Error>) -> Void) {
@@ -82,20 +102,6 @@ final class AddressManager: AddressManagerDescription {
             Keys.district.rawValue: district,
             Keys.city.rawValue: city
         ]
-        
-//        let mockAddress = Address(id: "sssssss", user_id: "Some string", street: "Some string", house_number: 123, apartment_number: 123, post_index: 123, district: "Some string", city: "Some String")
-//
-//
-//        do {
-//            let data = try JSONEncoder().encode(mockAddress)
-//            print(data)
-//        } catch {
-//            print("error")
-//        }
-//
-//        guard let data = data else {
-//            return
-//        }
 
         database.collection("addresses").document(id).setData(data) { [weak self] error in
             guard let self = self else {
@@ -105,7 +111,6 @@ final class AddressManager: AddressManagerDescription {
             if let error = error {
                 completion(.failure(error))
             } else {
-                print(data)
                 if let picture = self.address(from: data) {
                     completion(.success(picture))
                 } else {

@@ -21,24 +21,24 @@ class UserSettingsViewController: UIViewController {
         SettingsModel(
             title: "Мои покупки",
             image: UIImage(systemName: "shippingbox.fill"),
-            viewController: UINavigationController(rootViewController: OrdersViewController(type: .purchases, viewModel: OrdersViewModel()))),
+            viewController: UINavigationController(rootViewController: OrdersViewController(type: .purchases))),
         SettingsModel(
             title: "Мои продажи",
             image: UIImage(systemName: "photo.artframe"),
-            viewController: UINavigationController(rootViewController: OrdersViewController(type: .sales, viewModel: OrdersViewModel()))),
+            viewController: UINavigationController(rootViewController: OrdersViewController(type: .sales))),
         SettingsModel(
             title: "Пополнить баланс",
             image: UIImage(systemName: "creditcard")),
         SettingsModel(
             title: "Удалить профиль",
-            image: UIImage(systemName: "trash.fill")),
+            image: UIImage(systemName: "trash.fill"),
+            alertController: AlertType.deleteAccount),
+        
         SettingsModel(
             title: "Выйти из профиля",
-            image: UIImage(systemName: "ipad.and.arrow.forward")),
+            image: UIImage(systemName: "ipad.and.arrow.forward"),
+            alertController: AlertType.signOut),
     ]
-    
-    
-    
     
     lazy var settingsTableView: UITableView = {
         let tableView = UITableView()
@@ -84,13 +84,36 @@ extension UserSettingsViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let cell = tableView.cellForRow(at: indexPath) as? SettingsTableCell
         
-        let newVC = cell?.settingsModel?.viewController
-        guard let newViewController = newVC else {
-            return
+
+        if let newViewController = cell?.settingsModel?.viewController  {
+            newViewController.modalPresentationStyle = .fullScreen
+            present(newViewController, animated: true)
+        } else {
+            if let alert = cell?.settingsModel?.alertController {
+                switch alert {
+                case .signOut:
+                    let alert = UIAlertController.createAlert(
+                        withTitle: "Хотите выйти из профиля?",
+                        message: "Вы всегда можете к нам вернуться!",
+                        buttonString: "Выйти") { _ in
+                            AuthManager.shared.signOut { _ in
+                                 // выкинуть на ленту и обновить вкладку профиля
+                                }
+                            }
+                    self.present(alert, animated: true, completion: nil)
+                case .deleteAccount:
+                    let alert = UIAlertController.createAlert(
+                        withTitle: "Хотите удалить профиль?",
+                        message: "Это дейстивие нельзя отменить. Вы покинете нас безвозвратно!",
+                        buttonString: "Удалить") { _ in
+                            AuthManager.shared.deleteAccount { _ in
+                                // выкинуть на ленту и обновить вкладку профиля
+                            }
+                        }
+                    self.present(alert, animated: true, completion: nil)
+                }
+            }
         }
-        
-        newViewController.modalPresentationStyle = .fullScreen
-        present(newViewController, animated: true)
     }
 }
 
@@ -115,3 +138,8 @@ extension UserSettingsViewController: UITableViewDataSource {
     }
 }
 
+
+enum AlertType {
+    case signOut
+    case deleteAccount
+}

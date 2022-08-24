@@ -11,38 +11,63 @@ import Foundation
 class PictureDetailViewModel {
     
     var pictureId: String
-    var picture: Picture? = nil
+
+    private(set) var picture: PictureWithAuthorModel? {
+        didSet {
+            self.bindFeedViewModelToController()
+        }
+    }
     
-    var error: Error?
+    var bindFeedViewModelToController : (() -> ()) = {}
+ 
     var refreshing = false
     
     required init(with pictureId: String){
         self.pictureId = pictureId
+        fetchData()
     }
-
-    func fetchPicture(completion: @escaping () -> Void) {
-        refreshing = true
-        
-//        guard
-//            let pictureId = pictureId
-//        else {
-//            self.error = NetworkError.shitHappens
-//            return
-//        }
+    
+    func loadPicture(completion: @escaping (PictureWithAuthorModel?) -> Void) {
         
         
         PicturesManager.shared.getPictureWithId(with: pictureId) { [weak self] result in
+            guard let self = self else {
+                completion(nil)
+                return
+            }
+            
             switch result {
             case .failure(let error):
-                print(error)
-                self?.error = error
-                self?.refreshing = false
-                completion()
-            case .success(let something):
-                self?.refreshing = false
-                self?.picture = something
-                completion()
+                completion(nil)
+            case .success(let picture):
+                
+                self.loadUser(for: picture) { user in
+                    let resultModel = PictureWithAuthorModel(user: user, picture: picture)
+                    completion(resultModel)
+                }
             }
         }
     }
+    
+    func loadUser(for picture: Picture, completion: @escaping (User?) -> Void) {
+        AuthManager.shared.getUserInformation(for: picture.author_id) { result in
+            switch result {
+            case .success(let user):
+                completion(user)
+            case .failure( _):
+                completion(nil)
+            }
+        }
+    }
+    
+    func fetchData() {
+        refreshing = true
+        
+        loadPicture { pictureModel in
+            self.refreshing = false
+            self.picture = pictureModel
+            
+        }
+    }
 }
+

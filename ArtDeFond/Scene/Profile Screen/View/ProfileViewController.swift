@@ -17,7 +17,7 @@ import SnapKit
 
 class ProfileViewController: UIViewController, UICollectionViewDelegateFlowLayout {
     
-    private var viewModel: ProfileViewModel
+    private var viewModel: ProfileViewModel!
     
     lazy var tableHeaderView: UIView = {
         let view = UIView()
@@ -70,6 +70,7 @@ class ProfileViewController: UIViewController, UICollectionViewDelegateFlowLayou
         view.backgroundColor = .white
         view.layer.cornerRadius = 32
         view.layer.masksToBounds = true
+        view.image = UIImage(named: "whiteProfile")
         
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
@@ -90,7 +91,7 @@ class ProfileViewController: UIViewController, UICollectionViewDelegateFlowLayou
     lazy var balanceAmountLabel: UILabel = {
         let label = UILabel()
         
-        label.text = "$100,00"
+        label.text = "₽1.01"
         label.numberOfLines = 1
         label.textColor = .white
         label.font = Constants.Fonts.bold30
@@ -103,7 +104,7 @@ class ProfileViewController: UIViewController, UICollectionViewDelegateFlowLayou
     lazy var nicknameLabel: UILabel = {
         let label = UILabel()
         
-//        label.text = ""
+        label.text = "SOMEONE"
         label.numberOfLines = 1
         label.textColor = Constants.Colors.darkRed
         label.font = Constants.Fonts.semibold20
@@ -115,7 +116,7 @@ class ProfileViewController: UIViewController, UICollectionViewDelegateFlowLayou
     lazy var descriptionLabel: UILabel = {
         let label = UILabel()
         
-//        label.text = ""
+        label.text = "Прекрасное описание чудесного человека с красивым именем. История данной личности останется неразгаданной загадкой. Это все, что об этом можно сказать."
         label.numberOfLines = 0
         label.textColor = Constants.Colors.darkRed
         label.font = Constants.Fonts.regular15
@@ -127,7 +128,7 @@ class ProfileViewController: UIViewController, UICollectionViewDelegateFlowLayou
     lazy var auctionsTitleLabel: UILabel = {
         let label = UILabel()
         
-//        label.text = "Активные аукционы"
+        label.text = "Активные аукционы"
         label.numberOfLines = 1
         label.textColor = Constants.Colors.darkRed
         label.font = Constants.Fonts.semibold17
@@ -138,6 +139,8 @@ class ProfileViewController: UIViewController, UICollectionViewDelegateFlowLayou
     
     lazy var picturesTitleLabel: UILabel = {
         let label = UILabel()
+        
+        label.text = "Мои картины"
         
         label.numberOfLines = 1
         label.textColor = Constants.Colors.darkRed
@@ -152,23 +155,29 @@ class ProfileViewController: UIViewController, UICollectionViewDelegateFlowLayou
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        
         title = "Профиль"
         navigationController?.navigationBar.titleTextAttributes = Constants.Unspecified.titleAttributes
 
         setup()
+        callToViewModelForUIUpdate()
         
-        viewModel.fetchAuctions {
+       
+    }
+    
+    func callToViewModelForUIUpdate(){
+        self.viewModel.bindProfileViewModelToController = {
+            self.updateDataSource()
+        }
+    }
+    
+    func updateDataSource(){
+        DispatchQueue.main.async {
+            self.configureUser()
+            self.tableView.reloadData()
             self.collectionView.reloadData()
         }
-        viewModel.fetchPictures {
-            self.tableView.reloadData()
-        }
         
-        viewModel.fetchUser {
-            self.configureUser()
-        }
-        
-                
     }
     
     init(viewModel: ProfileViewModel) {
@@ -188,21 +197,16 @@ class ProfileViewController: UIViewController, UICollectionViewDelegateFlowLayou
     
     
     private func configureUser(){
-        
-        
+        print(viewModel.user)
+//        nicknameLabel.fadeTransition(0.4)
         nicknameLabel.text = viewModel.user?.nickname.uppercased()
+//        descriptionLabel.fadeTransition(0.4)
         descriptionLabel.text = viewModel.user?.description
         
-        guard let balance = viewModel.user?.accountBalance else {
+        guard let balance = viewModel.user?.account_balance else {
             return
         }
-        
-        let stringDouble = String(format: "%.2f", Double(balance)/100)
-        // change to coma?
-        let balanceString = "$\(stringDouble)"
-        balanceAmountLabel.text = balanceString
-//        image
-
+        balanceAmountLabel.text = balance.toRubles()
         
     }
     
@@ -334,8 +338,6 @@ extension ProfileViewController: UICollectionViewDelegate {
             let cell = cell,
             let auctionId = cell.auctionModel?.id
         else { return }
-        print(cell.auctionModel?.id) // change
-        
         present(PictureDetailViewController(viewModel: PictureDetailViewModel(with: auctionId)), animated: true)
     }
 }
@@ -361,8 +363,6 @@ extension ProfileViewController: UITableViewDelegate {
             let cell = cell,
             let pictureId = cell.pictureModel?.id
         else { return }
-        
-        print(cell.pictureModel?.id) // change
         present(PictureDetailViewController(viewModel: PictureDetailViewModel(with: pictureId)), animated: true)
     }
 }
@@ -374,12 +374,23 @@ extension ProfileViewController: UITableViewDataSource {
         viewModel.pictures.count
     }
     
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        cell.alpha = 0
+
+        UIView.animate(
+            withDuration: 0.5,
+            delay: 0.05 * Double(indexPath.row),
+            animations: {
+                cell.alpha = 1
+        })
+    }
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: MyPicturesCell.reusableId) as? MyPicturesCell
         else {
             fatalError("unexpected cell")
         }
-        let cellModel: ProfilePictureModel?
+        let cellModel: Picture?
         
         cellModel = viewModel.pictures[indexPath.row]
         

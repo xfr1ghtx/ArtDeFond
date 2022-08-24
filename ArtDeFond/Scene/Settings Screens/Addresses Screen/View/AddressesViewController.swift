@@ -39,7 +39,6 @@ class AddressesViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("AddressesCollectionVC is loaded")
         tableViewSetup()
         
         viewModel.fetchAdresses {
@@ -74,7 +73,6 @@ class AddressesViewController: UIViewController {
     
     @objc
     func backTapped(){
-        print("back tapped")
         self.dismiss(animated: true)
     }
     
@@ -99,6 +97,17 @@ extension AddressesViewController: UITableViewDataSource {
         viewModel.addresses.count
     }
     
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        cell.alpha = 0
+
+        UIView.animate(
+            withDuration: 0.5,
+            delay: 0.05 * Double(indexPath.row),
+            animations: {
+                cell.alpha = 1
+        })
+    }
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: AddressTableViewCell.reusableId) as? AddressTableViewCell
         else {
@@ -107,8 +116,6 @@ extension AddressesViewController: UITableViewDataSource {
         let cellModel: AddressesModel?
         
         cellModel = viewModel.addresses[indexPath.row]
-//        cellModel = AddressCellModel(id: "something", user_id: "something", street: "Уличная", house_number: 123, apartment_number: 12, post_index: 123456, district: "Октябрьский", city: "Москва")
-        
         if let cellModel = cellModel {
             cell.configure(model: cellModel)
         }

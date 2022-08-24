@@ -9,11 +9,11 @@ import UIKit
 import SnapKit
 
 
-class PictureFeedCell: UITableViewCell{
+class PictureFeedTableCell: UITableViewCell{
     
-    static let reusableId = "PictureFeedCell"
+    static let reusableId = "PictureFeedTableCell"
     
-    var pictureModel: FeedPictureModel?
+    var pictureModel: PictureWithAuthorModel?
     
     lazy var coverImageView: UIImageView = {
         let imageView = UIImageView()
@@ -21,7 +21,6 @@ class PictureFeedCell: UITableViewCell{
         imageView.backgroundColor = Constants.Colors.dirtyWhite
         imageView.layer.cornerRadius = 16
         imageView.clipsToBounds = true
-        imageView.image = UIImage(named: "pic")
         
         imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
@@ -77,20 +76,31 @@ class PictureFeedCell: UITableViewCell{
     }
     
 
-    func configure(model: FeedPictureModel) {
-        self.pictureModel = model
-        
-        self.titleLabel.text = model.title
-        self.authorLabel.text = model.authorName.uppercased()
-        
-        if let url =  URL(string: model.image) {
-            // set image for coverImageView
-        }
-        
-        if let url =  URL(string: model.authorImage) {
-            // set image for aurhorImageView
-        }
+    func configure(model: PictureWithAuthorModel) {
         layout()
+        self.pictureModel = model
+        self.authorLabel.text = model.user?.nickname.uppercased()
+        self.titleLabel.text = model.picture.title
+    
+        ImageManager.shared.image(with: model.picture.image) { result in
+            switch result {
+            case .failure(let error):
+                print(error)
+            case .success(let pictureImage):
+                self.coverImageView.image = pictureImage
+            }
+        }
+        
+        if let avatarImage = model.user?.avatar_image {
+            ImageManager.shared.image(with: avatarImage) { result in
+                switch result {
+                case .failure(let error):
+                    print(error)
+                case .success(let pictureImage):
+                    self.authorImageView.image = pictureImage
+                }
+            }
+        }
     }
     
     
@@ -132,9 +142,9 @@ class PictureFeedCell: UITableViewCell{
     
     
     override func prepareForReuse() {
-//        super.prepareForReuse()
-//        self.titleLabel.text = nil
-//        self.coverImageView.image = nil
+        super.prepareForReuse()
+        self.coverImageView.image = nil
+        self.authorImageView.image = nil
     }
     
     
