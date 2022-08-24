@@ -19,6 +19,15 @@
       }
     },
     {
+      "identity" : "chtcollectionviewwaterfalllayout",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/chiahsien/CHTCollectionViewWaterfallLayout",
+      "state" : {
+        "revision" : "1fe42247efc8aea1ad03332d2b44f2d7fb1644bc",
+        "version" : "0.9.10"
+      }
+    },
+    {
       "identity" : "firebase-ios-sdk",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/firebase/firebase-ios-sdk",

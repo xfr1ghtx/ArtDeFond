@@ -97,4 +97,8 @@ extension SearchViewController: UICollectionViewDelegateFlowLayout {
         return UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
     }
     
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        navigationController?.pushViewController(WaterfallViewController(), animated: true)
+    }
+    
 }

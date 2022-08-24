@@ -101,6 +101,9 @@
 		8BF53C8D28A42579001B5AC3 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BF53C8C28A42579001B5AC3 /* SceneDelegate.swift */; };
 		8BF53C9428A4257E001B5AC3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8BF53C9328A4257E001B5AC3 /* Assets.xcassets */; };
 		8BF53C9728A4257E001B5AC3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8BF53C9528A4257E001B5AC3 /* LaunchScreen.storyboard */; };
+		CE36C8B928B6B8FA006DF9BC /* WaterfallViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE36C8B828B6B8FA006DF9BC /* WaterfallViewController.swift */; };
+		CE36C8BC28B6B963006DF9BC /* CHTCollectionViewWaterfallLayout in Frameworks */ = {isa = PBXBuildFile; productRef = CE36C8BB28B6B963006DF9BC /* CHTCollectionViewWaterfallLayout */; };
+		CE36C8BE28B6BA96006DF9BC /* WaterfallCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE36C8BD28B6BA95006DF9BC /* WaterfallCollectionViewCell.swift */; };
 		CEE9CCA028B4C74A00F1B4C9 /* TagsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEE9CC9F28B4C74A00F1B4C9 /* TagsModel.swift */; };
 		CEE9CCA228B4C79D00F1B4C9 /* CollectionCellSignUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEE9CCA128B4C79D00F1B4C9 /* CollectionCellSignUp.swift */; };
 /* End PBXBuildFile section */
@@ -191,6 +194,8 @@
 		8BF53C9328A4257E001B5AC3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8BF53C9628A4257E001B5AC3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8BF53C9828A4257E001B5AC3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CE36C8B828B6B8FA006DF9BC /* WaterfallViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaterfallViewController.swift; sourceTree = "<group>"; };
+		CE36C8BD28B6BA95006DF9BC /* WaterfallCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaterfallCollectionViewCell.swift; sourceTree = "<group>"; };
 		CEE9CC9F28B4C74A00F1B4C9 /* TagsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagsModel.swift; sourceTree = "<group>"; };
 		CEE9CCA128B4C79D00F1B4C9 /* CollectionCellSignUp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionCellSignUp.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -208,6 +213,7 @@
 				2C24973A28B17C0400551795 /* Kingfisher in Frameworks */,
 				8BE7977828B0317700DC72D9 /* TPKeyboardAvoiding in Frameworks */,
 				8BF2D35E28A4D8F400979D9C /* SnapKit in Frameworks */,
+				CE36C8BC28B6B963006DF9BC /* CHTCollectionViewWaterfallLayout in Frameworks */,
 				8BAE09EB28A4DB07004CD53C /* FirebaseAuth in Frameworks */,
 				8BAE09F128A4DB07004CD53C /* FirebaseFirestore in Frameworks */,
 				8BAE09F328A4DB07004CD53C /* FirebaseFirestoreSwift in Frameworks */,
@@ -622,6 +628,8 @@
 				8B40537C28B5FBA700E6E776 /* Model */,
 				8BA9ECD628AD24A700DFF138 /* SearchViewController.swift */,
 				8B40537F28B5FC5100E6E776 /* CollectionCellSearch.swift */,
+				CE36C8B828B6B8FA006DF9BC /* WaterfallViewController.swift */,
+				CE36C8BD28B6BA95006DF9BC /* WaterfallCollectionViewCell.swift */,
 			);
 			path = "Search Screen";
 			sourceTree = "<group>";
@@ -786,6 +794,7 @@
 				8BE7977728B0317700DC72D9 /* TPKeyboardAvoiding */,
 				2C24973928B17C0400551795 /* Kingfisher */,
 				8B40536428B5772900E6E776 /* TagListView */,
+				CE36C8BB28B6B963006DF9BC /* CHTCollectionViewWaterfallLayout */,
 			);
 			productName = ArtDeFond;
 			productReference = 8BF53C8728A42579001B5AC3 /* ArtDeFond.app */;
@@ -821,6 +830,7 @@
 				8BE7977628B0317700DC72D9 /* XCRemoteSwiftPackageReference "TPKeyboardAvoiding" */,
 				2C24973828B17C0300551795 /* XCRemoteSwiftPackageReference "Kingfisher" */,
 				8B40536328B5772900E6E776 /* XCRemoteSwiftPackageReference "TagListView" */,
+				CE36C8BA28B6B963006DF9BC /* XCRemoteSwiftPackageReference "CHTCollectionViewWaterfallLayout" */,
 			);
 			productRefGroup = 8BF53C8828A42579001B5AC3 /* Products */;
 			projectDirPath = "";
@@ -878,6 +888,7 @@
 				2C28A2BE28B67B5F00233601 /* UIView.swift in Sources */,
 				8B5DE2FD28AAF76600852B34 /* Constants.swift in Sources */,
 				2C28A2B928B65FF600233601 /* Int.swift in Sources */,
+				CE36C8B928B6B8FA006DF9BC /* WaterfallViewController.swift in Sources */,
 				2C8C13E228B5669E00AC3921 /* FeedModelViewModel.swift in Sources */,
 				8BE7977328B0160D00DC72D9 /* CustomButtomType.swift in Sources */,
 				8B40538028B5FC5100E6E776 /* CollectionCellSearch.swift in Sources */,
@@ -917,6 +928,7 @@
 				2C5491B028B4DD460012032B /* OrderDetailsViewController.swift in Sources */,
 				2C5491AE28B4C7EE0012032B /* UIAlertController.swift in Sources */,
 				2C97AFEE28B2A8E6006CDD55 /* AddressCellModel.swift in Sources */,
+				CE36C8BE28B6BA96006DF9BC /* WaterfallCollectionViewCell.swift in Sources */,
 				8BE7977B28B042CE00DC72D9 /* SignUpViewController.swift in Sources */,
 				8B5DE2F928AABAF700852B34 /* CustomTextFieldType.swift in Sources */,
 				2C0FD8AF28B066380004337C /* AuctionCollectionViewCell.swift in Sources */,
@@ -1185,6 +1197,14 @@
 				kind = branch;
 			};
 		};
+		CE36C8BA28B6B963006DF9BC /* XCRemoteSwiftPackageReference "CHTCollectionViewWaterfallLayout" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/chiahsien/CHTCollectionViewWaterfallLayout";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.9.9;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -1242,6 +1262,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 8BF2D35C28A4D8F400979D9C /* XCRemoteSwiftPackageReference "SnapKit" */;
 			productName = SnapKit;
+		};
+		CE36C8BB28B6B963006DF9BC /* CHTCollectionViewWaterfallLayout */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CE36C8BA28B6B963006DF9BC /* XCRemoteSwiftPackageReference "CHTCollectionViewWaterfallLayout" */;
+			productName = CHTCollectionViewWaterfallLayout;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
