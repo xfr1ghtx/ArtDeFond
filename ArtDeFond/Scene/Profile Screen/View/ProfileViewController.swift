@@ -115,8 +115,8 @@ class ProfileViewController: UIViewController, UICollectionViewDelegateFlowLayou
     
     lazy var descriptionLabel: UILabel = {
         let label = UILabel()
-        
-        label.text = "Прекрасное описание чудесного человека с красивым именем. История данной личности останется неразгаданной загадкой. Это все, что об этом можно сказать."
+//        label.text = "Прекрасное описание чудесного человека с красивым именем. История данной личности останется неразгаданной загадкой. Это все, что об этом можно сказать."
+        label.text = ""
         label.numberOfLines = 0
         label.textColor = Constants.Colors.darkRed
         label.font = Constants.Fonts.regular15

@@ -76,7 +76,8 @@ class PictureDetailViewController: UIViewController {
     lazy var descriptionLabel: UILabel = {
         let label = UILabel()
         
-        label.text = "Прекрасное описание нашей картины с красивым назнанием. Сюжет данного шедевра останется неразгаданной загадкой. Это все, что об этом можно сказать."
+//        label.text = "Прекрасное описание нашей картины с красивым назнанием. Сюжет данного шедевра останется неразгаданной загадкой. Это все, что об этом можно сказать."
+        label.text = ""
         label.numberOfLines = 4
         label.textColor = Constants.Colors.black
         label.font = Constants.Fonts.regular15
