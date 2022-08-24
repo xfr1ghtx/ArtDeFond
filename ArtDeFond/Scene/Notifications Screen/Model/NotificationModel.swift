@@ -19,27 +19,7 @@ struct NotificationModel: Codable {
     
     var timeToShow: String? {
         get {
-            return timeToShow(from: time)
+            return time.timeToShow()
         }
-    }
-    
-    func timeToShow(from date: Date) -> String? {
-        
-        if date.isToday() {
-            let minsBetween = Date.minutesBetweenDates(date, Date())
-            if minsBetween < 60 {
-                let minsInt = Int(minsBetween)
-                let string = " мин назад"
-                return "\(minsInt)" + string
-            } else {
-                let time = date.dateAndTimetoString(format: "hh:mm a")
-                return "сегодня в " + time
-            }
-        }
-        if date.isYesterday(){
-            let time = date.dateAndTimetoString(format: "hh:mm a")
-            return "вчера в " + time
-        }
-        return date.dateAndTimetoString(format: "dd MMM' в 'hh:mm a")
     }
 }

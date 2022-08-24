@@ -21,11 +21,11 @@ class UserSettingsViewController: UIViewController {
         SettingsModel(
             title: "Мои покупки",
             image: UIImage(systemName: "shippingbox.fill"),
-            viewController: UINavigationController(rootViewController: OrdersViewController(type: .purchases, viewModel: OrdersViewModel()))),
+            viewController: UINavigationController(rootViewController: OrdersViewController(type: .purchases))),
         SettingsModel(
             title: "Мои продажи",
             image: UIImage(systemName: "photo.artframe"),
-            viewController: UINavigationController(rootViewController: OrdersViewController(type: .sales, viewModel: OrdersViewModel()))),
+            viewController: UINavigationController(rootViewController: OrdersViewController(type: .sales))),
         SettingsModel(
             title: "Пополнить баланс",
             image: UIImage(systemName: "creditcard")),

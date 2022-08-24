@@ -11,7 +11,7 @@ import SnapKit
 
 class OrdersViewController: UIViewController {
     
-    private var viewModel: OrdersViewModel
+    private var viewModel: OrdersViewModel!
     private var type: OrderType
     
     lazy var tableView: UITableView = {
@@ -29,8 +29,7 @@ class OrdersViewController: UIViewController {
     }()
     
     
-    init(type: OrderType, viewModel: OrdersViewModel) {
-        self.viewModel = viewModel
+    init(type: OrderType) {
         self.type = type
         super.init(nibName: nil, bundle: nil)
     }
@@ -43,9 +42,25 @@ class OrdersViewController: UIViewController {
         super.viewDidLoad()
         tableViewSetup()
         
-        viewModel.fetchOrders(type: type) {
+//        viewModel.fetchOrders(type: type) {
+//            self.tableView.reloadData()
+//        }
+        callToViewModelForUIUpdate()
+    }
+    
+    func callToViewModelForUIUpdate(){
+        
+        self.viewModel =  OrdersViewModel(for: type)
+        self.viewModel.bindOrdersViewModelToController = {
+            self.updateDataSource()
+        }
+    }
+    
+    func updateDataSource(){
+        DispatchQueue.main.async {
             self.tableView.reloadData()
         }
+        
     }
     
     private func tableViewSetup(){
@@ -91,7 +106,7 @@ extension OrdersViewController: UITableViewDelegate {
         
         guard
             let cell = cell,
-            let orderId = cell.orderModel?.id
+            let orderId = cell.orderModel?.order.id
         else {
             return
         }
@@ -111,7 +126,7 @@ extension OrdersViewController: UITableViewDataSource {
         else {
             fatalError("unexpected cell")
         }
-        let cellModel: OrderModel?
+        let cellModel: OrderAndPictureModel?
         
         cellModel = viewModel.orders[indexPath.row]
 //        cellModel = OrderModel(id: "12", picture_image: "22", status: "Доставлено", picture_name: "Восторг", time: "сегодня в 12:00")

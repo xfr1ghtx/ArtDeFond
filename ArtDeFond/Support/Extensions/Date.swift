@@ -39,4 +39,23 @@ extension Date {
             return abs(result)
         }
 
+    func timeToShow() -> String? {
+        
+        if self.isToday() {
+            let minsBetween = Date.minutesBetweenDates(self, Date())
+            if minsBetween < 60 {
+                let minsInt = Int(minsBetween)
+                let string = " мин назад"
+                return "\(minsInt)" + string
+            } else {
+                let time = self.dateAndTimetoString(format: "hh:mm a")
+                return "сегодня в " + time
+            }
+        }
+        if self.isYesterday(){
+            let time = self.dateAndTimetoString(format: "hh:mm a")
+            return "вчера в " + time
+        }
+        return self.dateAndTimetoString(format: "dd MMM' в 'hh:mm a")
+    }
 }

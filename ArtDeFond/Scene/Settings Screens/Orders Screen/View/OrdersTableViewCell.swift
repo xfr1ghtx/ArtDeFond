@@ -11,7 +11,7 @@ class OrdersTableViewCell: UITableViewCell{
     
     static let reusableId = "OrdersTableViewCell"
     
-    var orderModel: OrderModel?
+    var orderModel: OrderAndPictureModel?
     
     lazy var image: UIImageView = {
         let imageView = UIImageView()
@@ -79,15 +79,38 @@ class OrdersTableViewCell: UITableViewCell{
     
     
     
-    func configure(model: OrderModel
+    func configure(model: OrderAndPictureModel
  ) {
-        
         self.orderModel = model
         
-        self.titleLabel.text = model.picture_name
-        self.statusLabel.text = "\(model.status)"
-        self.timeLabel.text = "\(model.time)"
-        // order image
+        self.titleLabel.text = model.picture?.title
+        self.statusLabel.text = "\(model.order.status)"
+        self.timeLabel.text = "\(model.order.time.timeToShow() ?? "когда-то")"
+        
+        let orderStatusString: String
+        switch model.order.status {
+            
+        case .booked:
+            orderStatusString = "Ожидает оплаты"
+        case .purchased:
+            orderStatusString = "Ожидает отправления"
+        case .sent:
+            orderStatusString = "Отправлено"
+        case .delivered:
+            orderStatusString = "Доставлено"
+        }
+        self.statusLabel.text = orderStatusString
+        
+        if let picture = model.picture {
+            ImageManager.shared.image(with: picture.image) { result in
+                switch result {
+                case .failure( _):
+                    self.image.image = nil
+                case .success(let image):
+                    self.image.image = image
+                }
+            }
+        }
     
         layout()
     }

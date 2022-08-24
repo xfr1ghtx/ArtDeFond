@@ -307,7 +307,7 @@ class OrderDetailsViewController: UIViewController {
         }
         
         // image configure
-        pictureTitleLabel.text = order.picture_name
+//        pictureTitleLabel.text = order.picture_name
         // seller configure
         //address configure
         // index
@@ -556,7 +556,7 @@ class OrderDetailsViewController: UIViewController {
 class OrderDetailViewModel {
     
     var orderId: String
-    let order: OrderModel? = nil
+    let order: Order? = nil
     
     var error: Error?
     var refreshing = false
@@ -573,3 +573,5 @@ class OrderDetailViewModel {
         
     }
 }
+
+

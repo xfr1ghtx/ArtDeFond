@@ -23,14 +23,9 @@
 		2C28A2B128B6337400233601 /* NotificationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C28A2B028B6337400233601 /* NotificationModel.swift */; };
 		2C28A2B328B633FC00233601 /* NotificationAndPictureModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C28A2B228B633FC00233601 /* NotificationAndPictureModel.swift */; };
 		2C28A2B528B6342200233601 /* NotificationCommonTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C28A2B428B6342200233601 /* NotificationCommonTableCell.swift */; };
-		2C54919F28B4BB9C0012032B /* OrderInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C54919E28B4BB9C0012032B /* OrderInfoViewController.swift */; };
-		2C5491A428B4BE720012032B /* PictureView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C5491A328B4BE720012032B /* PictureView.swift */; };
-		2C5491A628B4BF3D0012032B /* PaymentModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C5491A528B4BF3D0012032B /* PaymentModel.swift */; };
-		2C5491A828B4BF7D0012032B /* PaymentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C5491A728B4BF7D0012032B /* PaymentView.swift */; };
-		2C5491AA28B4C0150012032B /* DeliveryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C5491A928B4C0140012032B /* DeliveryModel.swift */; };
 		2C5491AE28B4C7EE0012032B /* UIAlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C5491AD28B4C7EE0012032B /* UIAlertController.swift */; };
 		2C5491B028B4DD460012032B /* OrderDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C5491AF28B4DD460012032B /* OrderDetailsViewController.swift */; };
-		2C8C13DC28B52A4900AC3921 /* OrderModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C8C13DB28B52A4900AC3921 /* OrderModel.swift */; };
+		2C8C13DC28B52A4900AC3921 /* OrderAndPictureModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C8C13DB28B52A4900AC3921 /* OrderAndPictureModel.swift */; };
 		2C8C13DE28B52A7400AC3921 /* OrdersTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C8C13DD28B52A7400AC3921 /* OrdersTableViewCell.swift */; };
 		2C8C13E228B5669E00AC3921 /* FeedModelViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C8C13E128B5669E00AC3921 /* FeedModelViewModel.swift */; };
 		2C8D7C9F28B219F80036E784 /* AboutMeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C8D7C9E28B219F80036E784 /* AboutMeViewController.swift */; };
@@ -108,14 +103,9 @@
 		2C28A2B028B6337400233601 /* NotificationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationModel.swift; sourceTree = "<group>"; };
 		2C28A2B228B633FC00233601 /* NotificationAndPictureModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationAndPictureModel.swift; sourceTree = "<group>"; };
 		2C28A2B428B6342200233601 /* NotificationCommonTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationCommonTableCell.swift; sourceTree = "<group>"; };
-		2C54919E28B4BB9C0012032B /* OrderInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderInfoViewController.swift; sourceTree = "<group>"; };
-		2C5491A328B4BE720012032B /* PictureView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PictureView.swift; sourceTree = "<group>"; };
-		2C5491A528B4BF3D0012032B /* PaymentModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentModel.swift; sourceTree = "<group>"; };
-		2C5491A728B4BF7D0012032B /* PaymentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentView.swift; sourceTree = "<group>"; };
-		2C5491A928B4C0140012032B /* DeliveryModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeliveryModel.swift; sourceTree = "<group>"; };
 		2C5491AD28B4C7EE0012032B /* UIAlertController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIAlertController.swift; sourceTree = "<group>"; };
 		2C5491AF28B4DD460012032B /* OrderDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderDetailsViewController.swift; sourceTree = "<group>"; };
-		2C8C13DB28B52A4900AC3921 /* OrderModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = OrderModel.swift; path = "ArtDeFond/Scene/Order Info Screen/View/OrderModel.swift"; sourceTree = SOURCE_ROOT; };
+		2C8C13DB28B52A4900AC3921 /* OrderAndPictureModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = OrderAndPictureModel.swift; path = "ArtDeFond/Scene/Order Info Screen/View/OrderAndPictureModel.swift"; sourceTree = SOURCE_ROOT; };
 		2C8C13DD28B52A7400AC3921 /* OrdersTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrdersTableViewCell.swift; sourceTree = "<group>"; };
 		2C8C13E128B5669E00AC3921 /* FeedModelViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedModelViewModel.swift; sourceTree = "<group>"; };
 		2C8D7C9E28B219F80036E784 /* AboutMeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutMeViewController.swift; sourceTree = "<group>"; };
@@ -315,8 +305,6 @@
 		2C5491A128B4BDCF0012032B /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				2C5491A528B4BF3D0012032B /* PaymentModel.swift */,
-				2C5491A928B4C0140012032B /* DeliveryModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -324,9 +312,6 @@
 		2C5491A228B4BDD60012032B /* View */ = {
 			isa = PBXGroup;
 			children = (
-				2C54919E28B4BB9C0012032B /* OrderInfoViewController.swift */,
-				2C5491A328B4BE720012032B /* PictureView.swift */,
-				2C5491A728B4BF7D0012032B /* PaymentView.swift */,
 				2C5491AF28B4DD460012032B /* OrderDetailsViewController.swift */,
 			);
 			path = View;
@@ -432,7 +417,7 @@
 		2C97AFF628B2ADA5006CDD55 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				2C8C13DB28B52A4900AC3921 /* OrderModel.swift */,
+				2C8C13DB28B52A4900AC3921 /* OrderAndPictureModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -779,13 +764,12 @@
 				2C97B00628B2B931006CDD55 /* ProfilePictureModel.swift in Sources */,
 				8BE7975F28AE111D00DC72D9 /* LabelTextField.swift in Sources */,
 				8B51DE4D28A97E80002E10AC /* UINavigationController.swift in Sources */,
-				2C8C13DC28B52A4900AC3921 /* OrderModel.swift in Sources */,
+				2C8C13DC28B52A4900AC3921 /* OrderAndPictureModel.swift in Sources */,
 				2C24973328B1694C00551795 /* PictureManager.swift in Sources */,
 				8BE7976E28AFF64600DC72D9 /* UITabBarController.swift in Sources */,
 				2CEC274428B4AAC30044DBD4 /* String.swift in Sources */,
 				8BA9ECDB28AD250000DFF138 /* ProfileViewController.swift in Sources */,
 				2CEC273E28B3D7B20044DBD4 /* NotificationsViewModel.swift in Sources */,
-				2C54919F28B4BB9C0012032B /* OrderInfoViewController.swift in Sources */,
 				2C28A2B128B6337400233601 /* NotificationModel.swift in Sources */,
 				2C97B00A28B37080006CDD55 /* PictureDetailViewModel.swift in Sources */,
 				2C24974128B1818000551795 /* CircleFeedAuctionModel.swift in Sources */,
@@ -795,7 +779,6 @@
 				8B5DE2FD28AAF76600852B34 /* Constants.swift in Sources */,
 				2C8C13E228B5669E00AC3921 /* FeedModelViewModel.swift in Sources */,
 				8BE7977328B0160D00DC72D9 /* CustomButtomType.swift in Sources */,
-				2C5491AA28B4C0150012032B /* DeliveryModel.swift in Sources */,
 				2C97AFF228B2A951006CDD55 /* AddressesViewModel.swift in Sources */,
 				8BA9ECD528AD242800DFF138 /* FeedViewController.swift in Sources */,
 				2C28A2AA28B61D1400233601 /* UIImageView.swift in Sources */,
@@ -822,14 +805,11 @@
 				2C97AFFB28B2AEC7006CDD55 /* OrdersViewModel.swift in Sources */,
 				8B51DE4A28A97DCB002E10AC /* AppDependencies.swift in Sources */,
 				2C28A2B328B633FC00233601 /* NotificationAndPictureModel.swift in Sources */,
-				2C5491A428B4BE720012032B /* PictureView.swift in Sources */,
-				2C5491A628B4BF3D0012032B /* PaymentModel.swift in Sources */,
 				2C5491B028B4DD460012032B /* OrderDetailsViewController.swift in Sources */,
 				2C5491AE28B4C7EE0012032B /* UIAlertController.swift in Sources */,
 				2C97AFEE28B2A8E6006CDD55 /* AddressCellModel.swift in Sources */,
 				8BE7977B28B042CE00DC72D9 /* SignUpViewController.swift in Sources */,
 				8B5DE2F928AABAF700852B34 /* CustomTextFieldType.swift in Sources */,
-				2C5491A828B4BF7D0012032B /* PaymentView.swift in Sources */,
 				2C0FD8AF28B066380004337C /* AuctionCollectionViewCell.swift in Sources */,
 				8B1B075E28AA322C00854E00 /* TestViewController.swift in Sources */,
 				2C24973F28B1815900551795 /* PictureWithAuthorModel.swift in Sources */,
