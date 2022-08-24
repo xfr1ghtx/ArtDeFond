@@ -60,14 +60,14 @@ class FeedViewController: UIViewController, UICollectionViewDelegateFlowLayout {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        AuthManager.shared.signIn(withEmail: "three@mail.com", withPassword: "password") { result in
-            switch result {
-            case .failure(let error):
-                print(error)
-            case .success(let something):
-                print(something)
-            }
-        }
+//        AuthManager.shared.signIn(withEmail: "three@mail.com", withPassword: "password") { result in
+//            switch result {
+//            case .failure(let error):
+//                print(error)
+//            case .success(let something):
+//                print(something)
+//            }
+//        }
         
         
         setup()

@@ -30,9 +30,6 @@ final class CostViewModel{
         let secondModel = delegate?.getModelFromPictureDescription()
         let thirdModel = model
         
-        print(firstModel?.pictureDescription)
-        print(firstModel?.pictureName)
-        print(secondModel?.tags)
-        print(thirdModel?.cost)
+        
     }
 }

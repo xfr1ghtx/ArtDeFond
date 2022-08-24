@@ -45,6 +45,9 @@ class InterestViewController: UIViewController {
         return collectionView
     }()
     
+    private let nextButton = CustomButton(viewModel: .init(type: .dark,
+                                                           labelText: "Зарегистрироваться"))
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -52,6 +55,7 @@ class InterestViewController: UIViewController {
     }
     
     private func setup(){
+        nextButtonSetup()
         
         title = "Интересы"
         
@@ -80,6 +84,18 @@ class InterestViewController: UIViewController {
         picturesCollection.delegate = self
     }
     
+    private func nextButtonSetup(){
+        view.addSubview(nextButton)
+        
+        nextButton.addTarget(self, action: #selector(signUpButtonTap), for: .touchUpInside)
+        
+        nextButton.snp.makeConstraints{ make in
+            make.leading.trailing.equalToSuperview().inset(30)
+            make.height.equalTo(44)
+            make.bottom.equalTo(view.safeAreaLayoutGuide).inset(34)
+        }
+    }
+    
     @objc
     private func signUpButtonTap(){
         let email = firstScreenDelegate?.DidRequestEmail()
@@ -88,15 +104,35 @@ class InterestViewController: UIViewController {
         let nickname = secondScreenDelegate?.DidRequestNickname()
         let aboutMe = secondScreenDelegate?.DidRequestAboutMe()
         
-        print(email)
-        print(password)
-        print(avatar)
-        print(nickname)
-        print(aboutMe)
+        var imageString = ""
+        
+        ImageManager.shared.upload(image: avatar ?? UIImage()) { result in
+            switch result{
+            case.success(let resultImageString):
+                imageString = resultImageString
+                break
+            case.failure(let error):
+                print(error)
+                break
+            }
+            
+            AuthManager.shared.signUp(withEmail: email ?? "test@test.ru", withPassword: password ?? "password", image: imageString, nickname: nickname ?? "CoolBoy", description: aboutMe ?? "I am very cool artist", tags: []) { result in
+                switch result{
+                case.success(let result):
+                    NotificationCenter.default.post(name: NSNotification.Name("InterestViewController.signUp.succes.ArtDeFond"), object: nil)
+                    
+                case .failure(let error):
+                    print(error)
+                }
+                
+            }
+            
+            
+        }
+        
+        
+        
     }
-    
-    
-    
 }
 
 extension InterestViewController: UICollectionViewDataSource {
@@ -135,9 +171,6 @@ extension InterestViewController: UICollectionViewDelegateFlowLayout {
         else{
             cell.backgroundColor = Constants.Colors.darkRed
         }
-        
-        
-        
     }
 }
 

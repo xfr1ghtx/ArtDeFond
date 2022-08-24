@@ -9,6 +9,10 @@ import UIKit
 import SnapKit
 import TPKeyboardAvoiding
 
+protocol AuthViewContollerDelegate: AnyObject{
+    func DidLogin()
+}
+
 class AuthViewController: UIViewController {
     
     private let scrollView = TPKeyboardAvoidingScrollView()
@@ -27,6 +31,8 @@ class AuthViewController: UIViewController {
     private let signInButton = CustomButton(viewModel: .init(type: .dark, labelText: "Войти"))
     private let notRegisterLabel = UILabel()
     private let signUpButton = UIButton()
+    
+    weak var delegate: AuthViewContollerDelegate?
     
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         super.init(nibName: nil, bundle: nil)
@@ -110,6 +116,8 @@ class AuthViewController: UIViewController {
     private func signInButtonSetup(){
         contentView.addSubview(signInButton)
         
+        signInButton.addTarget(self, action: #selector(tapOnSignInButton), for: .touchUpInside)
+        
         signInButton.snp.makeConstraints{ make in
             make.top.equalTo(passwordLabelTextField.snp.bottom).offset(50)
             make.leading.trailing.equalToSuperview().inset(30)
@@ -150,8 +158,27 @@ class AuthViewController: UIViewController {
     }
     
     @objc
+    private func tapOnSignInButton(){
+        AuthManager.shared.signIn(withEmail: emailLabelTextField.returnText(), withPassword: passwordLabelTextField.returnText()) { result in
+            switch result{
+            case .failure(let error):
+                let alert = UIAlertController(title: "ууупс", message: "Кажется вы ввели что-то неправильно", preferredStyle: .alert)
+                
+                let cancelAction = UIAlertAction(title: "Ок", style: .cancel)
+                alert.addAction(cancelAction)
+                self.present(alert, animated: true)
+                break
+                
+            case.success():
+                self.delegate?.DidLogin()
+                break
+            }
+            
+        }
+    }
+    
+    @objc
     private func tapInSignUpButton(){
-        
         let navCont = UINavigationController.createForAuth()
         navCont.pushViewController(SignUpViewController(), animated: false)
         present(navCont, animated: true)

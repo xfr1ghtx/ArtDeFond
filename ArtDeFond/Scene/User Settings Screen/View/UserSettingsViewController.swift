@@ -33,7 +33,6 @@ class UserSettingsViewController: UIViewController {
             title: "Удалить профиль",
             image: UIImage(systemName: "trash.fill"),
             alertController: AlertType.deleteAccount),
-        
         SettingsModel(
             title: "Выйти из профиля",
             image: UIImage(systemName: "ipad.and.arrow.forward"),
