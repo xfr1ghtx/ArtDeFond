@@ -22,7 +22,8 @@ extension UITabBarController{
         feedVC.tabBarItem.image = Constants.Icons.house
         feedVC.tabBarItem.title = "Лента"
         
-        let uploadPhotoVC = auth ? UploadPhotoViewController() : AuthViewController()
+        let uploadPhotoVC = auth ? UploadPhotoViewController(viewModel: .init()) : AuthViewController()
+        
         uploadPhotoVC.tabBarItem = UITabBarItem(title: nil,
                                               image: Constants.Icons.bigPlus.withRenderingMode(.alwaysOriginal),
                                               tag: 0)

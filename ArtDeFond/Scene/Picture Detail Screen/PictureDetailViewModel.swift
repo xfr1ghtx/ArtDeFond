@@ -22,6 +22,8 @@ class PictureDetailViewModel {
  
     var refreshing = false
     
+    var didUpdate: (() -> Void)?
+    
     required init(with pictureId: String){
         self.pictureId = pictureId
         fetchData()

@@ -4,6 +4,10 @@
 <dict>
     <key>UIUserInterfaceStyle</key>
     <string>Light</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>We need access to load yout photo</string>
+	<key>NSCameraUsageDescription</key>
+	<string>We need access to take photo</string>
 	<key>UIApplicationSceneManifest</key>
 	<dict>
 		<key>UIApplicationSupportsMultipleScenes</key>

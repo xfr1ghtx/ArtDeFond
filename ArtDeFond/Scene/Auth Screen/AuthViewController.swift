@@ -138,7 +138,7 @@ class AuthViewController: UIViewController {
         signUpButton.setTitleColor(Constants.Colors.darkRed, for: .normal)
         signUpButton.titleLabel?.font = Constants.Fonts.semibold17
         
-        signUpButton.addTarget(self, action: #selector(nextScreen), for: .touchUpInside)
+        signUpButton.addTarget(self, action: #selector(tapInSignUpButton), for: .touchUpInside)
         
         signUpButton.snp.makeConstraints{make in
             make.top.equalTo(notRegisterLabel.snp.bottom).offset(3)
@@ -150,7 +150,8 @@ class AuthViewController: UIViewController {
     }
     
     @objc
-    private func nextScreen(){
+    private func tapInSignUpButton(){
+        
         let navCont = UINavigationController.createForAuth()
         navCont.pushViewController(SignUpViewController(), animated: false)
         present(navCont, animated: true)

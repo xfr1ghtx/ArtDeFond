@@ -38,6 +38,7 @@ class SignUpViewController: UIViewController {
         navigationController?.navigationBar.backItem?.setHidesBackButton(true, animated: false)
         self.tabBarController?.navigationItem.hidesBackButton = true
         self.navigationItem.leftBarButtonItems = []
+        navigationItem.backButtonTitle = ""
     }
     
     required init?(coder: NSCoder) {
@@ -126,19 +127,19 @@ class SignUpViewController: UIViewController {
     
     @objc
     private func tapNextButton(){
-        navigationController?.pushViewController(AboutMeViewController(), animated: true)
+        navigationController?.pushViewController(AboutMeViewController(previusVC: self), animated: true)
     }
     
-    //250
+}
+
+extension SignUpViewController: InterestViewControllerDelegateToFirstScreen{
+    func DidRequestEmail() -> String {
+        return emailLabelTextField.returnText()
+    }
     
-    /*
-     // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using segue.destination.
-     // Pass the selected object to the new view controller.
-     }
-     */
+    func DidRequestPassword() -> String {
+        return passwordLabelTextField.returnText()
+    }
+    
     
 }

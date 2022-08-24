@@ -18,6 +18,7 @@ class Constants{
         
         static let semibold11 = UIFont.systemFont(ofSize: 11, weight: .semibold) //authorFont
         static let semibold17 = UIFont.systemFont(ofSize: 17, weight: .semibold) //authorFont
+        static let semibold15 = UIFont.systemFont(ofSize: 15, weight: .semibold) //authorFont
         static let semibold20 = UIFont.systemFont(ofSize: 20, weight: .semibold) //  pictureTitleFont
         
         static let bold24 = UIFont.systemFont(ofSize: 24, weight: .bold)
@@ -48,6 +49,8 @@ class Constants{
         static let search = UIImage(named: "Search")!
         static let house = UIImage(named: "House")!
         static let backArrow = UIImage(named: "Back arrow")!
+        static let avatarPlaceholder = UIImage(named: "avatarPlaceholder")!
+        static let rub = UIImage(named: "Rubble")!
     }
     
     class Images{

@@ -25,9 +25,5 @@ class TestViewController: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = .white
         
-        title = "Some title"
-        
-        self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: Constants.Colors.darkRed]
-        
     }
 }

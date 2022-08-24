@@ -137,6 +137,9 @@ final class CustomTextField: UIView{
         iconImageView.image = iconImageView.image == Constants.Icons.openEye ? Constants.Icons.closeEye : Constants.Icons.openEye
     }
     
+    public func returnText() -> String{
+        return textField.text ?? ""
+    }
     
     
     

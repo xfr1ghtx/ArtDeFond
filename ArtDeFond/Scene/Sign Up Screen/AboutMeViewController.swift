@@ -22,7 +22,9 @@ class AboutMeViewController: UIViewController {
     private let aboutMeLabel = UILabel()
     private let aboutMeTextView = UITextView()
     private let nextButton = CustomButton(viewModel: .init(type: .dark,
-                                                           labelText: "Завершить"))
+                                                           labelText: "Далее"))
+    
+    private let previusVC: SignUpViewController
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,7 +33,17 @@ class AboutMeViewController: UIViewController {
         navigationController?.navigationBar.backItem?.setHidesBackButton(true, animated: false)
         self.tabBarController?.navigationItem.hidesBackButton = true
         self.navigationItem.leftBarButtonItems = []
+        navigationItem.backButtonTitle = ""
         setup()
+    }
+    
+    init(previusVC: SignUpViewController) {
+        self.previusVC = previusVC
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
     
     private func setup(){
@@ -71,7 +83,12 @@ class AboutMeViewController: UIViewController {
         
         avatarImageView.layer.cornerRadius = 50
         avatarImageView.backgroundColor = Constants.Colors.lightRed
-//        avatarImageView.image = Constants.Icons.avatarPlaceholder
+        avatarImageView.image = Constants.Icons.avatarPlaceholder
+        
+        avatarImageView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(loadPhoto)))
+        avatarImageView.isUserInteractionEnabled = true
+        avatarImageView.clipsToBounds = true
+        avatarImageView.contentMode = .scaleAspectFill
         
         avatarImageView.snp.makeConstraints{make in
             make.top.equalTo(view.safeAreaLayoutGuide).offset(20)
@@ -131,10 +148,49 @@ class AboutMeViewController: UIViewController {
     }
     
     @objc
-    private func tapNextButton(){
+    private func loadPhoto(){
+        let picker = UIImagePickerController()
+        picker.delegate = self
         
+        let actionSheet = UIAlertController(title: "Источник фото",
+                                            message: "Выберите источник",
+                                            preferredStyle: .actionSheet)
+        
+        actionSheet.addAction(UIAlertAction(title: "Камера",
+                                            style: .default,
+                                            handler: { (action:UIAlertAction) in
+            picker.allowsEditing = false
+            picker.sourceType = .camera
+            self.present(picker, animated: true, completion: nil)
+        }))
+        
+        actionSheet.addAction(UIAlertAction(title: "Фотогалерея",
+                                            style: .default,
+                                            handler: { (action:UIAlertAction) in
+            picker.allowsEditing = false
+            picker.sourceType = .photoLibrary
+            self.present(picker, animated: true, completion: nil)
+        }))
+        
+        actionSheet.addAction(UIAlertAction(title: "Отмена",
+                                            style: .cancel,
+                                            handler:nil))
+        
+        self.present(actionSheet, animated: true, completion: nil)
+
     }
     
+    @objc
+    private func tapNextButton(){
+        let vc = InterestViewController()
+        
+        vc.firstScreenDelegate = previusVC
+        vc.secondScreenDelegate = self
+        
+        navigationController?.pushViewController(vc, animated: true)
+    }
+    
+
     
     
 
@@ -148,4 +204,60 @@ class AboutMeViewController: UIViewController {
     }
     */
 
+}
+
+extension AboutMeViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate{
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        picker.dismiss(animated: true, completion: nil)
+        
+    }
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        
+        if picker.sourceType == .camera{
+            guard let image = info[.originalImage] as? UIImage else{
+                return
+            }
+            avatarImageView.image = image
+        }
+        else if picker.sourceType == .photoLibrary{
+            
+            let url = info[.imageURL]
+            let data = try? Data(contentsOf: url as! URL)
+
+            if let imageData = data {
+                let image = UIImage(data: imageData)
+                avatarImageView.image = image
+            }
+            
+            
+            
+//            guard let image = info[.originalImage] as? UIImage else{
+//                return
+//            }
+
+//
+//            print(info[.imageURL])
+        }
+        
+        picker.dismiss(animated: true, completion: nil)
+        
+    }
+    
+}
+
+extension AboutMeViewController: InterestViewControllerDelegateToSecondScreen{
+    func DidRequestAvatar() -> UIImage {
+        return avatarImageView.image ?? UIImage()
+    }
+    
+    func DidRequestNickname() -> String {
+        return nickNameLabelTextField.returnText()
+    }
+    
+    func DidRequestAboutMe() -> String {
+        return aboutMeTextView.text
+    }
+    
+    
 }
