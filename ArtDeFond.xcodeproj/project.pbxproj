@@ -321,13 +321,6 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
-		2C28A2BF28B68CB200233601 /* User Details Screen */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = "User Details Screen";
-			sourceTree = "<group>";
-		};
 		2C54919D28B4BB570012032B /* Order Info Screen */ = {
 			isa = PBXGroup;
 			children = (
@@ -674,7 +667,6 @@
 		8BAE09F928A4ECAB004CD53C /* Scene */ = {
 			isa = PBXGroup;
 			children = (
-				2C28A2BF28B68CB200233601 /* User Details Screen */,
 				2C54919D28B4BB570012032B /* Order Info Screen */,
 				2C97AFE628B2A010006CDD55 /* Settings Screens */,
 				2C0FD8B228B06A990004337C /* Picture Detail Screen */,
@@ -930,7 +922,7 @@
 				2C0FD8AF28B066380004337C /* AuctionCollectionViewCell.swift in Sources */,
 				8B1B075E28AA322C00854E00 /* TestViewController.swift in Sources */,
 				8B40536928B57F6700E6E776 /* LabelSwitch.swift in Sources */,
-				2C24973F28B1815900551795 /* FeedPictureModel.swift in Sources */,
+				2C24973F28B1815900551795 /* PictureWithAuthorModel.swift in Sources */,
 				2C24973F28B1815900551795 /* PictureWithAuthorModel.swift in Sources */,
 				2C97AFFD28B2AFD6006CDD55 /* OrderManager.swift in Sources */,
 				2C28A2B528B6342200233601 /* NotificationCommonTableCell.swift in Sources */,
