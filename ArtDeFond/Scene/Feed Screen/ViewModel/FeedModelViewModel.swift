@@ -27,6 +27,7 @@ struct Picture: Codable{ // change that
 }
 
 
+// вот тут вот хранятся танцы с группами
 
 class ExFeedViewModel: NSObject {
     

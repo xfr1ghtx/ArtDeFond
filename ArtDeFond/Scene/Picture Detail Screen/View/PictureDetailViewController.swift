@@ -282,31 +282,8 @@ class PictureDetailViewController: UIViewController {
     }()
     
     @objc func backBtnPressed(){
-        print("backBtnPressed")
+        self.dismiss(animated: true)
     }
-
-    lazy var editImageBtn: UIButton = {
-        let button = UIButton()
-        button.tintColor = Constants.Colors.darkRed
-        let config = UIImage.SymbolConfiguration(
-            pointSize: 24, weight: .bold, scale: .medium)
-        let image = UIImage(systemName: "play.fill", withConfiguration: config)
-        button.setImage(image, for: .normal)
-        button.backgroundColor = .white.withAlphaComponent(0.5)
-        button.layer.cornerRadius = 16
-        
-        button.addTarget(self, action: #selector(editBtnPressed), for: .touchUpInside)
-        button.translatesAutoresizingMaskIntoConstraints = false
-        return button
-    }()
-    
-    @objc func editBtnPressed(){
-        print("editBtnPressed")
-    }
-    
-    
-    
-
 
     private func makeLine() -> UIView {
         let view = UIView()

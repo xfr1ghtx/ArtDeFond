@@ -100,8 +100,6 @@ class MyPicturesCell: UITableViewCell{
         self.priceLabel.text = "\(model.price)$"
         self.detailsLabel.text = detailsString
         
-        print(model.image)
-        
         ImageManager.shared.image(with: model.image) { [weak self] result in
             switch result {
             case .success(let image):
