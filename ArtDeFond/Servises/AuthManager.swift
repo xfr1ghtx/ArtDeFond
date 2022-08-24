@@ -66,9 +66,6 @@ final class AuthManager: AuthManagerDescription {
                 guard let user_id = Auth.auth().currentUser?.uid else {
                     return
                 }
-            
-                print(user_id)
-                
                 self?.database.collection("users").document(user_id).getDocument { (document, err) in
                     if let err = err {
                         completion(.failure(err))

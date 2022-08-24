@@ -82,20 +82,6 @@ final class AddressManager: AddressManagerDescription {
             Keys.district.rawValue: district,
             Keys.city.rawValue: city
         ]
-        
-//        let mockAddress = Address(id: "sssssss", user_id: "Some string", street: "Some string", house_number: 123, apartment_number: 123, post_index: 123, district: "Some string", city: "Some String")
-//
-//
-//        do {
-//            let data = try JSONEncoder().encode(mockAddress)
-//            print(data)
-//        } catch {
-//            print("error")
-//        }
-//
-//        guard let data = data else {
-//            return
-//        }
 
         database.collection("addresses").document(id).setData(data) { [weak self] error in
             guard let self = self else {
@@ -105,7 +91,6 @@ final class AddressManager: AddressManagerDescription {
             if let error = error {
                 completion(.failure(error))
             } else {
-                print(data)
                 if let picture = self.address(from: data) {
                     completion(.success(picture))
                 } else {

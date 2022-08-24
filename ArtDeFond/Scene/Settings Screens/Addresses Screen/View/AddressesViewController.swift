@@ -39,7 +39,6 @@ class AddressesViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("AddressesCollectionVC is loaded")
         tableViewSetup()
         
         viewModel.fetchAdresses {
@@ -74,7 +73,6 @@ class AddressesViewController: UIViewController {
     
     @objc
     func backTapped(){
-        print("back tapped")
         self.dismiss(animated: true)
     }
     

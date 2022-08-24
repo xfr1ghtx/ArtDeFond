@@ -154,9 +154,8 @@ struct NotificationModel: Codable {
             switch result {
             case .failure(let error):
                 print(error)
-            case .success(let something):
-                print(something)
-                info = PicInfo(title: something.title, image: something.image)
+            case .success(let picture):
+                info = PicInfo(title: picture.title, image: picture.image)
             }
         }
         return info

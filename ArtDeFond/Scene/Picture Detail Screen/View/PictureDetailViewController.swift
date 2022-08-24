@@ -318,42 +318,25 @@ class PictureDetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        viewModel.fetchPicture {
-            self.configurePictureInfo()
-        }
         layout()
+        callToViewModelForUIUpdate()
         
-//        
-//        let image = UIImageView()
-//        image.image = UIImage(named: "logo")
-        
-//        if let imageToUpload = image.image {
-////            ImageManager.shared.upload(image: imageToUpload) { result in
-////                switch result {
-////                case .failure(let error):
-////                    print(error)
-////                case .success(let something):
-////                    print(something)
-////                }
-////            }
-//        } else {
-//            print("some shit")
-//        }
+        func callToViewModelForUIUpdate(){
+            self.viewModel.bindFeedViewModelToController = {
+                self.configurePictureInfo()
+            }
+        }
         
         
     }
     
     func configurePictureInfo(){
-        // image
-        // ar???
         
-        
-        
-        guard let picture = viewModel.picture else {
+        guard let model = viewModel.picture else {
             return
         }
         
-        ImageManager.shared.image(with: picture.image) { [weak self] result in
+        ImageManager.shared.image(with: model.picture.image) { [weak self] result in
             switch result {
             case .success(let image):
                 self?.pictureImageView.image = image
@@ -363,21 +346,33 @@ class PictureDetailViewController: UIViewController {
         }
         
         var categoriesString = ""
-        picture.tags.forEach({ tag in
+        model.picture.tags.forEach({ tag in
             categoriesString = categoriesString + tag + " "
         })
         categoriesLabel.text = categoriesString.uppercased()
         
-        titleLabel.text = picture.title
-        descriptionLabel.text = picture.description
-        materialLabel.text = picture.materials
+        titleLabel.text = model.picture.title
+        descriptionLabel.text = model.picture.description
+        materialLabel.text = model.picture.materials
         
-        let sizeString = "\(picture.width)см x \(picture.height)см"
+        let sizeString = "\(model.picture.width)см x \(model.picture.height)см"
         sizeLabel.text = sizeString
         
-        yearLabel.text = "\(picture.year)"
+        yearLabel.text = "\(model.picture.year)"
         
-        // author configuration
+        
+        authorLabel.text = model.user?.nickname.uppercased()
+        
+        if let user = model.user {
+            ImageManager.shared.image(with: user.avatar_image) { [weak self] result in
+                switch result {
+                case .success(let image):
+                    self?.authorImageView.image = image
+                case .failure:
+                    self?.authorImageView.image = nil
+                }
+            }
+        }
         
         // bet configuration
     }
@@ -579,7 +574,7 @@ extension PictureDetailViewController: UIScrollViewDelegate {
                     headerHeight - scrollView.contentOffset.y
                 
                 if (scrollView.contentOffset.y < -210){
-                    print("playTrailerBtnPressed()")
+                   // 
                 }
             } else {
                 // Scrolling up: Parallax

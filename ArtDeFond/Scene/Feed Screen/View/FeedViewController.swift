@@ -67,6 +67,8 @@ class FeedViewController: UIViewController, UICollectionViewDelegateFlowLayout {
                 print(something)
             }
         }
+        
+        
         setup()
         callToViewModelForUIUpdate()
     }
