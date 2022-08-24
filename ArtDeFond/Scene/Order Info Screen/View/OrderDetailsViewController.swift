@@ -318,7 +318,7 @@ class OrderDetailsViewController: UIViewController {
                 case .failure( _):
                     self.pictureImageView.image = nil
                 case .success(let image):
-                    self.pictureImageView.image = image
+                    self.pictureImageView.setImage(image)
                 }
             }
         }
@@ -330,7 +330,7 @@ class OrderDetailsViewController: UIViewController {
                 case .failure( _):
                     self.sellerImageView.image = nil
                 case .success(let image):
-                    self.sellerImageView.image = image
+                    self.sellerImageView.setImage(image)
                 }
             }
         }
@@ -363,7 +363,7 @@ class OrderDetailsViewController: UIViewController {
                 case .failure( _):
                     self.buyerImageView.image = nil
                 case .success(let image):
-                    self.buyerImageView.image = image
+                    self.buyerImageView.setImage(image)
                 }
             }
         }

@@ -45,7 +45,7 @@ class AuctionCollectionViewCell: UICollectionViewCell {
         ImageManager.shared.image(with: model.image) { [weak self] result in
             switch result {
             case .success(let image):
-                self?.imageView.image = image
+                self?.imageView.setImage(image)
             case .failure:
                 self?.imageView.image = nil
             }

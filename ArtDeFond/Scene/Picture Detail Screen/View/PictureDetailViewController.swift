@@ -21,7 +21,7 @@ class PictureDetailViewController: UIViewController {
         let imageView = UIImageView()
         
         imageView.contentMode = .scaleAspectFill
-        imageView.backgroundColor = Constants.Colors.dirtyWhite
+        imageView.backgroundColor = .white
         imageView.clipsToBounds = true
         
         imageView.translatesAutoresizingMaskIntoConstraints = false
@@ -52,7 +52,8 @@ class PictureDetailViewController: UIViewController {
     lazy var categoriesLabel: UILabel = {
         let label = UILabel()
         
-        label.text = "ЖИВОПИСЬ АБСТРАКЦИЯ"
+        label.text = " "
+        label.numberOfLines = 1
         label.textColor = Constants.Colors.gray
         label.font = Constants.Fonts.semibold11
         
@@ -63,8 +64,8 @@ class PictureDetailViewController: UIViewController {
     lazy var titleLabel: UILabel = {
         let label = UILabel()
         
-        label.text = "Красивое название картины"
-        label.numberOfLines = 0
+        label.text = " "
+        label.numberOfLines = 2
         label.textColor = Constants.Colors.darkRed
         label.font = Constants.Fonts.semibold20
         
@@ -75,7 +76,8 @@ class PictureDetailViewController: UIViewController {
     lazy var descriptionLabel: UILabel = {
         let label = UILabel()
         
-        label.text = "Прекрасное описание нашей картины с красивым назнанием. Сюжет данного шедевра останется неразгаданной загадкой. Это все, что об этом можно сказать."
+        label.text = " "
+        label.numberOfLines = 5
         label.textColor = Constants.Colors.black
         label.font = Constants.Fonts.regular15
         label.numberOfLines = 0
@@ -88,6 +90,7 @@ class PictureDetailViewController: UIViewController {
         let label = UILabel()
         
         label.text = "Материалы"
+        label.numberOfLines = 1
         label.textColor = Constants.Colors.black
         label.font = Constants.Fonts.regular15
         
@@ -98,7 +101,8 @@ class PictureDetailViewController: UIViewController {
     lazy var materialLabel: UILabel = {
         let label = UILabel()
         
-        label.text = "Холст, масло"
+        label.text = " "
+        label.numberOfLines = 1
         label.textColor = Constants.Colors.pink
         label.font = Constants.Fonts.regular15
         
@@ -111,6 +115,7 @@ class PictureDetailViewController: UIViewController {
         let label = UILabel()
         
         label.text = "Размеры"
+        label.numberOfLines = 2
         label.textColor = Constants.Colors.black
         label.font = Constants.Fonts.regular15
         
@@ -121,7 +126,8 @@ class PictureDetailViewController: UIViewController {
     lazy var sizeLabel: UILabel = {
         let label = UILabel()
         
-        label.text = "1cm x 2cm"
+        label.text = " "
+        label.numberOfLines = 2
         label.textColor = Constants.Colors.pink
         label.font = Constants.Fonts.regular15
         
@@ -133,6 +139,7 @@ class PictureDetailViewController: UIViewController {
         let label = UILabel()
         
         label.text = "Год"
+        label.numberOfLines = 2
         label.textColor = Constants.Colors.black
         label.font = Constants.Fonts.regular15
         
@@ -143,7 +150,8 @@ class PictureDetailViewController: UIViewController {
     lazy var yearLabel: UILabel = {
         let label = UILabel()
         
-        label.text = "2001"
+        label.text = " "
+        label.numberOfLines = 2
         label.textColor = Constants.Colors.pink
         label.font = Constants.Fonts.regular15
         
@@ -169,7 +177,7 @@ class PictureDetailViewController: UIViewController {
     lazy var authorLabel: UILabel = {
         let label = UILabel()
         
-        label.text = "SOMEONE"
+        label.text = " "
         label.numberOfLines = 1
         label.font = Constants.Fonts.semibold11
         label.textColor = Constants.Colors.gray
@@ -335,11 +343,10 @@ class PictureDetailViewController: UIViewController {
         guard let model = viewModel.picture else {
             return
         }
-        
         ImageManager.shared.image(with: model.picture.image) { [weak self] result in
             switch result {
             case .success(let image):
-                self?.pictureImageView.image = image
+                self?.pictureImageView.setImage(image)
             case .failure:
                 self?.pictureImageView.image = nil
             }
@@ -367,7 +374,8 @@ class PictureDetailViewController: UIViewController {
             ImageManager.shared.image(with: user.avatar_image) { [weak self] result in
                 switch result {
                 case .success(let image):
-                    self?.authorImageView.image = image
+//                    self?.authorImageView.image = image
+                    self?.authorImageView.setImage(image)
                 case .failure:
                     self?.authorImageView.image = nil
                 }
@@ -422,14 +430,6 @@ class PictureDetailViewController: UIViewController {
             make.trailing.equalTo(mainContainerView.snp.trailing)
             make.bottom.equalTo(mainContainerView.snp.bottom)
         }
-        
-//        scrollView.addSubview(editImageBtn)
-//        editImageBtn.snp.makeConstraints { make in
-//            make.top.equalTo(pictureImageView.snp.top).offset(18)
-//            make.trailing.equalToSuperview().inset(16)
-//            make.width.equalTo(42)
-//            make.height.equalTo(42)
-//        }
         
         scrollView.addSubview(arBtn)
         arBtn.snp.makeConstraints { make in

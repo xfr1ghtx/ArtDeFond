@@ -103,7 +103,7 @@ class MyPicturesCell: UITableViewCell{
         ImageManager.shared.image(with: model.image) { [weak self] result in
             switch result {
             case .success(let image):
-                self?.image.image = image
+                self?.image.setImage(image)
             case .failure:
                 self?.image.image = nil
             }

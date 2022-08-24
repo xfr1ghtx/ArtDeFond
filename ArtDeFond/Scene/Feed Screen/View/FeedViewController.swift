@@ -7,8 +7,6 @@
 
 import UIKit
 import SnapKit
-
-// add pull to refresh
 // https://stackoverflow.com/questions/43212583/how-to-add-a-view-on-top-of-uitableview-that-scrolls-together-but-stick-to-top
 
 class FeedViewController: UIViewController, UICollectionViewDelegateFlowLayout {

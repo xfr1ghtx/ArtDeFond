@@ -107,7 +107,7 @@ class OrdersTableViewCell: UITableViewCell{
                 case .failure( _):
                     self.image.image = nil
                 case .success(let image):
-                    self.image.image = image
+                    self.image.setImage(image)
                 }
             }
         }

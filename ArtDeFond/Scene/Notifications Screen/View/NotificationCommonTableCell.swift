@@ -100,7 +100,7 @@ class NotificationCommonTableCell: UITableViewCell{
                 case .failure(let error):
                     print(error)
                 case .success(let image):
-                    self.image.image = image
+                    self.image.setImage(image)
                 }
             }
         }
