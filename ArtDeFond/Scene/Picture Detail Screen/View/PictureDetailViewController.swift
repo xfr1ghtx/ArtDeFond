@@ -52,10 +52,10 @@ class PictureDetailViewController: UIViewController {
     lazy var categoriesLabel: UILabel = {
         let label = UILabel()
         
-        label.text = " "
-        label.numberOfLines = 1
+        label.text = "ЖИВОПИСЬ АБСТРАКЦИЯ"
+//        label.numberOfLines = 1
         label.textColor = Constants.Colors.gray
-        label.font = Constants.Fonts.semibold11
+        label.font = Constants.Fonts.regular11
         
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
@@ -76,8 +76,8 @@ class PictureDetailViewController: UIViewController {
     lazy var descriptionLabel: UILabel = {
         let label = UILabel()
         
-        label.text = " "
-        label.numberOfLines = 5
+        label.text = "Прекрасное описание нашей картины с красивым назнанием. Сюжет данного шедевра останется неразгаданной загадкой. Это все, что об этом можно сказать."
+        label.numberOfLines = 4
         label.textColor = Constants.Colors.black
         label.font = Constants.Fonts.regular15
         label.numberOfLines = 0
@@ -101,7 +101,7 @@ class PictureDetailViewController: UIViewController {
     lazy var materialLabel: UILabel = {
         let label = UILabel()
         
-        label.text = " "
+        label.text = "Холст и масло"
         label.numberOfLines = 1
         label.textColor = Constants.Colors.pink
         label.font = Constants.Fonts.regular15
@@ -126,7 +126,7 @@ class PictureDetailViewController: UIViewController {
     lazy var sizeLabel: UILabel = {
         let label = UILabel()
         
-        label.text = " "
+        label.text = "120см х 70см"
         label.numberOfLines = 2
         label.textColor = Constants.Colors.pink
         label.font = Constants.Fonts.regular15
@@ -150,7 +150,7 @@ class PictureDetailViewController: UIViewController {
     lazy var yearLabel: UILabel = {
         let label = UILabel()
         
-        label.text = " "
+        label.text = "2001"
         label.numberOfLines = 2
         label.textColor = Constants.Colors.pink
         label.font = Constants.Fonts.regular15
@@ -189,7 +189,7 @@ class PictureDetailViewController: UIViewController {
     lazy var startBetLabel: UILabel = {
         let label = UILabel()
         
-        label.text = "$ 000,00"
+        label.text = "$ 100,00"
         label.numberOfLines = 1
         label.font = Constants.Fonts.medium15
         label.textColor = Constants.Colors.gray
@@ -212,7 +212,7 @@ class PictureDetailViewController: UIViewController {
     lazy var currentAmountTitleLabel: UILabel = {
         let label = UILabel()
         
-        label.text = "Текущая ставка"
+        label.text = "Цена"
         label.numberOfLines = 1
         label.font = Constants.Fonts.medium17
         label.textColor = Constants.Colors.darkRed
@@ -224,7 +224,7 @@ class PictureDetailViewController: UIViewController {
     lazy var currentAmountLabel: UILabel = {
         let label = UILabel()
         
-        label.text = "$ 000,00"
+        label.text = "₽ 100,00"
         label.numberOfLines = 1
         label.font = Constants.Fonts.medium17
         label.textColor = Constants.Colors.darkRed
@@ -356,18 +356,23 @@ class PictureDetailViewController: UIViewController {
         model.picture.tags.forEach({ tag in
             categoriesString = categoriesString + tag + " "
         })
-        categoriesLabel.text = categoriesString.uppercased()
-        
+//        categoriesLabel.text = categoriesString.uppercased()
+        titleLabel.fadeTransition(0.4)
         titleLabel.text = model.picture.title
+        descriptionLabel.fadeTransition(0.4)
         descriptionLabel.text = model.picture.description
+        materialLabel.fadeTransition(0.4)
         materialLabel.text = model.picture.materials
         
         let sizeString = "\(model.picture.width)см x \(model.picture.height)см"
+        
+        sizeLabel.fadeTransition(0.4)
         sizeLabel.text = sizeString
         
+        yearLabel.fadeTransition(0.4)
         yearLabel.text = "\(model.picture.year)"
         
-        
+        authorLabel.fadeTransition(0.4)
         authorLabel.text = model.user?.nickname.uppercased()
         
         if let user = model.user {
@@ -554,14 +559,14 @@ class PictureDetailViewController: UIViewController {
             make.trailing.equalToSuperview().inset(27)
         }
         
-        let startBetStackView = makeStackView(l1: startBetTitleLabel, l2: startBetLabel)
-        whiteView.addSubview(startBetStackView)
-        startBetStackView.snp.makeConstraints { make in
-            make.top.equalTo(currentBetStackView.snp.bottom).offset(13)
-            make.leading.equalToSuperview().offset(27)
-            make.trailing.equalToSuperview().inset(27)
-            make.bottom.equalToSuperview() // !!!!
-        }
+//        let startBetStackView = makeStackView(l1: startBetTitleLabel, l2: startBetLabel)
+//        whiteView.addSubview(startBetStackView)
+//        startBetStackView.snp.makeConstraints { make in
+//            make.top.equalTo(currentBetStackView.snp.bottom).offset(13)
+//            make.leading.equalToSuperview().offset(27)
+//            make.trailing.equalToSuperview().inset(27)
+//            make.bottom.equalToSuperview() // !!!!
+//        }
     }
 }
 

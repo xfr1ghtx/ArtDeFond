@@ -11,7 +11,7 @@ import UIKit
 class Constants{
     
     class Fonts{
-        
+        static let regular11 = UIFont.systemFont(ofSize: 11 , weight: .regular)
         static let regular13 = UIFont.systemFont(ofSize: 13 , weight: .regular)
         static let regular15 = UIFont.systemFont(ofSize: 15 , weight: .regular)
         static let regular17 = UIFont.systemFont(ofSize: 17, weight: .regular)

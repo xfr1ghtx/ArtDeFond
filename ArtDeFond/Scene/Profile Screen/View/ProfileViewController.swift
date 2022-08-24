@@ -190,8 +190,9 @@ class ProfileViewController: UIViewController, UICollectionViewDelegateFlowLayou
     
     private func configureUser(){
         
-        
+        nicknameLabel.fadeTransition(0.4)
         nicknameLabel.text = viewModel.user?.nickname.uppercased()
+        descriptionLabel.fadeTransition(0.4)
         descriptionLabel.text = viewModel.user?.description
         
         guard let balance = viewModel.user?.accountBalance else {
@@ -369,6 +370,17 @@ extension ProfileViewController: UITableViewDelegate {
 extension ProfileViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         viewModel.pictures.count
+    }
+    
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        cell.alpha = 0
+
+        UIView.animate(
+            withDuration: 0.5,
+            delay: 0.05 * Double(indexPath.row),
+            animations: {
+                cell.alpha = 1
+        })
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
