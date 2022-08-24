@@ -8,9 +8,9 @@
 import Foundation
 import UIKit
 
-class CollectionCell: UICollectionViewCell {
+class CollectionCellSignUp: UICollectionViewCell {
     
-    static let reuseIdentifier = "CollectionCell"
+    static let reuseIdentifier = "CollectionCellSignUp"
     
     private lazy var title: UILabel = {
         let label = UILabel()

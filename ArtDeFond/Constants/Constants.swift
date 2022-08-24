@@ -50,6 +50,7 @@ class Constants{
         static let house = UIImage(named: "House")!
         static let backArrow = UIImage(named: "Back arrow")!
         static let avatarPlaceholder = UIImage(named: "avatarPlaceholder")!
+        static let rub = UIImage(named: "Rubble")!
     }
     
     class Images{

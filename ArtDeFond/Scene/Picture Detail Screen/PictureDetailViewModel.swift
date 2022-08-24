@@ -16,8 +16,16 @@ class PictureDetailViewModel {
     var error: Error?
     var refreshing = false
     
+    var didUpdate: (() -> Void)?
+    
     required init(with pictureId: String){
         self.pictureId = pictureId
+    }
+    
+    func getData(){
+        //тут что-то происходит
+        
+        self.didUpdate?()
     }
 
     func fetchPicture(completion: @escaping () -> Void) {

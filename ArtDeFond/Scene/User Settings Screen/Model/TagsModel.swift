@@ -28,3 +28,23 @@ let modelArray: [CollectionModel] = [
     CollectionModel(title: "Живопись", color: Constants.Colors.pink),
     CollectionModel(title: "Гравюра", color: Constants.Colors.pink),
 ]
+
+class CollectionModelSearch {
+    var title: String
+    var imageView: UIImage
+    
+    init(title: String, imageView: UIImage) {
+        self.title = title
+        self.imageView = imageView
+    }}
+
+let modelArraySearch: [CollectionModelSearch] = [
+    CollectionModelSearch(title: "Живопись", imageView: Constants.Images.logo),
+    CollectionModelSearch(title: "Гравюра", imageView: Constants.Images.logo),
+    CollectionModelSearch(title: "Живопись", imageView: Constants.Images.logo),
+    CollectionModelSearch(title: "Гравюра", imageView: Constants.Images.logo),
+    CollectionModelSearch(title: "Живопись", imageView: Constants.Images.logo),
+    CollectionModelSearch(title: "Гравюра", imageView: Constants.Images.logo),
+    CollectionModelSearch(title: "Живопись", imageView: Constants.Images.logo),
+    CollectionModelSearch(title: "Гравюра", imageView: Constants.Images.logo),
+]

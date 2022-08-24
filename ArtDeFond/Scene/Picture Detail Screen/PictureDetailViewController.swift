@@ -339,6 +339,12 @@ class PictureDetailViewController: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
+    private func bindToViewModel(){
+        viewModel.didUpdate = {[weak self] in
+            //а здесь обновляем вью
+        }
+    }
+    
  
     
 

@@ -39,7 +39,7 @@ class InterestViewController: UIViewController {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .vertical
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
-        collectionView.register(CollectionCell.self, forCellWithReuseIdentifier: CollectionCell.reuseIdentifier)
+        collectionView.register(CollectionCellSignUp.self, forCellWithReuseIdentifier: CollectionCellSignUp.reuseIdentifier)
         collectionView.backgroundColor = .clear
         collectionView.showsVerticalScrollIndicator = false
         return collectionView
@@ -66,7 +66,7 @@ class InterestViewController: UIViewController {
         }
         
         view.addSubview(picturesCollection)
-        createDelegates()
+        picturesCollectionSetup()
         picturesCollection.snp.makeConstraints { make in
             make.top.equalTo(descriptionTitle.snp.bottom).offset(23)
             make.left.right.equalTo(view.safeAreaLayoutGuide).inset(24)
@@ -76,12 +76,6 @@ class InterestViewController: UIViewController {
     }
     
     private func picturesCollectionSetup(){
-        
-        
-    }
-    
-    
-    func createDelegates() {
         picturesCollection.dataSource = self
         picturesCollection.delegate = self
     }
@@ -112,7 +106,7 @@ extension InterestViewController: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CollectionCell.reuseIdentifier, for: indexPath) as? CollectionCell else { return UICollectionViewCell() }
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CollectionCellSignUp.reuseIdentifier, for: indexPath) as? CollectionCellSignUp else { return UICollectionViewCell() }
         cell.configureCell(title: modelArray[indexPath.row].title, color: modelArray[indexPath.row].color)
         return cell
     }
@@ -147,9 +141,3 @@ extension InterestViewController: UICollectionViewDelegateFlowLayout {
     }
 }
 
-enum ScreenSize {
-    
-    static let width = UIScreen.main.bounds.width
-    static let height = UIScreen.main.bounds.height
-    
-}

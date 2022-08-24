@@ -36,6 +36,18 @@
 		2C97B00A28B37080006CDD55 /* PictureDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C97B00928B37080006CDD55 /* PictureDetailViewModel.swift */; };
 		2CB5905128B155B4005BFBB1 /* FeedViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CB5905028B155B4005BFBB1 /* FeedViewModel.swift */; };
 		8B1B075E28AA322C00854E00 /* TestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B1B075D28AA322C00854E00 /* TestViewController.swift */; };
+		8B40536228B5157B00E6E776 /* PictureDescriptionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B40536128B5157B00E6E776 /* PictureDescriptionViewController.swift */; };
+		8B40536528B5772900E6E776 /* TagListView in Frameworks */ = {isa = PBXBuildFile; productRef = 8B40536428B5772900E6E776 /* TagListView */; };
+		8B40536728B57D1400E6E776 /* CostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B40536628B57D1400E6E776 /* CostViewController.swift */; };
+		8B40536928B57F6700E6E776 /* LabelSwitch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B40536828B57F6700E6E776 /* LabelSwitch.swift */; };
+		8B40536E28B5983400E6E776 /* UploadPhotoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B40536D28B5983400E6E776 /* UploadPhotoViewModel.swift */; };
+		8B40537028B5984A00E6E776 /* UploadPhotoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B40536F28B5984A00E6E776 /* UploadPhotoModel.swift */; };
+		8B40537328B59B4200E6E776 /* PictureDescriptionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B40537228B59B4200E6E776 /* PictureDescriptionViewModel.swift */; };
+		8B40537528B59B5400E6E776 /* PictureDescriptionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B40537428B59B5400E6E776 /* PictureDescriptionModel.swift */; };
+		8B40537828B59F3000E6E776 /* CostViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B40537728B59F3000E6E776 /* CostViewModel.swift */; };
+		8B40537A28B59F3900E6E776 /* CostModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B40537928B59F3900E6E776 /* CostModel.swift */; };
+		8B40537E28B5FBB700E6E776 /* Screen Size.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B40537D28B5FBB700E6E776 /* Screen Size.swift */; };
+		8B40538028B5FC5100E6E776 /* CollectionCellSearch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B40537F28B5FC5100E6E776 /* CollectionCellSearch.swift */; };
 		8B51DE4A28A97DCB002E10AC /* AppDependencies.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B51DE4928A97DCB002E10AC /* AppDependencies.swift */; };
 		8B51DE4D28A97E80002E10AC /* UINavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B51DE4C28A97E80002E10AC /* UINavigationController.swift */; };
 		8B5DE2F528AABAC400852B34 /* CustomTextFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B5DE2F428AABAC400852B34 /* CustomTextFieldView.swift */; };
@@ -73,7 +85,7 @@
 		8BF53C9428A4257E001B5AC3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8BF53C9328A4257E001B5AC3 /* Assets.xcassets */; };
 		8BF53C9728A4257E001B5AC3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8BF53C9528A4257E001B5AC3 /* LaunchScreen.storyboard */; };
 		CEE9CCA028B4C74A00F1B4C9 /* TagsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEE9CC9F28B4C74A00F1B4C9 /* TagsModel.swift */; };
-		CEE9CCA228B4C79D00F1B4C9 /* CollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEE9CCA128B4C79D00F1B4C9 /* CollectionCell.swift */; };
+		CEE9CCA228B4C79D00F1B4C9 /* CollectionCellSignUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEE9CCA128B4C79D00F1B4C9 /* CollectionCellSignUp.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -105,6 +117,17 @@
 		2C97B00928B37080006CDD55 /* PictureDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PictureDetailViewModel.swift; sourceTree = "<group>"; };
 		2CB5905028B155B4005BFBB1 /* FeedViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewModel.swift; sourceTree = "<group>"; };
 		8B1B075D28AA322C00854E00 /* TestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestViewController.swift; sourceTree = "<group>"; };
+		8B40536128B5157B00E6E776 /* PictureDescriptionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PictureDescriptionViewController.swift; sourceTree = "<group>"; };
+		8B40536628B57D1400E6E776 /* CostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CostViewController.swift; sourceTree = "<group>"; };
+		8B40536828B57F6700E6E776 /* LabelSwitch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelSwitch.swift; sourceTree = "<group>"; };
+		8B40536D28B5983400E6E776 /* UploadPhotoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadPhotoViewModel.swift; sourceTree = "<group>"; };
+		8B40536F28B5984A00E6E776 /* UploadPhotoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadPhotoModel.swift; sourceTree = "<group>"; };
+		8B40537228B59B4200E6E776 /* PictureDescriptionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PictureDescriptionViewModel.swift; sourceTree = "<group>"; };
+		8B40537428B59B5400E6E776 /* PictureDescriptionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PictureDescriptionModel.swift; sourceTree = "<group>"; };
+		8B40537728B59F3000E6E776 /* CostViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CostViewModel.swift; sourceTree = "<group>"; };
+		8B40537928B59F3900E6E776 /* CostModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CostModel.swift; sourceTree = "<group>"; };
+		8B40537D28B5FBB700E6E776 /* Screen Size.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Screen Size.swift"; sourceTree = "<group>"; };
+		8B40537F28B5FC5100E6E776 /* CollectionCellSearch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionCellSearch.swift; sourceTree = "<group>"; };
 		8B51DE4928A97DCB002E10AC /* AppDependencies.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDependencies.swift; sourceTree = "<group>"; };
 		8B51DE4C28A97E80002E10AC /* UINavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UINavigationController.swift; sourceTree = "<group>"; };
 		8B5DE2F428AABAC400852B34 /* CustomTextFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextFieldView.swift; sourceTree = "<group>"; };
@@ -135,7 +158,7 @@
 		8BF53C9628A4257E001B5AC3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8BF53C9828A4257E001B5AC3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CEE9CC9F28B4C74A00F1B4C9 /* TagsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagsModel.swift; sourceTree = "<group>"; };
-		CEE9CCA128B4C79D00F1B4C9 /* CollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionCell.swift; sourceTree = "<group>"; };
+		CEE9CCA128B4C79D00F1B4C9 /* CollectionCellSignUp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionCellSignUp.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -147,6 +170,7 @@
 				8BAE09EF28A4DB07004CD53C /* FirebaseDatabaseSwift in Frameworks */,
 				8BAE09ED28A4DB07004CD53C /* FirebaseDatabase in Frameworks */,
 				8BAE09F728A4DB07004CD53C /* FirebaseStorage in Frameworks */,
+				8B40536528B5772900E6E776 /* TagListView in Frameworks */,
 				2C24973A28B17C0400551795 /* Kingfisher in Frameworks */,
 				8BE7977828B0317700DC72D9 /* TPKeyboardAvoiding in Frameworks */,
 				8BF2D35E28A4D8F400979D9C /* SnapKit in Frameworks */,
@@ -354,6 +378,52 @@
 			path = Testing;
 			sourceTree = "<group>";
 		};
+		8B40536C28B5802200E6E776 /* LabelSlider */ = {
+			isa = PBXGroup;
+			children = (
+				8B40536828B57F6700E6E776 /* LabelSwitch.swift */,
+			);
+			path = LabelSlider;
+			sourceTree = "<group>";
+		};
+		8B40537128B598BF00E6E776 /* Upload Photo */ = {
+			isa = PBXGroup;
+			children = (
+				8BE7976328AF625700DC72D9 /* UploadPhotoViewController.swift */,
+				8B40536D28B5983400E6E776 /* UploadPhotoViewModel.swift */,
+				8B40536F28B5984A00E6E776 /* UploadPhotoModel.swift */,
+			);
+			path = "Upload Photo";
+			sourceTree = "<group>";
+		};
+		8B40537628B59B5D00E6E776 /* Picture Description */ = {
+			isa = PBXGroup;
+			children = (
+				8B40536128B5157B00E6E776 /* PictureDescriptionViewController.swift */,
+				8B40537228B59B4200E6E776 /* PictureDescriptionViewModel.swift */,
+				8B40537428B59B5400E6E776 /* PictureDescriptionModel.swift */,
+			);
+			path = "Picture Description";
+			sourceTree = "<group>";
+		};
+		8B40537B28B59F4000E6E776 /* Cost  */ = {
+			isa = PBXGroup;
+			children = (
+				8B40536628B57D1400E6E776 /* CostViewController.swift */,
+				8B40537728B59F3000E6E776 /* CostViewModel.swift */,
+				8B40537928B59F3900E6E776 /* CostModel.swift */,
+			);
+			path = "Cost ";
+			sourceTree = "<group>";
+		};
+		8B40537C28B5FBA700E6E776 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				8B40537D28B5FBB700E6E776 /* Screen Size.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		8B51DE4B28A97E6F002E10AC /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
@@ -403,6 +473,7 @@
 				8BE7977128B015F800DC72D9 /* CustomButtom */,
 				8BE7975D28AE103A00DC72D9 /* TextField + Label */,
 				8B5DE2F028AABA9200852B34 /* CustomTextField */,
+				8B40536C28B5802200E6E776 /* LabelSlider */,
 			);
 			path = "Custom UI";
 			sourceTree = "<group>";
@@ -428,7 +499,9 @@
 		8BA9ECCE28AD099B00DFF138 /* Search Screen */ = {
 			isa = PBXGroup;
 			children = (
+				8B40537C28B5FBA700E6E776 /* Model */,
 				8BA9ECD628AD24A700DFF138 /* SearchViewController.swift */,
+				8B40537F28B5FC5100E6E776 /* CollectionCellSearch.swift */,
 			);
 			path = "Search Screen";
 			sourceTree = "<group>";
@@ -436,7 +509,9 @@
 		8BA9ECCF28AD0A2900DFF138 /* Upload Photo Screen */ = {
 			isa = PBXGroup;
 			children = (
-				8BE7976328AF625700DC72D9 /* UploadPhotoViewController.swift */,
+				8B40537128B598BF00E6E776 /* Upload Photo */,
+				8B40537628B59B5D00E6E776 /* Picture Description */,
+				8B40537B28B59F4000E6E776 /* Cost  */,
 			);
 			path = "Upload Photo Screen";
 			sourceTree = "<group>";
@@ -522,7 +597,7 @@
 				8BE7977A28B042CE00DC72D9 /* SignUpViewController.swift */,
 				2C8D7C9E28B219F80036E784 /* AboutMeViewController.swift */,
 				8B9DC9F128B4AC87002418AC /* InterestViewController.swift */,
-				CEE9CCA128B4C79D00F1B4C9 /* CollectionCell.swift */,
+				CEE9CCA128B4C79D00F1B4C9 /* CollectionCellSignUp.swift */,
 			);
 			path = "Sign Up Screen";
 			sourceTree = "<group>";
@@ -587,6 +662,7 @@
 				8BAE09F628A4DB07004CD53C /* FirebaseStorage */,
 				8BE7977728B0317700DC72D9 /* TPKeyboardAvoiding */,
 				2C24973928B17C0400551795 /* Kingfisher */,
+				8B40536428B5772900E6E776 /* TagListView */,
 			);
 			productName = ArtDeFond;
 			productReference = 8BF53C8728A42579001B5AC3 /* ArtDeFond.app */;
@@ -621,6 +697,7 @@
 				8BAE09E928A4DB07004CD53C /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 				8BE7977628B0317700DC72D9 /* XCRemoteSwiftPackageReference "TPKeyboardAvoiding" */,
 				2C24973828B17C0300551795 /* XCRemoteSwiftPackageReference "Kingfisher" */,
+				8B40536328B5772900E6E776 /* XCRemoteSwiftPackageReference "TagListView" */,
 			);
 			productRefGroup = 8BF53C8828A42579001B5AC3 /* Products */;
 			projectDirPath = "";
@@ -652,8 +729,11 @@
 				2C0FD8AD28B065FE0004337C /* PictureFeedCell.swift in Sources */,
 				8B5DE2F728AABAE500852B34 /* CustomTextFieldViewModel.swift in Sources */,
 				2C0FD8B428B06AC10004337C /* PictureDetailViewController.swift in Sources */,
+				8B40536728B57D1400E6E776 /* CostViewController.swift in Sources */,
+				8B40537328B59B4200E6E776 /* PictureDescriptionViewModel.swift in Sources */,
 				8B5DE2F528AABAC400852B34 /* CustomTextFieldView.swift in Sources */,
 				8BAE09FE28A4F23D004CD53C /* AppCoordinator.swift in Sources */,
+				8B40537E28B5FBB700E6E776 /* Screen Size.swift in Sources */,
 				8BE7976428AF625700DC72D9 /* UploadPhotoViewController.swift in Sources */,
 				2C97AFE528B29D83006CDD55 /* AddressesManager.swift in Sources */,
 				2C97B00628B2B931006CDD55 /* ProfilePictureModel.swift in Sources */,
@@ -661,6 +741,7 @@
 				8B51DE4D28A97E80002E10AC /* UINavigationController.swift in Sources */,
 				2C24973328B1694C00551795 /* PictureManager.swift in Sources */,
 				8BE7976E28AFF64600DC72D9 /* UITabBarController.swift in Sources */,
+				8B40537028B5984A00E6E776 /* UploadPhotoModel.swift in Sources */,
 				8BA9ECDB28AD250000DFF138 /* ProfileViewController.swift in Sources */,
 				2C97B00A28B37080006CDD55 /* PictureDetailViewModel.swift in Sources */,
 				2C24974128B1818000551795 /* CircleFeedAuctionModel.swift in Sources */,
@@ -669,6 +750,7 @@
 				8BE7977528B016FE00DC72D9 /* CustomButtonViewModel.swift in Sources */,
 				8B5DE2FD28AAF76600852B34 /* Constants.swift in Sources */,
 				8BE7977328B0160D00DC72D9 /* CustomButtomType.swift in Sources */,
+				8B40538028B5FC5100E6E776 /* CollectionCellSearch.swift in Sources */,
 				2C97AFF228B2A951006CDD55 /* AddressesViewModel.swift in Sources */,
 				8BA9ECD528AD242800DFF138 /* FeedViewController.swift in Sources */,
 				8BE7976628AF629300DC72D9 /* AuthViewController.swift in Sources */,
@@ -678,14 +760,18 @@
 				8BA9ECCB28ACF57D00DFF138 /* TabBarCoordinator.swift in Sources */,
 				2C97AFF028B2A920006CDD55 /* AddressTableViewCell.swift in Sources */,
 				2C97B00428B2B85D006CDD55 /* SettingsTableViewCell.swift in Sources */,
-				CEE9CCA228B4C79D00F1B4C9 /* CollectionCell.swift in Sources */,
+				CEE9CCA228B4C79D00F1B4C9 /* CollectionCellSignUp.swift in Sources */,
 				2C0FD8B128B0667C0004337C /* PictureItemModel.swift in Sources */,
 				8BA9ECD928AD24CF00DFF138 /* NotificationsViewController.swift in Sources */,
 				8BF53C8B28A42579001B5AC3 /* AppDelegate.swift in Sources */,
+				8B40536E28B5983400E6E776 /* UploadPhotoViewModel.swift in Sources */,
 				2C8D7C9F28B219F80036E784 /* AboutMeViewController.swift in Sources */,
 				CEE9CCA028B4C74A00F1B4C9 /* TagsModel.swift in Sources */,
 				8BA9ECD728AD24A700DFF138 /* SearchViewController.swift in Sources */,
 				2C97AFF928B2ADC8006CDD55 /* OrderViewController.swift in Sources */,
+				8B40537A28B59F3900E6E776 /* CostModel.swift in Sources */,
+				8B40537828B59F3000E6E776 /* CostViewModel.swift in Sources */,
+				8B40536228B5157B00E6E776 /* PictureDescriptionViewController.swift in Sources */,
 				2C97B00228B2B830006CDD55 /* SettingsModel.swift in Sources */,
 				2C97AFE328B299AD006CDD55 /* UserSettingsViewController.swift in Sources */,
 				8BF53C8D28A42579001B5AC3 /* SceneDelegate.swift in Sources */,
@@ -696,9 +782,11 @@
 				8B5DE2F928AABAF700852B34 /* CustomTextFieldType.swift in Sources */,
 				2C0FD8AF28B066380004337C /* AuctionCollectionViewCell.swift in Sources */,
 				8B1B075E28AA322C00854E00 /* TestViewController.swift in Sources */,
+				8B40536928B57F6700E6E776 /* LabelSwitch.swift in Sources */,
 				2C24973F28B1815900551795 /* FeedPictureModel.swift in Sources */,
 				2C97AFFD28B2AFD6006CDD55 /* OrderManager.swift in Sources */,
 				2C97B00828B2B953006CDD55 /* ProfileUserModel.swift in Sources */,
+				8B40537528B59B5400E6E776 /* PictureDescriptionModel.swift in Sources */,
 				8B9DC9F228B4AC87002418AC /* InterestViewController.swift in Sources */,
 				2C97AFE928B2A035006CDD55 /* AddressesViewController.swift in Sources */,
 				8BAE09FC28A4EFFB004CD53C /* Coordinator.swift in Sources */,
@@ -924,6 +1012,14 @@
 				kind = branch;
 			};
 		};
+		8B40536328B5772900E6E776 /* XCRemoteSwiftPackageReference "TagListView" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/ElaWorkshop/TagListView";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
 		8BAE09E928A4DB07004CD53C /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
@@ -955,6 +1051,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 2C24973828B17C0300551795 /* XCRemoteSwiftPackageReference "Kingfisher" */;
 			productName = Kingfisher;
+		};
+		8B40536428B5772900E6E776 /* TagListView */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 8B40536328B5772900E6E776 /* XCRemoteSwiftPackageReference "TagListView" */;
+			productName = TagListView;
 		};
 		8BAE09EA28A4DB07004CD53C /* FirebaseAuth */ = {
 			isa = XCSwiftPackageProductDependency;
