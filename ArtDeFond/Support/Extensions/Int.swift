@@ -10,6 +10,6 @@ import Foundation
 extension Int {
     func toRubles() -> String {
         let stringDouble = String(format: "%.2f", Double(self)/100)
-        return "₽\(stringDouble)"
+        return "\(self/100)₽"
     }
 }

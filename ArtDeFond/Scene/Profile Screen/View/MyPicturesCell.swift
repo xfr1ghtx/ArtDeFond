@@ -72,6 +72,7 @@ class MyPicturesCell: UITableViewCell{
         label.text = ""
         label.lineBreakMode = .byClipping
         label.numberOfLines = 1
+        label.textAlignment = .right
         label.textColor = Constants.Colors.darkRed
         label.font = Constants.Fonts.bold24
         

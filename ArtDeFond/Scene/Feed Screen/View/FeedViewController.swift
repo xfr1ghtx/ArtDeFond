@@ -97,8 +97,6 @@ class FeedViewController: UIViewController, UICollectionViewDelegateFlowLayout {
     }
     
     func callToViewModelForUIUpdate(){
-        
-        
         self.viewModel =  FeedViewModel()
         self.viewModel.bindFeedViewModelToController = {
             self.updateDataSource()
@@ -228,7 +226,12 @@ extension FeedViewController: UITableViewDataSource {
                 
             let cellModel: PictureWithAuthorModel?
             
-            cellModel = viewModel.pictures[indexPath.row]
+            // не работает
+            let array = viewModel.pictures.sorted { first, second in
+                return first.picture.time > second.picture.time
+            }
+            
+            cellModel = array[indexPath.row]
             
             if let cellModel = cellModel {
                 cell.configure(model: cellModel)

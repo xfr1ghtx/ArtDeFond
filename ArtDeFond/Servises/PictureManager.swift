@@ -85,6 +85,10 @@ final class PicturesManager: PicturesManagerDescription {
                 completion(.failure(error))
             } else if let pictures = self?.pictures(from: snapshot) {
                 let outputPictures = pictures.sorted(by: {$0.time > $1.time})
+                
+//                let convertedArray = pictures
+//                    .compactMap(dateFormatter.date(from:))
+//                    .sorted(by: >)
                 completion(.success(outputPictures))
             } else {
                 fatalError()
