@@ -8,10 +8,6 @@
 import UIKit
 
 struct FeedPictureModel {
-    let id: String
-    let image: UIImage?
-    let title: String
-    let authorName: String?
-    let authorImage: UIImage?
+    var user: User?
     let picture: Picture
 }

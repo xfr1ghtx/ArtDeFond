@@ -54,26 +54,21 @@ class FeedViewController: UIViewController, UICollectionViewDelegateFlowLayout {
         fatalError("init(coder:) has not been implemented")
     }
     
-
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-                AuthManager.shared.signIn(withEmail: "three@mail.com", withPassword: "password") { result in
-                    switch result {
-                    case .failure(let error):
-                        print(error)
-                    case .success(let something):
-                        print(something)
-                    }
-                }
-        
+        AuthManager.shared.signIn(withEmail: "three@mail.com", withPassword: "password") { result in
+            switch result {
+            case .failure(let error):
+                print(error)
+            case .success(let something):
+                print(something)
+            }
+        }
         setup()
-//        fetchData()
         callToViewModelForUIUpdate()
-        
-        
-        
     }
     
     func callToViewModelForUIUpdate(){
@@ -125,12 +120,6 @@ class FeedViewController: UIViewController, UICollectionViewDelegateFlowLayout {
         feedTableView.dataSource = self
     }
     
-//    private func fetchData(){
-//        viewModel.fetchData {
-//            self.feedTableView.reloadData()
-//            self.collectionView.reloadData()
-//        }
-//    }
     
 }
 
@@ -169,7 +158,7 @@ extension FeedViewController: UITableViewDelegate {
         let cell = tableView.cellForRow(at: indexPath) as? PictureFeedCell
         guard
             let cell = cell,
-            let pictureId = cell.pictureModel?.id
+            let pictureId = cell.pictureModel?.picture.id
         else {
             return
         }

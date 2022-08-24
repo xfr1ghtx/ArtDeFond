@@ -79,10 +79,9 @@ class PictureFeedCell: UITableViewCell{
     func configure(model: FeedPictureModel) {
         layout()
         self.pictureModel = model
-        
-        self.titleLabel.text = model.title
-        
-        // неправильно?
+        self.authorLabel.text = model.user?.nickname.uppercased()
+        self.titleLabel.text = model.picture.title
+    
         ImageManager.shared.image(with: model.picture.image) { result in
             switch result {
             case .failure(let error):
@@ -92,6 +91,16 @@ class PictureFeedCell: UITableViewCell{
             }
         }
         
+        if let avatarImage = model.user?.avatar_image {
+            ImageManager.shared.image(with: avatarImage) { result in
+                switch result {
+                case .failure(let error):
+                    print(error)
+                case .success(let pictureImage):
+                    self.authorImageView.image = pictureImage
+                }
+            }
+        }
     }
     
     
@@ -133,9 +142,9 @@ class PictureFeedCell: UITableViewCell{
     
     
     override func prepareForReuse() {
-//        super.prepareForReuse()
-//        self.titleLabel.text = nil
-//        self.coverImageView.image = nil
+        super.prepareForReuse()
+        self.coverImageView.image = nil
+        self.authorImageView.image = nil
     }
     
     

@@ -31,34 +31,63 @@ class FeedViewModel: NSObject {
             fetchData()
         }
     
+    func loadPictures(completion: @escaping ([FeedPictureModel]) -> Void) {
+        PicturesManager.shared.loadPictureInformation(type: .pictures) { [weak self] result in
+            guard let self = self else {
+                completion([])
+                return
+            }
+
+            switch result {
+            case .failure:
+                completion([])
+            case .success(let pictures):
+                let group = DispatchGroup()
+                var models: [String: FeedPictureModel] = [:]
+                
+                for picture in pictures {
+                    group.enter()
+                    self.loadUser(for: picture) { user in
+                        group.leave()
+                        models[picture.id] = FeedPictureModel(user: user, picture: picture)
+                    }
+                }
+            
+                group.notify(queue: .main) {
+                    let resultModels = pictures.map { models[$0.id] }
+                    completion(resultModels.compactMap { $0 })
+                }
+            }
+        }
+    }
+    
+    func loadUser(for picture: Picture, completion: @escaping (User?) -> Void) {
+        AuthManager.shared.getUserInformation(for: picture.author_id) { result in
+            switch result {
+            case .success(let user):
+                completion(user)
+            case .failure(let error):
+                completion(nil)
+            }
+        }
+    }
+    
     func fetchData() {
         refreshing = true
         
         let group = DispatchGroup()
         var outputPictures = [FeedPictureModel]()
+        
         group.enter()
-        PicturesManager.shared.loadPictureInformation(type: .pictures) { [weak self] result in
-            switch result {
-            case .failure(let error):
-                print(error)
-
-                group.leave()
-                
-            case .success(let pictures):
-                
-                pictures.forEach { picture in
-                    let newPicture = FeedPictureModel(id: picture.id, image: nil, title: picture.title, authorName: "authorName", authorImage: nil, picture: picture)
-                    print(newPicture)
-                    outputPictures.append(newPicture)
-                }
-
-                group.leave()
-            }
+        loadPictures { pictures in
+            group.leave()
+            
+            outputPictures = pictures
         }
         
         group.enter()
         var outputAuctions = [CircleFeedAuctionModel]()
-        PicturesManager.shared.loadPictureInformation(type: .auctions) { [weak self] result in
+        PicturesManager.shared.loadPictureInformation(type: .auctions) { result in
             switch result {
             case .failure(let error):
                 print(error)
@@ -79,8 +108,6 @@ class FeedViewModel: NSObject {
             self.refreshing = false
         }
     }
-    
-    
 }
 
 

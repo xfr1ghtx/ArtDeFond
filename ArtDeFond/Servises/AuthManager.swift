@@ -111,6 +111,11 @@ final class AuthManager: AuthManagerDescription {
             }
         }
     }
+    // TODO: чтобы быстрее прогружалось лучше загружать массив 
+//    func getUserInformation(for user_ids: [String], completion: @escaping (Result<User, Error>) -> Void) {
+//        database.collection("users").whereField(<#T##field: String##String#>, in: <#T##[Any]#>)
+//    }
+
     
     
     func getUserInformation(for user_id: String, completion: @escaping (Result<User, Error>) -> Void) {

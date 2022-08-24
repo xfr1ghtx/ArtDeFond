@@ -162,6 +162,7 @@ class ExFeedViewModel: NSObject {
     
     
     
+    
     func fetchData() {
         refreshing = true
         
@@ -178,10 +179,10 @@ class ExFeedViewModel: NSObject {
             case .success(let picturesData):
                 pictures = picturesData
                 
-                pictures.forEach { picture  in
-                    let newPicture = FeedPictureModel(id: picture.id, image: nil, title: picture.title, authorName: picture.author_id, authorImage: nil, picture:  picture)
-                    outputPictures.append(newPicture)
-                }
+//                pictures.forEach { picture  in
+//                    let newPicture = FeedPictureModel(id: picture.id, image: nil, title: picture.title, authorName: picture.author_id, authorImage: nil, picture:  picture)
+//                    outputPictures.append(newPicture)
+//                }
                 self?.pictures = outputPictures
                 
                 group.leave()
