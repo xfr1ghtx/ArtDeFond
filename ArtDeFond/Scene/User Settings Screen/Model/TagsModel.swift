@@ -39,12 +39,12 @@ class CollectionModelSearch {
     }}
 
 let modelArraySearch: [CollectionModelSearch] = [
-    CollectionModelSearch(title: "Живопись", imageView: Constants.Images.logo),
-    CollectionModelSearch(title: "Гравюра", imageView: Constants.Images.logo),
-    CollectionModelSearch(title: "Живопись", imageView: Constants.Images.logo),
-    CollectionModelSearch(title: "Гравюра", imageView: Constants.Images.logo),
-    CollectionModelSearch(title: "Живопись", imageView: Constants.Images.logo),
-    CollectionModelSearch(title: "Гравюра", imageView: Constants.Images.logo),
-    CollectionModelSearch(title: "Живопись", imageView: Constants.Images.logo),
-    CollectionModelSearch(title: "Гравюра", imageView: Constants.Images.logo),
+    CollectionModelSearch(title: "Живопись", imageView: UIImage(named: "1")!),
+    CollectionModelSearch(title: "Гравюра", imageView: UIImage(named: "2")!),
+    CollectionModelSearch(title: "Живопись", imageView: UIImage(named: "3")!),
+    CollectionModelSearch(title: "Гравюра", imageView: UIImage(named: "4")!),
+    CollectionModelSearch(title: "Живопись", imageView: UIImage(named: "5")!),
+    CollectionModelSearch(title: "Гравюра", imageView: UIImage(named: "6")!),
+    CollectionModelSearch(title: "Живопись", imageView: UIImage(named: "7")!),
+    CollectionModelSearch(title: "Гравюра", imageView: UIImage(named: "8")!),
 ]
