@@ -13,8 +13,8 @@ import SnapKit
 
 class FeedViewController: UIViewController, UICollectionViewDelegateFlowLayout {
     
-    private var viewModel: FeedViewModel
-
+    private var viewModel: FeedViewModel!
+    
     lazy var feedTableView: UITableView = {
         let tableView = UITableView()
         
@@ -54,24 +54,42 @@ class FeedViewController: UIViewController, UICollectionViewDelegateFlowLayout {
         fatalError("init(coder:) has not been implemented")
     }
     
-    //        AuthManager.shared.signIn(withEmail: "three@mail.com", withPassword: "password") { result in
-    //            switch result {
-    //            case .failure(let error):
-    //                print(error)
-    //            case .success(let something):
-    //                print(something)
-    //            }
-    //        }
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setup()
         
-        viewModel.fetchData {
+                AuthManager.shared.signIn(withEmail: "three@mail.com", withPassword: "password") { result in
+                    switch result {
+                    case .failure(let error):
+                        print(error)
+                    case .success(let something):
+                        print(something)
+                    }
+                }
+        
+        setup()
+//        fetchData()
+        callToViewModelForUIUpdate()
+        
+        
+        
+    }
+    
+    func callToViewModelForUIUpdate(){
+        
+        self.viewModel =  FeedViewModel()
+        self.viewModel.bindFeedViewModelToController = {
+            self.updateDataSource()
+        }
+    }
+    
+    func updateDataSource(){
+        DispatchQueue.main.async {
             self.feedTableView.reloadData()
             self.collectionView.reloadData()
         }
-
+        
     }
     
     override func viewDidLayoutSubviews() {
@@ -106,6 +124,13 @@ class FeedViewController: UIViewController, UICollectionViewDelegateFlowLayout {
         feedTableView.delegate = self
         feedTableView.dataSource = self
     }
+    
+//    private func fetchData(){
+//        viewModel.fetchData {
+//            self.feedTableView.reloadData()
+//            self.collectionView.reloadData()
+//        }
+//    }
     
 }
 

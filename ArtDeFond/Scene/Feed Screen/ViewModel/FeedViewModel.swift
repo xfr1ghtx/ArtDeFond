@@ -8,86 +8,75 @@
 import Foundation
 
 
-class FeedViewModel {
-    var auctions: [CircleFeedAuctionModel] = []
-    var pictures: [FeedPictureModel] = []
+class FeedViewModel: NSObject {
+
+    private(set) var auctions : [CircleFeedAuctionModel] = [] {
+            didSet {
+                self.bindFeedViewModelToController()
+            }
+        }
     
-    var error: Error?
+    private(set) var pictures : [FeedPictureModel] = [] {
+            didSet {
+                self.bindFeedViewModelToController()
+            }
+        }
+    
+    var bindFeedViewModelToController : (() -> ()) = {}
+    
     var refreshing = false
     
+    override init() {
+            super.init()
+            fetchData()
+        }
     
-    func fetchData(completion: @escaping () -> Void) {
+    func fetchData() {
         refreshing = true
         
         let group = DispatchGroup()
-        
+        var outputPictures = [FeedPictureModel]()
         group.enter()
         PicturesManager.shared.loadPictureInformation(type: .pictures) { [weak self] result in
             switch result {
             case .failure(let error):
                 print(error)
-                self?.error = error
-                self?.refreshing = false
+
                 group.leave()
                 
             case .success(let pictures):
-                var outputPictures = [FeedPictureModel]()
+                
                 pictures.forEach { picture in
-                    let newPicture = FeedPictureModel(id: picture.id, image: picture.image, title: picture.title, authorName: "authorName", authorImage: "authorImage")
+                    let newPicture = FeedPictureModel(id: picture.id, image: nil, title: picture.title, authorName: "authorName", authorImage: nil, picture: picture)
+                    print(newPicture)
                     outputPictures.append(newPicture)
                 }
-                self?.pictures = outputPictures
-                self?.refreshing = false
+
                 group.leave()
             }
         }
         
         group.enter()
+        var outputAuctions = [CircleFeedAuctionModel]()
         PicturesManager.shared.loadPictureInformation(type: .auctions) { [weak self] result in
             switch result {
             case .failure(let error):
                 print(error)
-                self?.error = error
-                self?.refreshing = false
                 group.leave()
                 
             case .success(let auctions):
-                var outputAuctions = [CircleFeedAuctionModel]()
                 auctions.forEach { auction in
                     let newAuction = CircleFeedAuctionModel(id: auction.id, image: auction.image)
                     outputAuctions.append(newAuction)
                 }
-                self?.auctions = outputAuctions
-                self?.refreshing = false
                 group.leave()
             }
         }
         
         group.notify(queue: .main) {
-            completion()
-        }
-    }
-    
-    func fetchAuctions(completion: @escaping () -> Void) {
-        refreshing = true
-        
-        PicturesManager.shared.loadPictureInformation(type: .auctions) { [weak self] result in
-            switch result {
-            case .failure(let error):
-                print(error)
-                self?.error = error
-                self?.refreshing = false
-                completion() // а надо ли?
-            case .success(let auctions):
-                var outputAuctions = [CircleFeedAuctionModel]()
-                auctions.forEach { auction in
-                    let newAuction = CircleFeedAuctionModel(id: auction.id, image: auction.image)
-                    outputAuctions.append(newAuction)
-                }
-                self?.auctions = outputAuctions
-                self?.refreshing = false
-                completion()
-            }
+            self.pictures = outputPictures
+            self.auctions = outputAuctions
+            self.refreshing = false
         }
     }
     

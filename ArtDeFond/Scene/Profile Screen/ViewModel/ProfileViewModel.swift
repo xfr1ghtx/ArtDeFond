@@ -21,7 +21,7 @@ class ProfileViewModel {
 
         
         guard let userId = AuthManager.shared.userID() else {
-            self.error = NetworkError.shitHappens
+            self.error = NetworkError.two
             return
         }
         
@@ -37,7 +37,7 @@ class ProfileViewModel {
                 var outputPictures = [ProfilePictureModel]()
                 pictures.forEach { picture in
                     
-                    let newPicture = ProfilePictureModel(id: picture.id, title: picture.title, price: picture.price, year: picture.year, widht: picture.width, height: picture.height, description: picture.description, image: picture.title)
+                    let newPicture = ProfilePictureModel(id: picture.id, title: picture.title, price: picture.price, year: picture.year, widht: picture.width, height: picture.height, description: picture.description, image: picture.image)
                     outputPictures.append(newPicture)
                 }
                 self?.pictures = outputPictures
@@ -51,7 +51,7 @@ class ProfileViewModel {
         refreshing = true
         
         guard let userId = AuthManager.shared.userID() else {
-            self.error = NetworkError.shitHappens
+            self.error = NetworkError.three
             return
         }
         
@@ -81,7 +81,7 @@ class ProfileViewModel {
         
         
         guard let userId = AuthManager.shared.userID() else {
-            self.error = NetworkError.shitHappens
+            self.error = NetworkError.four
             return
         }
         

@@ -9,7 +9,7 @@ import UIKit
 
 class PictureDetailViewController: UIViewController {
     
-    private var viewModel: PictureDetailViewModel
+    private var viewModel: PictureDetailViewModel!
 
     let headerHeight: CGFloat = 250 // 210
 
@@ -346,9 +346,9 @@ class PictureDetailViewController: UIViewController {
         }
         layout()
         
-        
-        let image = UIImageView()
-        image.image = UIImage(named: "logo")
+//        
+//        let image = UIImageView()
+//        image.image = UIImage(named: "logo")
         
 //        if let imageToUpload = image.image {
 ////            ImageManager.shared.upload(image: imageToUpload) { result in

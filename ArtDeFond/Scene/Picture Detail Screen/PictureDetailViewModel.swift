@@ -13,11 +13,14 @@ class PictureDetailViewModel {
     var pictureId: String
     var picture: Picture? = nil
     
-    var error: Error?
+    
+    
+//    var error: Error?
     var refreshing = false
     
     required init(with pictureId: String){
         self.pictureId = pictureId
+        
     }
 
     func fetchPicture(completion: @escaping () -> Void) {
@@ -28,7 +31,7 @@ class PictureDetailViewModel {
             switch result {
             case .failure(let error):
                 print(error)
-                self?.error = error
+//                self?.error = error
                 self?.refreshing = false
                 completion()
             case .success(let something):
