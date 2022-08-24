@@ -26,6 +26,7 @@
 		2C28A2B728B64E4000233601 /* OrderDetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C28A2B628B64E4000233601 /* OrderDetailsViewModel.swift */; };
 		2C28A2B928B65FF600233601 /* Int.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C28A2B828B65FF600233601 /* Int.swift */; };
 		2C28A2BE28B67B5F00233601 /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C28A2BD28B67B5F00233601 /* UIView.swift */; };
+		2C28A2C528B6AB3C00233601 /* UIImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C28A2C428B6AB3C00233601 /* UIImage.swift */; };
 		2C5491AE28B4C7EE0012032B /* UIAlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C5491AD28B4C7EE0012032B /* UIAlertController.swift */; };
 		2C5491B028B4DD460012032B /* OrderDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C5491AF28B4DD460012032B /* OrderDetailsViewController.swift */; };
 		2C8C13DC28B52A4900AC3921 /* OrderAndPictureModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C8C13DB28B52A4900AC3921 /* OrderAndPictureModel.swift */; };
@@ -127,6 +128,7 @@
 		2C28A2B628B64E4000233601 /* OrderDetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderDetailsViewModel.swift; sourceTree = "<group>"; };
 		2C28A2B828B65FF600233601 /* Int.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Int.swift; sourceTree = "<group>"; };
 		2C28A2BD28B67B5F00233601 /* UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIView.swift; sourceTree = "<group>"; };
+		2C28A2C428B6AB3C00233601 /* UIImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImage.swift; sourceTree = "<group>"; };
 		2C5491AD28B4C7EE0012032B /* UIAlertController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIAlertController.swift; sourceTree = "<group>"; };
 		2C5491AF28B4DD460012032B /* OrderDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderDetailsViewController.swift; sourceTree = "<group>"; };
 		2C8C13DB28B52A4900AC3921 /* OrderAndPictureModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = OrderAndPictureModel.swift; path = "ArtDeFond/Scene/Order Info Screen/View/OrderAndPictureModel.swift"; sourceTree = SOURCE_ROOT; };
@@ -554,6 +556,7 @@
 				2C28A2BD28B67B5F00233601 /* UIView.swift */,
 				2C5491AD28B4C7EE0012032B /* UIAlertController.swift */,
 				2C28A2A928B61D1400233601 /* UIImageView.swift */,
+				2C28A2C428B6AB3C00233601 /* UIImage.swift */,
 				2C28A2B828B65FF600233601 /* Int.swift */,
 			);
 			path = Extensions;
@@ -930,6 +933,7 @@
 				2C97AFEE28B2A8E6006CDD55 /* AddressCellModel.swift in Sources */,
 				CE36C8BE28B6BA96006DF9BC /* WaterfallCollectionViewCell.swift in Sources */,
 				8BE7977B28B042CE00DC72D9 /* SignUpViewController.swift in Sources */,
+				2C28A2C528B6AB3C00233601 /* UIImage.swift in Sources */,
 				8B5DE2F928AABAF700852B34 /* CustomTextFieldType.swift in Sources */,
 				2C0FD8AF28B066380004337C /* AuctionCollectionViewCell.swift in Sources */,
 				8B1B075E28AA322C00854E00 /* TestViewController.swift in Sources */,

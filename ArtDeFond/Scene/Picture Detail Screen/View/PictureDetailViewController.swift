@@ -164,7 +164,7 @@ class PictureDetailViewController: UIViewController {
     lazy var authorImageView: UIImageView = {
         let imageView = UIImageView()
         
-        imageView.backgroundColor = Constants.Colors.pink
+        imageView.backgroundColor = .white
         imageView.layer.cornerRadius = 6
         imageView.clipsToBounds = true
         imageView.sizeToFit()
@@ -224,7 +224,7 @@ class PictureDetailViewController: UIViewController {
     lazy var currentAmountLabel: UILabel = {
         let label = UILabel()
         
-        label.text = "₽ 100,00"
+        label.text = ""
         label.numberOfLines = 1
         label.font = Constants.Fonts.medium17
         label.textColor = Constants.Colors.darkRed
@@ -386,6 +386,8 @@ class PictureDetailViewController: UIViewController {
                 }
             }
         }
+        currentAmountLabel.fadeTransition(0.4)
+        currentAmountLabel.text = model.picture.price.toRubles()
         
         // bet configuration
     }

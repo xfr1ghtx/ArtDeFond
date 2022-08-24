@@ -13,6 +13,17 @@ class FeedViewController: UIViewController, UICollectionViewDelegateFlowLayout {
     
     private var viewModel: FeedViewModel!
     
+    
+    lazy var refreshControll: UIRefreshControl = {
+           let refresh = UIRefreshControl()
+        refresh.tintColor = Constants.Colors.darkRed
+        
+           refresh.addTarget(self, action: #selector(self.refreshing), for: .valueChanged)
+           
+           return refresh
+       }()
+    
+    
     lazy var feedTableView: UITableView = {
         let tableView = UITableView()
         
@@ -24,8 +35,16 @@ class FeedViewController: UIViewController, UICollectionViewDelegateFlowLayout {
         tableView.estimatedRowHeight = 240
         
         tableView.translatesAutoresizingMaskIntoConstraints = false
+        tableView.addSubview(refreshControll)
         return tableView
     }()
+    
+    
+    
+    @objc func refreshing(){
+        print("refreshing")
+        callToViewModelForUIUpdate()
+        }
     
     lazy var collectionView: UICollectionView = {
         
@@ -55,6 +74,9 @@ class FeedViewController: UIViewController, UICollectionViewDelegateFlowLayout {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         feedTableView.reloadData()
+        self.viewModel.bindFeedViewModelToController = {
+            self.updateDataSource()
+        }
     }
     
     override func viewDidLoad() {
@@ -76,6 +98,7 @@ class FeedViewController: UIViewController, UICollectionViewDelegateFlowLayout {
     
     func callToViewModelForUIUpdate(){
         
+        
         self.viewModel =  FeedViewModel()
         self.viewModel.bindFeedViewModelToController = {
             self.updateDataSource()
@@ -86,6 +109,7 @@ class FeedViewController: UIViewController, UICollectionViewDelegateFlowLayout {
         DispatchQueue.main.async {
             self.feedTableView.reloadData()
             self.collectionView.reloadData()
+            self.refreshControll.endRefreshing()
         }
         
     }
@@ -139,6 +163,8 @@ extension FeedViewController: UICollectionViewDelegate {
         
         
     }
+    
+    
 }
 
 //MARK: - UICollectionViewDataSource
@@ -170,6 +196,7 @@ extension FeedViewController: UITableViewDelegate {
         self.present(vc, animated: true)
         
     }
+
 }
 
 
@@ -196,13 +223,18 @@ extension FeedViewController: UITableViewDataSource {
         else {
             fatalError("unexpected cell")
         }
-        let cellModel: PictureWithAuthorModel?
         
-        cellModel = viewModel.pictures[indexPath.row]
-        
-        if let cellModel = cellModel {
-            cell.configure(model: cellModel)
+        if !self.refreshControll.isRefreshing {
+                
+            let cellModel: PictureWithAuthorModel?
             
+            cellModel = viewModel.pictures[indexPath.row]
+            
+            if let cellModel = cellModel {
+                cell.configure(model: cellModel)
+                
+            }
+            cell.selectionStyle = .none
         }
         return cell
     }

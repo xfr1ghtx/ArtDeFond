@@ -62,10 +62,16 @@ class UploadPhotoViewController: UIViewController {
         
         pictureImageView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(tapOnImageView)))
         pictureImageView.isUserInteractionEnabled = true
-        pictureImageView.contentMode = .scaleAspectFill
-        pictureImageView.image = Constants.Icons.avatarPlaceholder
+//        pictureImageView.contentMode = .scaleAspectFill
+        
+//        let image = Constants.Icons.avatarPlaceholder
+//        let resizedImage = image.resizeImage(targetSize: CGSize(width: 60, height: 60))
+//
+        pictureImageView.image = UIImage(named: "Imageholder")
         pictureImageView.backgroundColor = Constants.Colors.dirtyWhite
         pictureImageView.layer.cornerRadius = 16
+        
+        pictureImageView.layer.masksToBounds = true
         
         pictureImageView.snp.makeConstraints{ make in
             make.top.equalTo(view.safeAreaLayoutGuide).offset(5)
@@ -95,17 +101,40 @@ class UploadPhotoViewController: UIViewController {
         }
     }
     
+    
+    lazy var someView: UIView = {
+        let view = UIView()
+        
+        view.layer.cornerRadius = 16
+        view.backgroundColor = Constants.Colors.lightRed
+        
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+    
     private func aboutPictureTextViewSetup(){
-        view.addSubview(aboutPictureTextView)
+        
+        view.addSubview(someView)
+        someView.addSubview(aboutPictureTextView)
+        
         aboutPictureTextView.textColor = Constants.Colors.darkRed
         aboutPictureTextView.font = Constants.Fonts.regular17
         aboutPictureTextView.layer.cornerRadius = 16
-        aboutPictureTextView.backgroundColor = Constants.Colors.lightRed
         
-        aboutPictureTextView.snp.makeConstraints{make in
+        aboutPictureTextView.backgroundColor = .clear
+
+        
+        someView.snp.makeConstraints{make in
             make.top.equalTo(aboutPictureLabel.snp.bottom).offset(4)
             make.leading.trailing.equalToSuperview().inset(30)
             make.height.equalTo(180)
+        }
+        
+        aboutPictureTextView.snp.makeConstraints { make in
+            make.top.equalToSuperview().offset(10)
+            make.leading.equalToSuperview().offset(10)
+            make.trailing.equalToSuperview().inset(10)
+            make.bottom.equalToSuperview().inset(10)
         }
     }
     

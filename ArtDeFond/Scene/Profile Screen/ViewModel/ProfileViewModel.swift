@@ -101,7 +101,7 @@ class ProfileViewModel {
     }
     
     func loadAuctions(for userId: String, completion: @escaping ([CircleFeedAuctionModel]) -> Void){
-        PicturesManager.shared.loadPictureInformation(type: .authorsPictures(id: userId)) { result in
+        PicturesManager.shared.loadPictureInformation(type: .authorsAuctions(id: userId)) { result in
             switch result {
             case .failure( _):
                 completion([])
