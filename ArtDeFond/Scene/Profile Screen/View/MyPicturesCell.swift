@@ -13,7 +13,7 @@ class MyPicturesCell: UITableViewCell{
     
     static let reusableId = "MyPicturesCell"
     
-    var pictureModel: ProfilePictureModel?
+    var pictureModel: Picture?
     
     lazy var image: UIImageView = {
         let imageView = UIImageView()
@@ -90,10 +90,10 @@ class MyPicturesCell: UITableViewCell{
     }
     
     
-    func configure(model: ProfilePictureModel
+    func configure(model: Picture
     ) {
         self.pictureModel = model
-        let detailsString = "\(model.height)см x \(model.widht)см • \(model.year)"
+        let detailsString = "\(model.height)см x \(model.width)см • \(model.year)"
         
         self.titleLabel.text = model.title
         self.descriptionLabel.text = model.description

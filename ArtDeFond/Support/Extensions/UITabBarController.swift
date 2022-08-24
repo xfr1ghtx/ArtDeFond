@@ -34,7 +34,7 @@ extension UITabBarController{
         let notificationVC = auth ? NotificationsViewController(viewModel: NotificationsViewModel()) : AuthViewController()
         notificationVC.tabBarItem.image = Constants.Icons.bell
         notificationVC.tabBarItem.title = "Уведомления"
-        
+                
         let provileVC = auth ? ProfileViewController(viewModel: ProfileViewModel()) : AuthViewController()
         provileVC.tabBarItem.image = Constants.Icons.profile
         provileVC.tabBarItem.title = "Профиль"

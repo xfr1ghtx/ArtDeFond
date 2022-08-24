@@ -336,9 +336,12 @@ class OrderDetailsViewController: UIViewController {
         }
         
         if let address = model.address {
+            addressInfoLabel.fadeTransition(0.4)
             self.addressInfoLabel.text = "г.\(address.city) ул.\(address.street) д.\(address.house_number) кв.\(address.apartment_number)"
+            indexInfoLabel.fadeTransition(0.4)
             self.indexInfoLabel.text = "\(address.post_index)"
         }
+        dateInfoLabel.fadeTransition(0.4)
         self.dateInfoLabel.text = model.order.time.timeToShow()
         
         let statusString: String
@@ -354,8 +357,10 @@ class OrderDetailsViewController: UIViewController {
             statusString = "Доставлено"
         }
         
+        statusInfoLabel.fadeTransition(0.4)
         self.statusInfoLabel.text = statusString
         
+        buyerUsernameLabel.fadeTransition(0.4)
         self.buyerUsernameLabel.text = model.buyerUser?.nickname.uppercased()
         if let image = model.buyerUser?.avatar_image {
             ImageManager.shared.image(with: image) { result in
@@ -367,8 +372,9 @@ class OrderDetailsViewController: UIViewController {
                 }
             }
         }
-        
+        pictureCheckLabel.fadeTransition(0.4)
         self.pictureCheckLabel.text = model.picture?.price.toRubles()
+        totalLabel.fadeTransition(0.4)
         self.totalLabel.text = model.picture?.price.toRubles()
         
         

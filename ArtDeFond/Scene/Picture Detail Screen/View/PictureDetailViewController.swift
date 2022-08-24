@@ -166,7 +166,6 @@ class PictureDetailViewController: UIViewController {
         imageView.backgroundColor = Constants.Colors.pink
         imageView.layer.cornerRadius = 6
         imageView.clipsToBounds = true
-        imageView.image = UIImage(named: "pic")
         imageView.sizeToFit()
         
         imageView.translatesAutoresizingMaskIntoConstraints = false
