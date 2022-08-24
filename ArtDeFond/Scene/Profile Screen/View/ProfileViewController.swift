@@ -397,6 +397,7 @@ extension ProfileViewController: UITableViewDataSource {
         if let cellModel = cellModel {
             cell.configure(model: cellModel)
         }
+        cell.selectionStyle = .none
         return cell
     }
 }

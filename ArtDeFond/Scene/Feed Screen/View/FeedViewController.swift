@@ -55,6 +55,9 @@ class FeedViewController: UIViewController, UICollectionViewDelegateFlowLayout {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         feedTableView.reloadData()
+        self.viewModel.bindFeedViewModelToController = {
+            self.updateDataSource()
+        }
     }
     
     override func viewDidLoad() {
@@ -139,6 +142,8 @@ extension FeedViewController: UICollectionViewDelegate {
         
         
     }
+    
+    
 }
 
 //MARK: - UICollectionViewDataSource
@@ -170,6 +175,7 @@ extension FeedViewController: UITableViewDelegate {
         self.present(vc, animated: true)
         
     }
+
 }
 
 
@@ -204,6 +210,7 @@ extension FeedViewController: UITableViewDataSource {
             cell.configure(model: cellModel)
             
         }
+        cell.selectionStyle = .none
         return cell
     }
 }
