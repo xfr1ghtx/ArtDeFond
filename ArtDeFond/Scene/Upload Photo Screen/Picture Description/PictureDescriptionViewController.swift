@@ -135,13 +135,13 @@ class PictureDescriptionViewController: UIViewController {
         tagList.cornerRadius = 12
         
         tagList.addTag("Живопись")
-        tagList.addTag("Живопись")
-        tagList.addTag("Живопись")
-        tagList.addTag("Живопись")
         tagList.addTag("Гравюра")
-        tagList.addTag("Гравюра")
-        tagList.addTag("Гравюра")
-        tagList.addTag("Гравюра")
+        tagList.addTag("Абстракция")
+        tagList.addTag("Портрет")
+        tagList.addTag("Пейзаж")
+        tagList.addTag("Рисунок")
+        tagList.addTag("Авангард")
+        tagList.addTag("Натюрморт")
         
         tagList.snp.makeConstraints{ make in
             make.top.equalTo(heightLabelTextField.snp.bottom).offset(35)

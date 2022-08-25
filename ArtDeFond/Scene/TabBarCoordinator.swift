@@ -68,17 +68,10 @@ final class TabBarCoordinator: Coordinator{
         rootTabBarController.tabBar.backgroundColor = .white
         
         NotificationCenter.default.addObserver(self, selector: #selector(setLoginViewControllers), name: NSNotification.Name("InterestViewController.signUp.succes.ArtDeFond"), object: nil)
-        
-        NotificationCenter.default.addObserver(self, selector: #selector(goToFeedTab), name: NSNotification.Name("CostViewModel.uploadPicture.success.ArtDeFond"), object: nil)
     }
     
     func start() {
         rootViewController.pushViewController(rootTabBarController, animated: true)
-    }
-    
-    @objc
-    func goToFeedTab(){
-        rootTabBarController.selectedIndex = 0
     }
     
     @objc

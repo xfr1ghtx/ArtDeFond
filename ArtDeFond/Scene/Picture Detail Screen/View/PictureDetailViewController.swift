@@ -164,7 +164,7 @@ class PictureDetailViewController: UIViewController {
     lazy var authorImageView: UIImageView = {
         let imageView = UIImageView()
         
-        imageView.backgroundColor = .white
+        imageView.backgroundColor = Constants.Colors.pink
         imageView.layer.cornerRadius = 6
         imageView.clipsToBounds = true
         imageView.sizeToFit()
@@ -224,7 +224,7 @@ class PictureDetailViewController: UIViewController {
     lazy var currentAmountLabel: UILabel = {
         let label = UILabel()
         
-        label.text = ""
+        label.text = "₽ 100,00"
         label.numberOfLines = 1
         label.font = Constants.Fonts.medium17
         label.textColor = Constants.Colors.darkRed
@@ -271,6 +271,10 @@ class PictureDetailViewController: UIViewController {
     
     @objc func arBtnPressed(){
         print("arBtnPressed")
+        
+        let navVC = UINavigationController()
+        navVC.pushViewController(ARKitViewController(), animated: true)
+        present(navVC, animated: true)
     }
 
     
@@ -386,8 +390,6 @@ class PictureDetailViewController: UIViewController {
                 }
             }
         }
-        currentAmountLabel.fadeTransition(0.4)
-        currentAmountLabel.text = model.picture.price.toRubles()
         
         // bet configuration
     }
