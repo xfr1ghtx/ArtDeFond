@@ -11,6 +11,11 @@ import SnapKit
 
 class WaterfallViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, CHTCollectionViewDelegateWaterfallLayout {
     
+    private let searchTextField = CustomTextField(viewModel: .init(type: .withImageOnLeft,
+                                                                   keyboardType: .default,
+                                                                   placeholder: "Поиск картин",
+                                                                   image: Constants.Icons.search))
+    
     private let collectionView: UICollectionView = {
         let layout = CHTCollectionViewWaterfallLayout()
         layout.itemRenderDirection = .leftToRight
@@ -33,31 +38,43 @@ class WaterfallViewController: UIViewController, UICollectionViewDelegate, UICol
         super.viewDidLoad()
         
         view.backgroundColor = .white
+        navigationItem.title = "Результат"
+        navigationItem.backButtonTitle = ""
         
-        let images = Array(1...9).map { "image\($0)" }
+        let images = Array(1...22).map { "image\($0)" }
         models = images.compactMap {
             return Model.init(
                 imageName: $0,
-                height: .random(in: 100...200),
-                width: .random(in: 50...300)
+                height: .random(in: 100...170),
+                width: .random(in: 50...200)
             )
         }
         
         view.addSubview(collectionView)
         collectionView.delegate = self
         collectionView.dataSource = self
+        collectionView.showsVerticalScrollIndicator = false
         
         
         collectionView.snp.makeConstraints { make in
             make.leading.trailing.equalToSuperview().inset(30)
-            make.top.equalTo(view.safeAreaLayoutGuide).offset(50)
+            make.top.equalTo(view.safeAreaLayoutGuide).offset(55)
             make.bottom.equalTo(view.safeAreaLayoutGuide)
+        }
+        
+        view.addSubview(searchTextField)
+        
+        searchTextField.snp.makeConstraints{ make in
+            make.top.equalTo(collectionView).offset(-50)
+            make.leading.trailing.equalToSuperview().inset(30)
+            make.height.equalTo(42)
         }
     }
     
+    
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-//        collectionView.frame = view.bounds
+        //        collectionView.frame = view.bounds
     }
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
@@ -73,14 +90,27 @@ class WaterfallViewController: UIViewController, UICollectionViewDelegate, UICol
                                                             for: indexPath) as? WaterfallCollectionViewCell else {
             fatalError()
         }
+        if (indexPath.item != 7){
+            cell.configure(image: UIImage(named: models[indexPath.row].imageName))
+        }
+        else {
+            cell.configure(image: UIImage(named: "imageA"))
+        }
         
-        cell.configure(image: UIImage(named: models[indexPath.row].imageName))
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         
-        return CGSize(width: collectionView.bounds.size.width / 2,
-                      height: collectionView.bounds.size.width / 2 * models[indexPath.row].height / models[indexPath.row].width)
+        return indexPath.item == 7 ? CGSize(width: 1500, height: 1200) : CGSize(width: collectionView.bounds.size.width / 2,
+                                                                                height: collectionView.bounds.size.width / 2 * models[indexPath.row].height / models[indexPath.row].width)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        if indexPath.item == 7{
+            present(PictureDetailViewController(viewModel: .init(with: "0C91A961-5B0A-4099-96C7-7F467FD75413")), animated: true)
+        }
     }
 }
+
+

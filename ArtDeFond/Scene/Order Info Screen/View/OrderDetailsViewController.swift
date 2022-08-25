@@ -64,7 +64,7 @@ class OrderDetailsViewController: UIViewController {
     lazy var sellerImageView: UIImageView = {
         let imageView = UIImageView()
         
-        imageView.backgroundColor = .white
+        imageView.backgroundColor = Constants.Colors.pink
         imageView.layer.cornerRadius = 6
         imageView.layer.masksToBounds = true
         
@@ -75,7 +75,7 @@ class OrderDetailsViewController: UIViewController {
     lazy var buyerImageView: UIImageView = {
         let imageView = UIImageView()
         
-        imageView.backgroundColor = .white
+        imageView.backgroundColor = Constants.Colors.pink
         imageView.layer.cornerRadius = 6
         imageView.layer.masksToBounds = true
         

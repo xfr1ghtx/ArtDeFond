@@ -25,14 +25,6 @@ class ProfileViewController: UIViewController, UICollectionViewDelegateFlowLayou
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
-    lazy var refreshControll: UIRefreshControl = {
-           let refresh = UIRefreshControl()
-        refresh.tintColor = Constants.Colors.darkRed
-        
-           refresh.addTarget(self, action: #selector(self.refreshing), for: .valueChanged)
-           
-           return refresh
-       }()
     
     lazy var tableView: UITableView = {
         let tableView = UITableView()
@@ -44,15 +36,9 @@ class ProfileViewController: UIViewController, UICollectionViewDelegateFlowLayou
         tableView.rowHeight = UITableView.automaticDimension
         tableView.estimatedRowHeight = 120
         
-        tableView.addSubview(refreshControll)
-        
         tableView.translatesAutoresizingMaskIntoConstraints = false
         return tableView
     }()
-    
-    @objc func refreshing(){
-        callToViewModelForUIUpdate()
-        }
     
     lazy var collectionView: UICollectionView = {
         
@@ -190,7 +176,6 @@ class ProfileViewController: UIViewController, UICollectionViewDelegateFlowLayou
             self.configureUser()
             self.tableView.reloadData()
             self.collectionView.reloadData()
-            self.refreshControll.endRefreshing()
         }
         
     }
@@ -212,6 +197,7 @@ class ProfileViewController: UIViewController, UICollectionViewDelegateFlowLayou
     
     
     private func configureUser(){
+        print(viewModel.user)
 //        nicknameLabel.fadeTransition(0.4)
         nicknameLabel.text = viewModel.user?.nickname.uppercased()
 //        descriptionLabel.fadeTransition(0.4)
@@ -234,7 +220,7 @@ class ProfileViewController: UIViewController, UICollectionViewDelegateFlowLayou
             sheet.prefersScrollingExpandsWhenScrolledToEdge = false
         }
         present(settingsViewController, animated: true) {
-
+//            self.newsTableView.deselectRow(at: indexPath, animated: true)
         }
     }
     
@@ -248,8 +234,8 @@ class ProfileViewController: UIViewController, UICollectionViewDelegateFlowLayou
         view.addSubview(tableHeaderView)
         tableHeaderView.snp.makeConstraints { make in
             make.centerX.equalToSuperview()
-            make.leading.equalToSuperview()
-            make.trailing.equalToSuperview()
+            make.leading.equalToSuperview().offset(20)
+            make.trailing.equalToSuperview().inset(20)
             make.top.equalTo(view.safeAreaLayoutGuide.snp.top)
             
         }
@@ -257,7 +243,7 @@ class ProfileViewController: UIViewController, UICollectionViewDelegateFlowLayou
         tableHeaderView.addSubview(balanceView)
         balanceView.snp.makeConstraints { make in
             make.centerX.equalToSuperview()
-            make.leading.trailing.equalToSuperview().inset(20)
+            make.leading.trailing.equalToSuperview()
             make.top.equalToSuperview()
             make.height.equalTo(110)
         }
@@ -290,14 +276,14 @@ class ProfileViewController: UIViewController, UICollectionViewDelegateFlowLayou
         
         tableHeaderView.addSubview(descriptionLabel)
         descriptionLabel.snp.makeConstraints { make in
-            make.leading.trailing.equalToSuperview().inset(20)
+            make.leading.trailing.equalToSuperview()
             make.top.equalTo(nicknameLabel.snp.bottom).offset(15)
         }
         
         
         tableHeaderView.addSubview(auctionsTitleLabel)
         auctionsTitleLabel.snp.makeConstraints { make in
-            make.leading.equalToSuperview().offset(20)
+            make.leading.equalToSuperview()
             make.top.equalTo(descriptionLabel.snp.bottom).offset(24)
             
         }
@@ -315,7 +301,7 @@ class ProfileViewController: UIViewController, UICollectionViewDelegateFlowLayou
         
         tableHeaderView.addSubview(picturesTitleLabel)
         picturesTitleLabel.snp.makeConstraints { make in
-            make.leading.equalToSuperview().offset(20)
+            make.leading.equalToSuperview()
             make.top.equalTo(collectionView.snp.bottom).offset(20)
             make.bottom.equalToSuperview()
         }
@@ -404,17 +390,13 @@ extension ProfileViewController: UITableViewDataSource {
         else {
             fatalError("unexpected cell")
         }
-        if !self.refreshControll.isRefreshing {
-            let cellModel: Picture?
-            
-            cellModel = viewModel.pictures[indexPath.row]
-            
-            if let cellModel = cellModel {
-                cell.configure(model: cellModel)
-            }
-            cell.selectionStyle = .none
-        }
+        let cellModel: Picture?
         
+        cellModel = viewModel.pictures[indexPath.row]
+        
+        if let cellModel = cellModel {
+            cell.configure(model: cellModel)
+        }
         return cell
     }
 }
