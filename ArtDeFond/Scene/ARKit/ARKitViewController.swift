@@ -12,14 +12,29 @@ import ARKit
 
 class ARKitViewController: UIViewController, ARSCNViewDelegate, ARCoachingOverlayViewDelegate {
     
+    var imageToShow: UIImage
+    var imageWidth: Double
+    var imageHeight: Double
+    
     var sizeLabel = UILabel()
     var sceneView = ARSCNView()
     var grids = [Grid]()
     var placedImages = false
     var imageNode: SCNNode?
-    var imageWidth = 0.7
-    var imageHeight = 0.3
-    //let deleteButton = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(removePainting))
+    
+    
+    init(image: UIImage, width: Double, height: Double) {
+        self.imageWidth = width
+        self.imageHeight = height
+        self.imageToShow = image
+        
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -161,7 +176,8 @@ class ARKitViewController: UIViewController, ARSCNViewDelegate, ARCoachingOverla
         addPainting(hitTest, grids[gridIndex])
     }
     
-    @objc func panGesture(_ gesture: UIPanGestureRecognizer){
+    @objc
+    func panGesture(_ gesture: UIPanGestureRecognizer){
         guard let imageNode = imageNode else {
             return
         }
@@ -181,9 +197,13 @@ class ARKitViewController: UIViewController, ARSCNViewDelegate, ARCoachingOverla
             return
         }
 
-        let planeGeometry = SCNPlane(width: 0.7, height: 0.3)
+        let width = self.imageWidth / 100
+        let height = self.imageHeight / 100
+        let planeGeometry = SCNPlane(width: width, height: height)
         let material = SCNMaterial()
-        material.diffuse.contents = UIImage(named: "imageA")
+
+        material.diffuse.contents = imageToShow
+
         planeGeometry.materials = [material]
         
         let paintingNode = SCNNode(geometry: planeGeometry)

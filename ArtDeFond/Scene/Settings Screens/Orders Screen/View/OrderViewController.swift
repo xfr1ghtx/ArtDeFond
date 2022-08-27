@@ -138,13 +138,12 @@ extension OrdersViewController: UITableViewDataSource {
             fatalError("unexpected cell")
         }
         let cellModel: OrderAndPictureModel?
-        
         cellModel = viewModel.orders[indexPath.row]
-//        cellModel = OrderModel(id: "12", picture_image: "22", status: "Доставлено", picture_name: "Восторг", time: "сегодня в 12:00")
         
         if let cellModel = cellModel {
             cell.configure(model: cellModel)
         }
+        cell.selectionStyle = .none
         return cell
     }
 }

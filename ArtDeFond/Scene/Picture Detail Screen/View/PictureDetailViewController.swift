@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SwiftUI
 
 class PictureDetailViewController: UIViewController {
     
@@ -28,13 +29,12 @@ class PictureDetailViewController: UIViewController {
         return imageView
     }()
     
-    // VIEWS
     lazy var scrollView: UIScrollView = {
         let scrollView = UIScrollView()
         
         scrollView.delegate = self
         scrollView.alwaysBounceVertical = true
-        scrollView.backgroundColor = UIColor(named: "greyMain")
+        scrollView.backgroundColor = .white
         
         scrollView.translatesAutoresizingMaskIntoConstraints = false
         return scrollView
@@ -43,7 +43,7 @@ class PictureDetailViewController: UIViewController {
     lazy var mainContainerView: UIView = {
         let view = UIView()
         view.clipsToBounds = true
-        view.backgroundColor = UIColor(named: "greyMain")
+        view.backgroundColor = .white
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
@@ -164,7 +164,7 @@ class PictureDetailViewController: UIViewController {
     lazy var authorImageView: UIImageView = {
         let imageView = UIImageView()
         
-        imageView.backgroundColor = Constants.Colors.pink
+        imageView.backgroundColor = .white
         imageView.layer.cornerRadius = 6
         imageView.clipsToBounds = true
         imageView.sizeToFit()
@@ -197,6 +197,8 @@ class PictureDetailViewController: UIViewController {
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
+    
+    
     lazy var startBetTitleLabel: UILabel = {
         let label = UILabel()
         
@@ -208,6 +210,7 @@ class PictureDetailViewController: UIViewController {
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
+    
     
     lazy var currentAmountTitleLabel: UILabel = {
         let label = UILabel()
@@ -221,10 +224,11 @@ class PictureDetailViewController: UIViewController {
         return label
     }()
     
+    
     lazy var currentAmountLabel: UILabel = {
         let label = UILabel()
         
-        label.text = "₽ 100,00"
+        label.text = " "
         label.numberOfLines = 1
         label.font = Constants.Fonts.medium17
         label.textColor = Constants.Colors.darkRed
@@ -233,26 +237,6 @@ class PictureDetailViewController: UIViewController {
         return label
     }()
     
-    
-    
-    lazy var scaleImageBtn: UIButton = {
-        let button = UIButton()
-        button.tintColor = Constants.Colors.darkRed
-        let config = UIImage.SymbolConfiguration(
-            pointSize: 24, weight: .bold, scale: .medium)
-        let image = UIImage(systemName: "square.dashed", withConfiguration: config)
-        button.setImage(image, for: .normal)
-        button.backgroundColor = .white.withAlphaComponent(0.5)
-        button.layer.cornerRadius = 16
-        
-        button.addTarget(self, action: #selector(scaleBtnPressed), for: .touchUpInside)
-        button.translatesAutoresizingMaskIntoConstraints = false
-        return button
-    }()
-    
-    @objc func scaleBtnPressed(){
-        print("scaleBtnPressed")
-    }
     
     lazy var arBtn: UIButton = {
         let button = UIButton()
@@ -270,11 +254,25 @@ class PictureDetailViewController: UIViewController {
     }()
     
     @objc func arBtnPressed(){
-        print("arBtnPressed")
+        guard let picture = viewModel.picture?.picture else {
+            return
+        }
         
-        let navVC = UINavigationController()
-        navVC.pushViewController(ARKitViewController(), animated: true)
-        present(navVC, animated: true)
+        ImageManager.shared.image(with: picture.image) {[weak self] result in
+            switch result {
+            case .failure(let error):
+                let alert = UIAlertController(title: "Уууупс", message: error.localizedDescription, preferredStyle: .alert)
+                let alertAction = UIAlertAction(title: "Ok", style: .cancel)
+                alert.addAction(alertAction)
+                self?.present(alert, animated: true)
+            case .success(let image):
+                let navVC = UINavigationController()
+                let arKitVC = ARKitViewController(image: image, width: Double(picture.width), height: Double(picture.height))
+                arKitVC.imageToShow = image
+                navVC.pushViewController(arKitVC, animated: true)
+                self?.present(navVC, animated: true)
+            }
+        }
     }
 
     
@@ -360,7 +358,7 @@ class PictureDetailViewController: UIViewController {
         model.picture.tags.forEach({ tag in
             categoriesString = categoriesString + tag + " "
         })
-//        categoriesLabel.text = categoriesString.uppercased()
+        categoriesLabel.text = categoriesString.uppercased()
         titleLabel.fadeTransition(0.4)
         titleLabel.text = model.picture.title
         descriptionLabel.fadeTransition(0.4)
@@ -383,7 +381,6 @@ class PictureDetailViewController: UIViewController {
             ImageManager.shared.image(with: user.avatar_image) { [weak self] result in
                 switch result {
                 case .success(let image):
-//                    self?.authorImageView.image = image
                     self?.authorImageView.setImage(image)
                 case .failure:
                     self?.authorImageView.image = nil
@@ -391,9 +388,11 @@ class PictureDetailViewController: UIViewController {
             }
         }
         
+        currentAmountLabel.fadeTransition(0.4)
+        currentAmountLabel.text = model.picture.price.toRubles()
+        
         // bet configuration
     }
-    
     
     private func layout() {
         mainContainerView.addSubview(pictureImageView)
@@ -494,7 +493,6 @@ class PictureDetailViewController: UIViewController {
             make.height.equalTo(1)
             make.leading.equalToSuperview().offset(27)
             make.trailing.equalToSuperview().inset(27)
-//            make.bottom.equalToSuperview()
         }
         
         let materialsStackView = makeStackView(l1: materialTitleLabel, l2: materialLabel)
@@ -562,15 +560,6 @@ class PictureDetailViewController: UIViewController {
             make.leading.equalToSuperview().offset(27)
             make.trailing.equalToSuperview().inset(27)
         }
-        
-//        let startBetStackView = makeStackView(l1: startBetTitleLabel, l2: startBetLabel)
-//        whiteView.addSubview(startBetStackView)
-//        startBetStackView.snp.makeConstraints { make in
-//            make.top.equalTo(currentBetStackView.snp.bottom).offset(13)
-//            make.leading.equalToSuperview().offset(27)
-//            make.trailing.equalToSuperview().inset(27)
-//            make.bottom.equalToSuperview() // !!!!
-//        }
     }
 }
 
@@ -606,7 +595,6 @@ extension PictureDetailViewController: UIScrollViewDelegate {
         let offset = abs(scrollView.contentOffset.y)
         UIView.animate(withDuration: 0.1) {
             self.arBtn.alpha = (self.headerHeight - 140 - offset) / (self.headerHeight - 140)
-            self.scaleImageBtn.alpha = (self.headerHeight - 140 - offset) / (self.headerHeight - 140)
             self.backBtn.alpha = (self.headerHeight - 140 - offset) / (self.headerHeight - 140)
         }
     }

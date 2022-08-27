@@ -9,6 +9,10 @@ import CHTCollectionViewWaterfallLayout
 import UIKit
 import SnapKit
 
+// переписать на реальные модели с бэка
+// верстка
+//бэк кнопка
+
 class WaterfallViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, CHTCollectionViewDelegateWaterfallLayout {
     
     private let searchTextField = CustomTextField(viewModel: .init(type: .withImageOnLeft,

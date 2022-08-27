@@ -7,7 +7,6 @@
 
 import UIKit
 import SnapKit
-// https://stackoverflow.com/questions/43212583/how-to-add-a-view-on-top-of-uitableview-that-scrolls-together-but-stick-to-top
 
 class FeedViewController: UIViewController, UICollectionViewDelegateFlowLayout {
     
@@ -22,6 +21,7 @@ class FeedViewController: UIViewController, UICollectionViewDelegateFlowLayout {
         
         tableView.rowHeight = UITableView.automaticDimension
         tableView.estimatedRowHeight = 240
+        tableView.addSubview(refreshControll)
         
         tableView.translatesAutoresizingMaskIntoConstraints = false
         return tableView
@@ -43,6 +43,23 @@ class FeedViewController: UIViewController, UICollectionViewDelegateFlowLayout {
     }()
     
     
+    lazy var refreshControll: UIRefreshControl = {
+        let refresh = UIRefreshControl()
+        refresh.tintColor = Constants.Colors.darkRed
+        
+        refresh.addTarget(self, action: #selector(self.refreshing), for: .valueChanged)
+        
+        return refresh
+    }()
+    
+    
+    @objc
+    func refreshing(){
+        callToViewModelForUIUpdate()
+    }
+    
+    
+    
     init(viewModel: FeedViewModel) {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
@@ -59,17 +76,6 @@ class FeedViewController: UIViewController, UICollectionViewDelegateFlowLayout {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-//        AuthManager.shared.signIn(withEmail: "three@mail.com", withPassword: "password") { result in
-//            switch result {
-//            case .failure(let error):
-//                print(error)
-//            case .success(let something):
-//                print(something)
-//            }
-//        }
-        
-        
         setup()
         callToViewModelForUIUpdate()
     }
@@ -86,6 +92,7 @@ class FeedViewController: UIViewController, UICollectionViewDelegateFlowLayout {
         DispatchQueue.main.async {
             self.feedTableView.reloadData()
             self.collectionView.reloadData()
+            self.refreshControll.endRefreshing()
         }
         
     }
@@ -182,13 +189,13 @@ extension FeedViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         cell.alpha = 0
-
+        
         UIView.animate(
             withDuration: 0.5,
             delay: 0.05 * Double(indexPath.row),
             animations: {
                 cell.alpha = 1
-        })
+            })
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -196,18 +203,21 @@ extension FeedViewController: UITableViewDataSource {
         else {
             fatalError("unexpected cell")
         }
-        let cellModel: PictureWithAuthorModel?
         
-        cellModel = viewModel.pictures[indexPath.row]
-        
-        if let cellModel = cellModel {
-            cell.configure(model: cellModel)
+        if !self.refreshControll.isRefreshing {
+            let cellModel: PictureWithAuthorModel?
             
+            cellModel = viewModel.pictures[indexPath.row]
+            
+            if let cellModel = cellModel {
+                cell.configure(model: cellModel)
+                
+            }
         }
-        return cell
+            return cell
+        }
     }
-}
-
-
-
-
+    
+    
+    
+    

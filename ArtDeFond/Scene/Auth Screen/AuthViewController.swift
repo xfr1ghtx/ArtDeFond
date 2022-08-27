@@ -161,7 +161,7 @@ class AuthViewController: UIViewController {
     private func tapOnSignInButton(){
         AuthManager.shared.signIn(withEmail: emailLabelTextField.returnText(), withPassword: passwordLabelTextField.returnText()) { result in
             switch result{
-            case .failure(let error):
+            case .failure( _):
                 let alert = UIAlertController(title: "ууупс", message: "Кажется вы ввели что-то неправильно", preferredStyle: .alert)
                 
                 let cancelAction = UIAlertAction(title: "Ок", style: .cancel)

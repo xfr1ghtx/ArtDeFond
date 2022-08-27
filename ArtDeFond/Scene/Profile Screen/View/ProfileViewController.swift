@@ -197,10 +197,7 @@ class ProfileViewController: UIViewController, UICollectionViewDelegateFlowLayou
     
     
     private func configureUser(){
-        print(viewModel.user)
-//        nicknameLabel.fadeTransition(0.4)
         nicknameLabel.text = viewModel.user?.nickname.uppercased()
-//        descriptionLabel.fadeTransition(0.4)
         descriptionLabel.text = viewModel.user?.description
         
         guard let balance = viewModel.user?.account_balance else {
@@ -397,6 +394,7 @@ extension ProfileViewController: UITableViewDataSource {
         if let cellModel = cellModel {
             cell.configure(model: cellModel)
         }
+        cell.selectionStyle = .none
         return cell
     }
 }

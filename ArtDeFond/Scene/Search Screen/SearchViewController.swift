@@ -8,6 +8,12 @@
 import UIKit
 import SnapKit
 
+// разобраться с размерами ячейки и layout
+
+//цвет заголовка
+
+//про
+
 class SearchViewController: UIViewController {
     
     private let searchTextField = CustomTextField(viewModel: .init(type: .withImageOnLeft,
@@ -59,8 +65,9 @@ class SearchViewController: UIViewController {
         picturesCollection.snp.makeConstraints{ make in
             make.top.equalTo(searchTextField.snp.bottom).offset(30)
             make.leading.trailing.equalToSuperview().inset(30)
-            make.height.equalTo(409)
-            make.width.equalTo(328)
+            make.bottom.equalToSuperview()
+//            make.height.equalTo(409)
+//            make.width.equalTo(328)
         }
     }
     
@@ -91,7 +98,11 @@ extension SearchViewController: UICollectionViewDataSource {
 extension SearchViewController: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: ScreenSize.width / 2.5, height: ScreenSize.height/11)
+        
+        let width = (ScreenSize.width - 13) / 2 - 24
+        let height = CGFloat(62.0)
+//        return CGSize(width: ScreenSize.width / 2.5, height: ScreenSize.height/11)
+        return CGSize(width: width, height: height)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {

@@ -30,7 +30,8 @@ class CollectionCellSearch: UICollectionViewCell {
         let view = UIView()
         view.backgroundColor = .black
         view.layer.opacity = 0.3
-        roundCorners(corners: [.topLeft, .topRight, .bottomLeft, .bottomRight], radius: 16.0)
+        view.layer.cornerRadius = 16
+        view.layer.masksToBounds = true
         return view
     }()
     
@@ -78,13 +79,4 @@ class CollectionCellSearch: UICollectionViewCell {
         }
     }
     
-}
-
-extension CollectionCellSearch {
-   func roundCorners(corners: UIRectCorner, radius: CGFloat) {
-        let path = UIBezierPath(roundedRect: bounds, byRoundingCorners: corners, cornerRadii: CGSize(width: radius, height: radius))
-        let mask = CAShapeLayer()
-        mask.path = path.cgPath
-        layer.mask = mask
-    }
 }

@@ -229,15 +229,6 @@ extension AboutMeViewController: UIImagePickerControllerDelegate, UINavigationCo
                 let image = UIImage(data: imageData)
                 avatarImageView.image = image
             }
-            
-            
-            
-//            guard let image = info[.originalImage] as? UIImage else{
-//                return
-//            }
-
-//
-//            print(info[.imageURL])
         }
         
         picker.dismiss(animated: true, completion: nil)

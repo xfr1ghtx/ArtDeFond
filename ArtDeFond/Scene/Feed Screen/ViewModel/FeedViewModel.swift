@@ -66,7 +66,7 @@ class FeedViewModel: NSObject {
             switch result {
             case .success(let user):
                 completion(user)
-            case .failure(let error):
+            case .failure( _):
                 completion(nil)
             }
         }

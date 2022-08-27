@@ -178,11 +178,6 @@ class ExFeedViewModel: NSObject {
                 group.leave()
             case .success(let picturesData):
                 pictures = picturesData
-                
-//                pictures.forEach { picture  in
-//                    let newPicture = FeedPictureModel(id: picture.id, image: nil, title: picture.title, authorName: picture.author_id, authorImage: nil, picture:  picture)
-//                    outputPictures.append(newPicture)
-//                }
                 self?.pictures = outputPictures
                 
                 group.leave()
@@ -193,9 +188,7 @@ class ExFeedViewModel: NSObject {
         group.enter()
         PicturesManager.shared.loadPictureInformation(type: .auctions) { [weak self] result in
             switch result {
-            case .failure(let error):
-                print(error)
-//                self?.error = error
+            case .failure( _):
                 group.leave()
                 
             case .success(let auctions):

@@ -20,6 +20,15 @@ class UploadPhotoViewController: UIViewController {
     private let aboutPictureTextView = UITextView()
     private let nextScreenButton = CustomButton(viewModel: .init(type: .dark, labelText: "Далее"))
     
+    lazy var someView: UIView = {
+        let view = UIView()
+        
+        view.layer.cornerRadius = 16
+        view.backgroundColor = Constants.Colors.lightRed
+        
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
     
     private let viewModel: UploadPhotoViewModel
     
@@ -62,10 +71,12 @@ class UploadPhotoViewController: UIViewController {
         
         pictureImageView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(tapOnImageView)))
         pictureImageView.isUserInteractionEnabled = true
-        pictureImageView.contentMode = .scaleAspectFill
-        pictureImageView.image = Constants.Icons.avatarPlaceholder
+        
+        pictureImageView.image = UIImage(named: "Imageholder")
+        
         pictureImageView.backgroundColor = Constants.Colors.dirtyWhite
         pictureImageView.layer.cornerRadius = 16
+        pictureImageView.layer.masksToBounds = true
         
         pictureImageView.snp.makeConstraints{ make in
             make.top.equalTo(view.safeAreaLayoutGuide).offset(5)
@@ -96,16 +107,24 @@ class UploadPhotoViewController: UIViewController {
     }
     
     private func aboutPictureTextViewSetup(){
-        view.addSubview(aboutPictureTextView)
+        view.addSubview(someView)
+        someView.addSubview(aboutPictureTextView)
         aboutPictureTextView.textColor = Constants.Colors.darkRed
         aboutPictureTextView.font = Constants.Fonts.regular17
         aboutPictureTextView.layer.cornerRadius = 16
-        aboutPictureTextView.backgroundColor = Constants.Colors.lightRed
+        aboutPictureTextView.backgroundColor = .clear
         
-        aboutPictureTextView.snp.makeConstraints{make in
+        someView.snp.makeConstraints{make in
             make.top.equalTo(aboutPictureLabel.snp.bottom).offset(4)
             make.leading.trailing.equalToSuperview().inset(30)
             make.height.equalTo(180)
+        }
+        
+        aboutPictureTextView.snp.makeConstraints { make in
+            make.top.equalToSuperview().offset(10)
+            make.leading.equalToSuperview().offset(10)
+            make.trailing.equalToSuperview().inset(10)
+            make.bottom.equalToSuperview().inset(10)
         }
     }
     
@@ -159,7 +178,6 @@ class UploadPhotoViewController: UIViewController {
                                  pictureName: titleLabelTextField.returnText(),
                                  pictureDescription: aboutPictureTextView.text)
     }
-
 }
 
 extension UploadPhotoViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate{
@@ -180,20 +198,11 @@ extension UploadPhotoViewController: UIImagePickerControllerDelegate, UINavigati
             
             let url = info[.imageURL]
             let data = try? Data(contentsOf: url as! URL)
-
+            
             if let imageData = data {
                 let image = UIImage(data: imageData)
                 pictureImageView.image = image
             }
-            
-            
-            
-//            guard let image = info[.originalImage] as? UIImage else{
-//                return
-//            }
-
-//
-//            print(info[.imageURL])
         }
         
         picker.dismiss(animated: true, completion: nil)

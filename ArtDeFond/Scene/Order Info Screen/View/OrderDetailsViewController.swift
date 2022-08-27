@@ -17,7 +17,7 @@ class OrderDetailsViewController: UIViewController {
     
     private func makeLine() -> UIView {
         let view = UIView()
-        view.backgroundColor = Constants.Colors.pink
+        view.backgroundColor = .white
         
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
@@ -64,7 +64,7 @@ class OrderDetailsViewController: UIViewController {
     lazy var sellerImageView: UIImageView = {
         let imageView = UIImageView()
         
-        imageView.backgroundColor = Constants.Colors.pink
+        imageView.backgroundColor = .white
         imageView.layer.cornerRadius = 6
         imageView.layer.masksToBounds = true
         
@@ -75,7 +75,7 @@ class OrderDetailsViewController: UIViewController {
     lazy var buyerImageView: UIImageView = {
         let imageView = UIImageView()
         
-        imageView.backgroundColor = Constants.Colors.pink
+        imageView.backgroundColor = .white
         imageView.layer.cornerRadius = 6
         imageView.layer.masksToBounds = true
         

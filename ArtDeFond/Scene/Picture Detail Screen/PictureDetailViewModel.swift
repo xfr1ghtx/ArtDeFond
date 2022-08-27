@@ -39,7 +39,7 @@ class PictureDetailViewModel {
             }
             
             switch result {
-            case .failure(let error):
+            case .failure( _):
                 completion(nil)
             case .success(let picture):
                 

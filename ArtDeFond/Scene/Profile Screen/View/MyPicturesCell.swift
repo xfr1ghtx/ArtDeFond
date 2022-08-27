@@ -69,7 +69,8 @@ class MyPicturesCell: UITableViewCell{
     lazy var priceLabel: UILabel = {
         let label = UILabel()
         
-        label.text = "100$"
+        label.text = ""
+        label.lineBreakMode = .byClipping
         label.numberOfLines = 1
         label.textColor = Constants.Colors.darkRed
         label.font = Constants.Fonts.bold24
@@ -97,7 +98,7 @@ class MyPicturesCell: UITableViewCell{
         
         self.titleLabel.text = model.title
         self.descriptionLabel.text = model.description
-        self.priceLabel.text = "\(model.price)$"
+        self.priceLabel.text = (model.price).toRubles()
         self.detailsLabel.text = detailsString
         
         ImageManager.shared.image(with: model.image) { [weak self] result in

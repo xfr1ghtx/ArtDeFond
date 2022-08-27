@@ -29,7 +29,7 @@ class PictureFeedTableCell: UITableViewCell{
     lazy var authorImageView: UIImageView = {
         let imageView = UIImageView()
         
-        imageView.backgroundColor = Constants.Colors.pink
+        imageView.backgroundColor = .white
         imageView.layer.cornerRadius = 6
         imageView.clipsToBounds = true
         imageView.image = UIImage(named: "pic")

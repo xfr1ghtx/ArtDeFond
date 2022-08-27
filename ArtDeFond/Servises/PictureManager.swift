@@ -109,11 +109,10 @@ final class PicturesManager: PicturesManagerDescription {
         time: Date,
         completion: @escaping (Result<Picture, Error>) -> Void
     ) {
-//        guard let author_id = AuthManager.shared.userID() else {
-//            completion(.failure(SomeErrors.somethingWentWrong))
-//            return
-//        }
-        let author_id = "1234" // mock
+        guard let author_id = AuthManager.shared.userID() else {
+            completion(.failure(SomeErrors.somethingWentWrong))
+            return
+        }
         
         let newPicture: Picture?
         newPicture = Picture(id: id, title: title, image: image , description: description, year: year, materials: materials, width: width, height: height, author_id: author_id, price: price, isAuction: isAuction, auction: auction, tags: tags, time: Date.distantFuture)
