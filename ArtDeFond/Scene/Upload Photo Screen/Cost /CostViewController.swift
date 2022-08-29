@@ -7,8 +7,12 @@
 
 import UIKit
 import SnapKit
+import TPKeyboardAvoiding
 
 class CostViewController: UIViewController {
+    
+    private let scrollView = TPKeyboardAvoidingScrollView()
+    private let contentView = UIView()
     
     private let sellLabelSwitch = LabelSwitch(text: "Фиксированная цена")
     private let sellLabelTextField = LabelTextField(CustomTextFieldViewModel: .init(type: .withImageOnRight,
@@ -40,26 +44,50 @@ class CostViewController: UIViewController {
     }
     
     private func setup(){
+        scrollViewSetup()
         sellLabelSwitchSetup()
         sellLabelTextFieldSetup()
         auctionLabelSwitchSetup()
         uploadPictureButtonSetup()
     }
     
+    private func scrollViewSetup(){
+        view.addSubview(scrollView)
+        
+        scrollView.keyboardDismissMode = .interactive
+        scrollView.isScrollEnabled = true
+        scrollView.bounces = false
+        scrollView.showsVerticalScrollIndicator = false
+        
+        scrollView.snp.makeConstraints{ make in
+            make.edges.equalToSuperview()
+        }
+        
+        scrollView.addSubview(contentView)
+        
+        contentView.snp.makeConstraints{ make in
+            make.top.leading.trailing.equalToSuperview()
+            make.bottom.equalToSuperview().priority(250)
+            make.centerX.equalToSuperview()
+            make.centerY.equalToSuperview().priority(250)
+            
+        }
+    }
+    
     private func sellLabelSwitchSetup(){
-        view.addSubview(sellLabelSwitch)
+        contentView.addSubview(sellLabelSwitch)
         
         sellLabelSwitch.uiswitch.isOn = true
         
         sellLabelSwitch.snp.makeConstraints{ make in
-            make.top.equalTo(view.safeAreaLayoutGuide).offset(10)
+            make.top.equalToSuperview().offset(10)
             make.leading.trailing.equalToSuperview().inset(30)
             make.height.equalTo(44)
         }
     }
     
     private func sellLabelTextFieldSetup(){
-        view.addSubview(sellLabelTextField)
+        contentView.addSubview(sellLabelTextField)
         
         sellLabelTextField.snp.makeConstraints{ make in
             make.top.equalTo(sellLabelSwitch.snp.bottom).offset(2)
@@ -68,7 +96,7 @@ class CostViewController: UIViewController {
     }
     
     private func auctionLabelSwitchSetup(){
-        view.addSubview(auctionLabelSwitch)
+        contentView.addSubview(auctionLabelSwitch)
         
         auctionLabelSwitch.uiswitch.isOn = false
         auctionLabelSwitch.uiswitch.addTarget(self, action: #selector(switchChanged), for: .valueChanged)
@@ -80,20 +108,27 @@ class CostViewController: UIViewController {
     }
     
     private func uploadPictureButtonSetup(){
-        view.addSubview(uploadPictureButton)
+        contentView.addSubview(uploadPictureButton)
         
         uploadPictureButton.addTarget(self, action: #selector(tapOnUploadPictureButton), for: .touchUpInside)
         
         uploadPictureButton.snp.makeConstraints{make in
             make.leading.trailing.equalToSuperview().inset(30)
-            make.bottom.equalTo(view.safeAreaLayoutGuide).inset(30)
+            make.top.equalTo(auctionLabelSwitch.snp.bottom).offset(40)
             make.height.equalTo(44)
         }
     }
     
     @objc
     private func tapOnUploadPictureButton(){
-        viewModel.uploadPicture(cost: sellLabelTextField.returnText())
+        if sellLabelTextField.returnText() != "" {
+            viewModel.uploadPicture(cost: sellLabelTextField.returnText())
+        } else {
+            let alert = UIAlertController(title: "Пустое поле", message: "Для добавления картины необходимо указать ее цену.", preferredStyle: .alert)
+            let alertAction = UIAlertAction(title: "Хорошо", style: .cancel)
+            alert.addAction(alertAction)
+            present(alert, animated: true)
+        }
     }
     
     @objc
@@ -109,15 +144,5 @@ class CostViewController: UIViewController {
         alert.addAction(alertAction)
         present(alert, animated: true)
     }
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

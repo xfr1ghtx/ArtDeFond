@@ -21,6 +21,7 @@ class PictureFeedTableCell: UITableViewCell{
         imageView.backgroundColor = Constants.Colors.dirtyWhite
         imageView.layer.cornerRadius = 16
         imageView.clipsToBounds = true
+        imageView.contentMode = .scaleAspectFill
         
         imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
@@ -33,7 +34,7 @@ class PictureFeedTableCell: UITableViewCell{
         imageView.layer.cornerRadius = 6
         imageView.clipsToBounds = true
         imageView.image = UIImage(named: "pic")
-        imageView.sizeToFit()
+        imageView.contentMode = .scaleAspectFill
         
         imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView

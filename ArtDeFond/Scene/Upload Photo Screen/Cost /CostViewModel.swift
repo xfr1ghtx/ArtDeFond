@@ -79,8 +79,7 @@ final class CostViewModel{
                 price: price ?? 100,
                 isAuction: false,
                 auction: nil,
-                tags: tags,
-                time: Date.now) { result in
+                tags: tags) { result in
                     switch result {
                     case .failure(let error):
                         print(error)

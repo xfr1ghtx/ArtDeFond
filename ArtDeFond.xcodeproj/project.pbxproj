@@ -33,7 +33,7 @@
 		2C8C13DE28B52A7400AC3921 /* OrdersTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C8C13DD28B52A7400AC3921 /* OrdersTableViewCell.swift */; };
 		2C8C13E228B5669E00AC3921 /* FeedModelViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C8C13E128B5669E00AC3921 /* FeedModelViewModel.swift */; };
 		2C8D7C9F28B219F80036E784 /* AboutMeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C8D7C9E28B219F80036E784 /* AboutMeViewController.swift */; };
-		2C8D7CA128B22E930036E784 /* MyPicturesCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C8D7CA028B22E930036E784 /* MyPicturesCell.swift */; };
+		2C8D7CA128B22E930036E784 /* ProfilePicturesTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C8D7CA028B22E930036E784 /* ProfilePicturesTableCell.swift */; };
 		2C97AFE328B299AD006CDD55 /* UserSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C97AFE228B299AD006CDD55 /* UserSettingsViewController.swift */; };
 		2C97AFE528B29D83006CDD55 /* AddressesManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C97AFE428B29D83006CDD55 /* AddressesManager.swift */; };
 		2C97AFE928B2A035006CDD55 /* AddressesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C97AFE828B2A035006CDD55 /* AddressesViewController.swift */; };
@@ -137,7 +137,7 @@
 		2C8C13DD28B52A7400AC3921 /* OrdersTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrdersTableViewCell.swift; sourceTree = "<group>"; };
 		2C8C13E128B5669E00AC3921 /* FeedModelViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedModelViewModel.swift; sourceTree = "<group>"; };
 		2C8D7C9E28B219F80036E784 /* AboutMeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutMeViewController.swift; sourceTree = "<group>"; };
-		2C8D7CA028B22E930036E784 /* MyPicturesCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPicturesCell.swift; sourceTree = "<group>"; };
+		2C8D7CA028B22E930036E784 /* ProfilePicturesTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilePicturesTableCell.swift; sourceTree = "<group>"; };
 		2C97AFE228B299AD006CDD55 /* UserSettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSettingsViewController.swift; sourceTree = "<group>"; };
 		2C97AFE428B29D83006CDD55 /* AddressesManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressesManager.swift; sourceTree = "<group>"; };
 		2C97AFE828B2A035006CDD55 /* AddressesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressesViewController.swift; sourceTree = "<group>"; };
@@ -301,7 +301,7 @@
 			isa = PBXGroup;
 			children = (
 				8BA9ECDA28AD250000DFF138 /* ProfileViewController.swift */,
-				2C8D7CA028B22E930036E784 /* MyPicturesCell.swift */,
+				2C8D7CA028B22E930036E784 /* ProfilePicturesTableCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -957,7 +957,7 @@
 				8BE7976628AF629300DC72D9 /* AuthViewController.swift in Sources */,
 				8BE7977028B015D900DC72D9 /* CustomButtonView.swift in Sources */,
 				2CEC274228B4AA7A0044DBD4 /* Date.swift in Sources */,
-				2C8D7CA128B22E930036E784 /* MyPicturesCell.swift in Sources */,
+				2C8D7CA128B22E930036E784 /* ProfilePicturesTableCell.swift in Sources */,
 				2CB5905128B155B4005BFBB1 /* FeedViewModel.swift in Sources */,
 				8BA9ECCB28ACF57D00DFF138 /* TabBarCoordinator.swift in Sources */,
 				2C97AFF028B2A920006CDD55 /* AddressTableViewCell.swift in Sources */,

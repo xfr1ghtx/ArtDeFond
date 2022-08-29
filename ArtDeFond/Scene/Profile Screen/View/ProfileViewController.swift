@@ -23,7 +23,7 @@ class ProfileViewController: UIViewController, UICollectionViewDelegateFlowLayou
     lazy var tableView: UITableView = {
         let tableView = UITableView()
         
-        tableView.register(MyPicturesCell.self, forCellReuseIdentifier: MyPicturesCell.reusableId)
+        tableView.register(ProfilePicturesTableCell.self, forCellReuseIdentifier: ProfilePicturesTableCell.reusableId)
         tableView.separatorStyle = .none
         tableView.showsVerticalScrollIndicator = false
         
@@ -346,7 +346,7 @@ extension ProfileViewController: UICollectionViewDataSource {
 
 extension ProfileViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let cell = tableView.cellForRow(at: indexPath) as? MyPicturesCell
+        let cell = tableView.cellForRow(at: indexPath) as? ProfilePicturesTableCell
         
         guard
             let cell = cell,
@@ -375,7 +375,7 @@ extension ProfileViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: MyPicturesCell.reusableId) as? MyPicturesCell
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: ProfilePicturesTableCell.reusableId) as? ProfilePicturesTableCell
         else {
             fatalError("unexpected cell")
         }

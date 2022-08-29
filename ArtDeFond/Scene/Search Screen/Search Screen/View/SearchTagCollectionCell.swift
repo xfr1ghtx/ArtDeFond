@@ -16,7 +16,7 @@ class SearchTagCollectionCell: UICollectionViewCell {
     lazy var title: UILabel = {
         let label = UILabel()
         label.textColor = .white
-        label.font = Constants.Fonts.semibold15
+        label.font = Constants.Fonts.semibold17
         label.textAlignment = .center
         return label
     }()

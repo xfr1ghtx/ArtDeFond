@@ -8,8 +8,12 @@
 import UIKit
 import SnapKit
 import TagListView
+import TPKeyboardAvoiding
 
 class PictureDescriptionViewController: UIViewController {
+    
+    private let scrollView = TPKeyboardAvoidingScrollView()
+    private let contentView = UIView()
     
     private let materialLabelTextField = LabelTextField(CustomTextFieldViewModel: .init(type: .withoutImage,
                                                                                         keyboardType: .default,
@@ -46,7 +50,7 @@ class PictureDescriptionViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
-        navigationItem.title = "Описание картины"
+        navigationItem.title = "Информация о картине"
         navigationItem.backButtonTitle = ""
         setup()
         bindToViewModel()
@@ -57,27 +61,51 @@ class PictureDescriptionViewController: UIViewController {
             self?.navigationController?.pushViewController(vc, animated: true)
         }
     }
-
+    
+    private func scrollViewSetup(){
+        view.addSubview(scrollView)
+        
+        scrollView.keyboardDismissMode = .interactive
+        scrollView.isScrollEnabled = true
+        scrollView.bounces = false
+        scrollView.showsVerticalScrollIndicator = false
+        
+        scrollView.snp.makeConstraints{ make in
+            make.edges.equalToSuperview()
+        }
+        
+        scrollView.addSubview(contentView)
+        
+        contentView.snp.makeConstraints{ make in
+            make.top.leading.trailing.equalToSuperview()
+            make.bottom.equalToSuperview().priority(250)
+            make.centerX.equalToSuperview()
+            make.centerY.equalToSuperview().priority(250)
+            
+        }
+    }
+    
     private func setup(){
+        scrollViewSetup()
         materialLabelTextFieldSetup()
         yearLabelTextFieldSetup()
         widthLabelTextFieldSetup()
         heightLabelTextFieldSetup()
-        nextScreenButtonSetup()
         tagListSetup()
+        nextScreenButtonSetup()
     }
     
     private func materialLabelTextFieldSetup(){
-        view.addSubview(materialLabelTextField)
+        contentView.addSubview(materialLabelTextField)
         
         materialLabelTextField.snp.makeConstraints{ make in
-            make.top.equalTo(view.safeAreaLayoutGuide).offset(10)
+            make.top.equalToSuperview().offset(10)
             make.leading.trailing.equalToSuperview().inset(30)
         }
     }
     
     private func yearLabelTextFieldSetup(){
-        view.addSubview(yearLabelTextField)
+        contentView.addSubview(yearLabelTextField)
         
         yearLabelTextField.snp.makeConstraints{ make in
             make.top.equalTo(materialLabelTextField.snp.bottom).offset(20)
@@ -87,7 +115,7 @@ class PictureDescriptionViewController: UIViewController {
     }
     
     private func widthLabelTextFieldSetup(){
-        view.addSubview(widthLabelTextField)
+        contentView.addSubview(widthLabelTextField)
         
         widthLabelTextField.snp.makeConstraints{ make in
             make.top.equalTo(yearLabelTextField.snp.bottom).offset(20)
@@ -96,7 +124,7 @@ class PictureDescriptionViewController: UIViewController {
     }
     
     private func heightLabelTextFieldSetup(){
-        view.addSubview(heightLabelTextField)
+        contentView.addSubview(heightLabelTextField)
         
         heightLabelTextField.snp.makeConstraints{ make in
             make.top.equalTo(widthLabelTextField.snp.bottom).offset(20)
@@ -105,19 +133,19 @@ class PictureDescriptionViewController: UIViewController {
     }
     
     private func nextScreenButtonSetup(){
-        view.addSubview(nextScreenButton)
+        contentView.addSubview(nextScreenButton)
         
         nextScreenButton.addTarget(self, action: #selector(tapOnNextButton), for: .touchUpInside)
         
         nextScreenButton.snp.makeConstraints{make in
             make.leading.trailing.equalToSuperview().inset(30)
-            make.bottom.equalTo(view.safeAreaLayoutGuide).inset(30)
+            make.top.equalTo(tagList.snp.bottom).offset(30)
             make.height.equalTo(44)
         }
     }
     
     private func tagListSetup(){
-        view.addSubview(tagList)
+        contentView.addSubview(tagList)
         
         tagList.isUserInteractionEnabled = true
         tagList.delegate = self
@@ -147,19 +175,30 @@ class PictureDescriptionViewController: UIViewController {
             make.top.equalTo(heightLabelTextField.snp.bottom).offset(35)
             make.leading.trailing.equalToSuperview().inset(30)
         }
-//        tagListView.selectedTags().contains { $0.currentTitle == topic.title}
-
     }
     
     @objc
     private func tapOnNextButton(){
-        viewModel.goToNextScreen(materials: materialLabelTextField.returnText(),
-                                 year: yearLabelTextField.returnText(),
-                                 width: widthLabelTextField.returnText(),
-                                 height: heightLabelTextField.returnText(),
-                                 tags: tagList.selectedTags())
+        
+        if
+            materialLabelTextField.returnText() != "",
+            yearLabelTextField.returnText() != "",
+            widthLabelTextField.returnText() != "",
+            heightLabelTextField.returnText() != ""
+        {
+            viewModel.goToNextScreen(materials: materialLabelTextField.returnText(),
+                                     year: yearLabelTextField.returnText(),
+                                     width: widthLabelTextField.returnText(),
+                                     height: heightLabelTextField.returnText(),
+                                     tags: tagList.selectedTags())
+        } else {
+            let alert = UIAlertController(title: "Пустые поля", message: "Для продолжения необходимо заполнить все поля.", preferredStyle: .alert)
+            let alertAction = UIAlertAction(title: "Хорошо", style: .cancel)
+            alert.addAction(alertAction)
+            present(alert, animated: true)
+        }
     }
-
+    
 }
 
 extension PictureDescriptionViewController: TagListViewDelegate{

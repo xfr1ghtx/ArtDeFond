@@ -28,7 +28,6 @@ protocol PicturesManagerDescription {
         isAuction: Bool,
         auction: Auction?,
         tags: [String],
-        time: Date,
         completion: @escaping (Result<Picture, Error>) -> Void
     )
     
@@ -106,7 +105,6 @@ final class PicturesManager: PicturesManagerDescription {
         isAuction: Bool,
         auction: Auction?,
         tags: [String],
-        time: Date,
         completion: @escaping (Result<Picture, Error>) -> Void
     ) {
         guard let author_id = AuthManager.shared.userID() else {
@@ -115,7 +113,7 @@ final class PicturesManager: PicturesManagerDescription {
         }
         
         let newPicture: Picture?
-        newPicture = Picture(id: id, title: title, image: image , description: description, year: year, materials: materials, width: width, height: height, author_id: author_id, price: price, isAuction: isAuction, auction: auction, tags: tags, time: Date.distantFuture)
+        newPicture = Picture(id: id, title: title, image: image , description: description, year: year, materials: materials, width: width, height: height, author_id: author_id, price: price, isAuction: isAuction, auction: auction, tags: tags, time: Date.now)
         
         try? database.collection("pictures").document(id).setData(from: newPicture, encoder: Firestore.Encoder()) { error in
             

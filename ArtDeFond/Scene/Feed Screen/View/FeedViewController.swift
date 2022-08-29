@@ -213,6 +213,7 @@ extension FeedViewController: UITableViewDataSource {
                 cell.configure(model: cellModel)
                 
             }
+            cell.selectionStyle = .none 
         }
             return cell
         }

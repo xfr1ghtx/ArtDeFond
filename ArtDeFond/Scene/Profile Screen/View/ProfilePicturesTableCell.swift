@@ -9,9 +9,9 @@ import Foundation
 import UIKit
 
 
-class MyPicturesCell: UITableViewCell{
+class ProfilePicturesTableCell: UITableViewCell{
     
-    static let reusableId = "MyPicturesCell"
+    static let reusableId = "ProfilePicturesTableCell"
     
     var pictureModel: Picture?
     
@@ -74,6 +74,7 @@ class MyPicturesCell: UITableViewCell{
         label.numberOfLines = 1
         label.textColor = Constants.Colors.darkRed
         label.font = Constants.Fonts.bold24
+        label.textAlignment = .right
         
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
@@ -118,8 +119,7 @@ class MyPicturesCell: UITableViewCell{
     
     private func layout(){
         contentView.frame = contentView.frame.inset(by: UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10))
-        
-        // TODO: image to center
+
         contentView.addSubview(image)
         image.snp.makeConstraints { make in
             make.height.equalTo(100)
@@ -137,7 +137,7 @@ class MyPicturesCell: UITableViewCell{
             make.width.equalTo(80)
             make.trailing.equalToSuperview()
         }
-        //
+        
         contentView.addSubview(titleLabel)
         titleLabel.snp.makeConstraints { make in
             make.top.equalToSuperview()
