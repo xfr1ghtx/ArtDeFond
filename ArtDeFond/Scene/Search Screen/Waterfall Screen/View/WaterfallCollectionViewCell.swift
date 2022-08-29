@@ -9,6 +9,7 @@ import UIKit
 
 class WaterfallCollectionViewCell: UICollectionViewCell {
     static let identifier = "WaterfallCollectionViewCell"
+    var model: Picture?
     
     private let imageView: UIImageView = {
         let imageView = UIImageView()
@@ -37,7 +38,15 @@ class WaterfallCollectionViewCell: UICollectionViewCell {
         imageView.image = nil
     }
     
-    func configure(image: UIImage?) {
-        imageView.image = image
+    func configure(model: Picture) {
+        self.model = model
+        ImageManager.shared.image(with: model.image) { result in
+            switch result {
+            case .failure(let error):
+                print(error)
+            case .success(let image):
+                self.imageView.image = image
+            }
+        }
     }
 }

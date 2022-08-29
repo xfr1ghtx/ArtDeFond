@@ -9,11 +9,11 @@ import Foundation
 import Foundation
 import UIKit
 
-class CollectionCellSearch: UICollectionViewCell {
+class SearchTagCollectionCell: UICollectionViewCell {
     
-    static let reuseIdentifier = "CollectionCellSearch"
+    static let reuseIdentifier = "SearchTagCollectionCell"
     
-    private lazy var title: UILabel = {
+    lazy var title: UILabel = {
         let label = UILabel()
         label.textColor = .white
         label.font = Constants.Fonts.semibold15

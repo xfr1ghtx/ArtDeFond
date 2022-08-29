@@ -25,7 +25,7 @@ class SearchViewController: UIViewController {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .vertical
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
-        collectionView.register(CollectionCellSearch.self, forCellWithReuseIdentifier: CollectionCellSearch.reuseIdentifier)
+        collectionView.register(SearchTagCollectionCell.self, forCellWithReuseIdentifier: SearchTagCollectionCell.reuseIdentifier)
         collectionView.backgroundColor = .clear
         collectionView.showsVerticalScrollIndicator = false
         return collectionView
@@ -50,7 +50,7 @@ class SearchViewController: UIViewController {
         
         searchTextField.snp.makeConstraints{ make in
             make.top.equalTo(view.safeAreaLayoutGuide).offset(10)
-            make.leading.trailing.equalToSuperview().inset(30)
+            make.leading.trailing.equalToSuperview().inset(23)
             make.height.equalTo(42)
         }
         
@@ -63,11 +63,9 @@ class SearchViewController: UIViewController {
         picturesCollection.delegate = self
         
         picturesCollection.snp.makeConstraints{ make in
-            make.top.equalTo(searchTextField.snp.bottom).offset(30)
-            make.leading.trailing.equalToSuperview().inset(30)
+            make.top.equalTo(searchTextField.snp.bottom).offset(13)
+            make.leading.trailing.equalToSuperview().inset(23)
             make.bottom.equalToSuperview()
-//            make.height.equalTo(409)
-//            make.width.equalTo(328)
         }
     }
     
@@ -88,7 +86,7 @@ extension SearchViewController: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CollectionCellSearch.reuseIdentifier, for: indexPath) as? CollectionCellSearch else { return UICollectionViewCell() }
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: SearchTagCollectionCell.reuseIdentifier, for: indexPath) as? SearchTagCollectionCell else { return UICollectionViewCell() }
         cell.configureCell(title: modelArraySearch[indexPath.row].title, imageView: modelArraySearch[indexPath.row].imageView)
         return cell
     }
@@ -99,9 +97,8 @@ extension SearchViewController: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         
-        let width = (ScreenSize.width - 13) / 2 - 24
+        let width = (ScreenSize.width - 13) / 2 - 23
         let height = CGFloat(62.0)
-//        return CGSize(width: ScreenSize.width / 2.5, height: ScreenSize.height/11)
         return CGSize(width: width, height: height)
     }
     
@@ -110,7 +107,22 @@ extension SearchViewController: UICollectionViewDelegateFlowLayout {
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        navigationController?.pushViewController(WaterfallViewController(), animated: true)
+        let cell = collectionView.cellForItem(at: indexPath) as? SearchTagCollectionCell
+        guard let tagName = cell?.title.text else {
+            return
+        }
+        
+        navigationController?.pushViewController(WaterfallViewController(viewModel: WaterfallViewModel(with: tagName)), animated: true)
     }
     
+    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        cell.alpha = 0
+        
+        UIView.animate(
+            withDuration: 0.5,
+            delay: 0.05 * Double(indexPath.row),
+            animations: {
+                cell.alpha = 1
+            })
+    }
 }

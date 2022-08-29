@@ -28,6 +28,7 @@
 		2C28A2BE28B67B5F00233601 /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C28A2BD28B67B5F00233601 /* UIView.swift */; };
 		2C5491AE28B4C7EE0012032B /* UIAlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C5491AD28B4C7EE0012032B /* UIAlertController.swift */; };
 		2C5491B028B4DD460012032B /* OrderDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C5491AF28B4DD460012032B /* OrderDetailsViewController.swift */; };
+		2C81DEE528BCA84500CAB6AD /* WaterfallViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C81DEE428BCA84500CAB6AD /* WaterfallViewModel.swift */; };
 		2C8C13DC28B52A4900AC3921 /* OrderAndPictureModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C8C13DB28B52A4900AC3921 /* OrderAndPictureModel.swift */; };
 		2C8C13DE28B52A7400AC3921 /* OrdersTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C8C13DD28B52A7400AC3921 /* OrdersTableViewCell.swift */; };
 		2C8C13E228B5669E00AC3921 /* FeedModelViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C8C13E128B5669E00AC3921 /* FeedModelViewModel.swift */; };
@@ -64,7 +65,7 @@
 		8B40537828B59F3000E6E776 /* CostViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B40537728B59F3000E6E776 /* CostViewModel.swift */; };
 		8B40537A28B59F3900E6E776 /* CostModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B40537928B59F3900E6E776 /* CostModel.swift */; };
 		8B40537E28B5FBB700E6E776 /* Screen Size.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B40537D28B5FBB700E6E776 /* Screen Size.swift */; };
-		8B40538028B5FC5100E6E776 /* CollectionCellSearch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B40537F28B5FC5100E6E776 /* CollectionCellSearch.swift */; };
+		8B40538028B5FC5100E6E776 /* SearchTagCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B40537F28B5FC5100E6E776 /* SearchTagCollectionCell.swift */; };
 		8B51DE4A28A97DCB002E10AC /* AppDependencies.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B51DE4928A97DCB002E10AC /* AppDependencies.swift */; };
 		8B51DE4D28A97E80002E10AC /* UINavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B51DE4C28A97E80002E10AC /* UINavigationController.swift */; };
 		8B5DE2F528AABAC400852B34 /* CustomTextFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B5DE2F428AABAC400852B34 /* CustomTextFieldView.swift */; };
@@ -131,6 +132,7 @@
 		2C28A2BD28B67B5F00233601 /* UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIView.swift; sourceTree = "<group>"; };
 		2C5491AD28B4C7EE0012032B /* UIAlertController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIAlertController.swift; sourceTree = "<group>"; };
 		2C5491AF28B4DD460012032B /* OrderDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderDetailsViewController.swift; sourceTree = "<group>"; };
+		2C81DEE428BCA84500CAB6AD /* WaterfallViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaterfallViewModel.swift; sourceTree = "<group>"; };
 		2C8C13DB28B52A4900AC3921 /* OrderAndPictureModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = OrderAndPictureModel.swift; path = "ArtDeFond/Scene/Order Info Screen/View/OrderAndPictureModel.swift"; sourceTree = SOURCE_ROOT; };
 		2C8C13DD28B52A7400AC3921 /* OrdersTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrdersTableViewCell.swift; sourceTree = "<group>"; };
 		2C8C13E128B5669E00AC3921 /* FeedModelViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedModelViewModel.swift; sourceTree = "<group>"; };
@@ -166,7 +168,7 @@
 		8B40537728B59F3000E6E776 /* CostViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CostViewModel.swift; sourceTree = "<group>"; };
 		8B40537928B59F3900E6E776 /* CostModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CostModel.swift; sourceTree = "<group>"; };
 		8B40537D28B5FBB700E6E776 /* Screen Size.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Screen Size.swift"; sourceTree = "<group>"; };
-		8B40537F28B5FC5100E6E776 /* CollectionCellSearch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionCellSearch.swift; sourceTree = "<group>"; };
+		8B40537F28B5FC5100E6E776 /* SearchTagCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTagCollectionCell.swift; sourceTree = "<group>"; };
 		8B51DE4928A97DCB002E10AC /* AppDependencies.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDependencies.swift; sourceTree = "<group>"; };
 		8B51DE4C28A97E80002E10AC /* UINavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UINavigationController.swift; sourceTree = "<group>"; };
 		8B5DE2F428AABAC400852B34 /* CustomTextFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextFieldView.swift; sourceTree = "<group>"; };
@@ -362,6 +364,49 @@
 				2C5491AF28B4DD460012032B /* OrderDetailsViewController.swift */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		2C81DEDC28BCA7AA00CAB6AD /* Search Screen */ = {
+			isa = PBXGroup;
+			children = (
+				2C81DEDE28BCA7F800CAB6AD /* View */,
+			);
+			path = "Search Screen";
+			sourceTree = "<group>";
+		};
+		2C81DEDD28BCA7C700CAB6AD /* Waterfall Screen */ = {
+			isa = PBXGroup;
+			children = (
+				2C81DEE128BCA81E00CAB6AD /* ViewModel */,
+				2C81DEDF28BCA80E00CAB6AD /* View */,
+			);
+			path = "Waterfall Screen";
+			sourceTree = "<group>";
+		};
+		2C81DEDE28BCA7F800CAB6AD /* View */ = {
+			isa = PBXGroup;
+			children = (
+				8BA9ECD628AD24A700DFF138 /* SearchViewController.swift */,
+				8B40537F28B5FC5100E6E776 /* SearchTagCollectionCell.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		2C81DEDF28BCA80E00CAB6AD /* View */ = {
+			isa = PBXGroup;
+			children = (
+				CE36C8B828B6B8FA006DF9BC /* WaterfallViewController.swift */,
+				CE36C8BD28B6BA95006DF9BC /* WaterfallCollectionViewCell.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		2C81DEE128BCA81E00CAB6AD /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				2C81DEE428BCA84500CAB6AD /* WaterfallViewModel.swift */,
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		2C8C13DF28B52B3500AC3921 /* View */ = {
@@ -630,10 +675,8 @@
 			isa = PBXGroup;
 			children = (
 				8B40537C28B5FBA700E6E776 /* Model */,
-				8BA9ECD628AD24A700DFF138 /* SearchViewController.swift */,
-				8B40537F28B5FC5100E6E776 /* CollectionCellSearch.swift */,
-				CE36C8B828B6B8FA006DF9BC /* WaterfallViewController.swift */,
-				CE36C8BD28B6BA95006DF9BC /* WaterfallCollectionViewCell.swift */,
+				2C81DEDC28BCA7AA00CAB6AD /* Search Screen */,
+				2C81DEDD28BCA7C700CAB6AD /* Waterfall Screen */,
 			);
 			path = "Search Screen";
 			sourceTree = "<group>";
@@ -907,7 +950,7 @@
 				CE36C8B928B6B8FA006DF9BC /* WaterfallViewController.swift in Sources */,
 				2C8C13E228B5669E00AC3921 /* FeedModelViewModel.swift in Sources */,
 				8BE7977328B0160D00DC72D9 /* CustomButtomType.swift in Sources */,
-				8B40538028B5FC5100E6E776 /* CollectionCellSearch.swift in Sources */,
+				8B40538028B5FC5100E6E776 /* SearchTagCollectionCell.swift in Sources */,
 				2C97AFF228B2A951006CDD55 /* AddressesViewModel.swift in Sources */,
 				8BA9ECD528AD242800DFF138 /* FeedViewController.swift in Sources */,
 				2C28A2AA28B61D1400233601 /* UIImageView.swift in Sources */,
@@ -954,6 +997,7 @@
 				2C24973F28B1815900551795 /* PictureWithAuthorModel.swift in Sources */,
 				2C97AFFD28B2AFD6006CDD55 /* OrderManager.swift in Sources */,
 				2C28A2B528B6342200233601 /* NotificationCommonTableCell.swift in Sources */,
+				2C81DEE528BCA84500CAB6AD /* WaterfallViewModel.swift in Sources */,
 				2C97B00828B2B953006CDD55 /* ProfileUserModel.swift in Sources */,
 				8B40537528B59B5400E6E776 /* PictureDescriptionModel.swift in Sources */,
 				8B9DC9F228B4AC87002418AC /* InterestViewController.swift in Sources */,
