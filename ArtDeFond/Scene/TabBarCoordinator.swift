@@ -84,7 +84,7 @@ final class TabBarCoordinator: Coordinator{
     }
     
     private func setupFifthTab() -> UIViewController{
-        let provileVC = isAuth ? ProfileViewController(viewModel: ProfileViewModel()) : AuthViewController
+        let provileVC = isAuth ? ProfileViewController(viewModel: ProfileViewModel()) : AuthViewController()
         provileVC.tabBarItem.image = Constants.Icons.profile
         provileVC.tabBarItem.title = "Профиль"
         return provileVC
@@ -98,7 +98,6 @@ final class TabBarCoordinator: Coordinator{
       func goToFeedTab(){
           rootTabBarController.selectedIndex = 0
       }
-    
     
     @objc
     func setLoginViewControllers(){
